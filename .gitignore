@@ -1,0 +1,15 @@
+# Java class files
+*.class
+
+# Maven target folder
+/target/
+
+# IDE files
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# macOS metadata
+.DS_Store
