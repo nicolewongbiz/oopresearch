@@ -36,9 +36,17 @@ public class OOPAntiPatternDetector {
               .forEach(clazz -> classMap.put(clazz.getNameAsString(), clazz));
         }
 
+        // <-- allEnumNames declared here
+        Set<String> allEnumNames = collectAllEnumNames(units);
+
         System.out.println("Parsed classes:");
         for (String className : classMap.keySet()) {
              System.out.println(" - " + className);
+        }
+
+        System.out.println("=== Enum misuse detection ===");
+        for (ClassOrInterfaceDeclaration clazz : classMap.values()) {
+            detectEnumTypeChecks(clazz, allEnumNames);
         }
 
         System.out.println("=== Type checking ===");
@@ -86,6 +94,15 @@ public class OOPAntiPatternDetector {
                 .anyMatch(v -> v.getNameAsString().equals("type"));
     }
 
+    private static Set<String> collectAllEnumNames(List<CompilationUnit> units) {
+    Set<String> enumNames = new HashSet<>();
+    for (CompilationUnit cu : units) {
+        cu.findAll(EnumDeclaration.class)
+          .forEach(enumDecl -> enumNames.add(enumDecl.getNameAsString()));
+    }
+    return enumNames;
+}
+
     private static void detectTypeCheckingInMethods(ClassOrInterfaceDeclaration clazz) {
         for (MethodDeclaration method : clazz.getMethods()) {
             Optional<BlockStmt> body = method.getBody();
@@ -119,6 +136,78 @@ public class OOPAntiPatternDetector {
     private static void removeAllComments(Node node) {
         node.getAllContainedComments().forEach(Comment::remove);
     }
+
+    private static void detectEnumTypeChecks(ClassOrInterfaceDeclaration clazz, Set<String> allEnumNames) {
+    for (FieldDeclaration field : clazz.getFields()) {
+        String fieldName = field.getVariables().get(0).getNameAsString();
+        String fieldType = field.getElementType().asString();
+
+        // Skip non-enum fields
+        if (!allEnumNames.contains(fieldType)) continue;
+
+        for (MethodDeclaration method : clazz.getMethods()) {
+            Optional<BlockStmt> body = method.getBody();
+            if (!body.isPresent()) continue;
+
+            // Case 1: if (enumField == ENUM_VALUE) or !=
+            body.get().findAll(IfStmt.class).forEach(ifStmt -> {
+                Expression cond = ifStmt.getCondition();
+                if (isEnumComparison(cond, fieldName)) {
+                    System.out.printf(
+                        "Enum misuse detected in %s.%s(): enum comparison%n",
+                        clazz.getNameAsString(),
+                        method.getNameAsString()
+                    );
+                }
+            });
+
+            // Case 2: switch(enumField) { ... }
+            body.get().findAll(SwitchStmt.class).forEach(switchStmt -> {
+                Expression selector = switchStmt.getSelector();
+                if (selector.isNameExpr() && selector.asNameExpr().getNameAsString().equals(fieldName)) {
+                    System.out.printf(
+                        "Enum misuse detected in %s.%s(): switch on enum%n",
+                        clazz.getNameAsString(),
+                        method.getNameAsString()
+                    );
+                }
+            });
+        }
+    }
+}
+
+// Checks if the expression is comparing the enum field using == or !=
+private static boolean isEnumComparison(Expression expr, String enumFieldName) {
+    if (!(expr instanceof BinaryExpr)) return false;
+    BinaryExpr be = (BinaryExpr) expr;
+
+    if (be.getOperator() != BinaryExpr.Operator.EQUALS &&
+        be.getOperator() != BinaryExpr.Operator.NOT_EQUALS) return false;
+
+    Expression left = be.getLeft();
+    Expression right = be.getRight();
+
+    return (isFieldName(left, enumFieldName) && right.isFieldAccessExpr()) ||
+           (isFieldName(right, enumFieldName) && left.isFieldAccessExpr());
+}
+
+// Checks if an expression is the given field
+private static boolean isFieldName(Expression expr, String name) {
+    return expr.isNameExpr() && expr.asNameExpr().getNameAsString().equals(name);
+}
+
+// Checks if the given type is an enum in the same compilation unit
+private static boolean isEnumType(ClassOrInterfaceDeclaration clazz, String typeName) {
+    List<EnumDeclaration> enums = clazz.findCompilationUnit()
+                                      .map(cu -> cu.findAll(EnumDeclaration.class))
+                                      .orElse(Collections.emptyList());
+    for (EnumDeclaration e : enums) {
+        if (e.getNameAsString().equals(typeName)) return true;
+    }
+    return false;
+}
+
+
 
     private static void detectRedundantOverrides(ClassOrInterfaceDeclaration child, ClassOrInterfaceDeclaration parent) {
         Map<String, MethodDeclaration> parentMethods = new HashMap<>();
@@ -167,11 +256,24 @@ public class OOPAntiPatternDetector {
         Map<String, Set<String>> methodToClasses = new HashMap<>();
 
         for (ClassOrInterfaceDeclaration clazz : classMap.values()) {
-            for (MethodDeclaration method : clazz.getMethods()) {
-                String signature = method.getNameAsString() + "/" + method.getParameters().size();
-                methodToClasses.computeIfAbsent(signature, k -> new HashSet<>()).add(clazz.getNameAsString());
-            }
+    for (MethodDeclaration method : clazz.getMethods()) {
+        // Get method name
+        String name = method.getNameAsString();
+
+        // Skip main(String[] args)
+        if (name.equals("main") &&
+            method.getParameters().size() == 1 &&
+            method.getParameter(0).getType().asString().equals("String[]")) {
+            continue;
         }
+
+        // Use name + parameter count as signature
+        String signature = name + "/" + method.getParameters().size();
+        methodToClasses.computeIfAbsent(signature, k -> new HashSet<>())
+                       .add(clazz.getNameAsString());
+    }
+}
+
 
         for (Map.Entry<String, Set<String>> entry : methodToClasses.entrySet()) {
             Set<String> classNames = entry.getValue();
