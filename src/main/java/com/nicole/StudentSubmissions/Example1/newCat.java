@@ -1,4 +1,4 @@
-package com.nicole;
+package com.nicole.StudentSubmissions.Example1;
 
 public class newCat {
     public newCat(){}

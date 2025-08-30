@@ -1,4 +1,4 @@
-package com.nicole;
+package com.nicole.StudentSubmissions.Example2;
 
 public class RedundantOverride {
     void speak() {

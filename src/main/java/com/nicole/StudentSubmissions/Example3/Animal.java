@@ -1,4 +1,4 @@
-package com.nicole;
+package com.nicole.StudentSubmissions.Example3;
 
 public class Animal {
 
