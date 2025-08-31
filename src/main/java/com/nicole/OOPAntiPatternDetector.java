@@ -23,7 +23,7 @@ public class OOPAntiPatternDetector {
     private static List<String[]> csvRows = new ArrayList<>();
 
 public static void main(String[] args) throws Exception {
-    File submissionsDir = new File("src/main/java/com/nicole/StudentSubmissions");
+    File submissionsDir = new File("../assignment-1/assignment-1-repos");
     if (!submissionsDir.exists()) {
         System.err.println("Submissions folder not found: " + submissionsDir.getAbsolutePath());
         return;
@@ -32,9 +32,9 @@ public static void main(String[] args) throws Exception {
     // CSV header
     csvRows.add(new String[]{"Student", "Class", "Method", "IssueType", "Details"});
 
-    // Iterate all java files inside Example* folders incl. nested
+    // Iterate all java files inside student folders (include nested)
     List<File> javaFiles = new ArrayList<>();
-    Map<String, String> fileToStudent = new HashMap<>(); // key = absolute filepath, value = "student|example"
+    Map<String, String> fileToStudent = new HashMap<>(); // key = absolute filepath, value = student name
 
     File[] studentDirs = submissionsDir.listFiles();
     if (studentDirs != null) {
@@ -43,7 +43,7 @@ public static void main(String[] args) throws Exception {
             String studentName = studentDir.getName();
             Path studentPath;
             try {
-                studentPath = studentDir.toPath().toRealPath(); // canonical form
+                studentPath = studentDir.toPath().toRealPath();
             } catch (IOException e) {
                 System.err.println("Could not canonicalise student dir " + studentDir + ": " + e.getMessage());
                 continue;
@@ -52,13 +52,10 @@ public static void main(String[] args) throws Exception {
             try (Stream<Path> walk = Files.walk(studentPath)) {
                 walk.filter(Files::isRegularFile)
                     .filter(p -> p.getFileName().toString().endsWith(".java"))
-                    .filter(p -> pathHasExampleDir(p, studentPath)) // check Example* ancestor
                     .forEach(p -> {
                         File f = p.toFile();
                         javaFiles.add(f);
-                        // compute the Example folder for this file and store "student|example" as the map value
-                        String exampleFolder = getExampleFolder(studentPath, p);
-                        fileToStudent.put(f.getAbsolutePath(), studentName + "|" + exampleFolder);
+                        fileToStudent.put(f.getAbsolutePath(), studentName);
                     });
             } catch (IOException e) {
                 System.err.println("Failed walking " + studentDir + ": " + e.getMessage());
@@ -74,7 +71,7 @@ public static void main(String[] args) throws Exception {
         ParseResult<CompilationUnit> result = parser.parse(f);
         if (result.isSuccessful() && result.getResult().isPresent()) {
             CompilationUnit cu = result.getResult().get();
-            cu.setStorage(f.toPath());  // remember the file path
+            cu.setStorage(f.toPath());
             units.add(cu);
         } else {
             System.err.println("Could not parse: " + f.getAbsolutePath());
@@ -82,77 +79,65 @@ public static void main(String[] args) throws Exception {
         }
     }
 
-    // Group classes by student|example so checks happen only within same Example folder
+    // Group classes by student
     Map<String, Map<String, ClassOrInterfaceDeclaration>> groupedClassMaps = new HashMap<>();
-    List<CompilationUnit> validUnits = new ArrayList<>(); // keep matched units for per-unit checks
+    List<CompilationUnit> validUnits = new ArrayList<>();
 
     for (CompilationUnit cu : units) {
         if (!cu.getStorage().isPresent()) continue;
         String keyPath = cu.getStorage().get().getPath().toAbsolutePath().toString();
-        String combined = fileToStudent.get(keyPath);
-        if (combined == null) {
-            // skip files that weren't mapped (shouldn't happen)
-            continue;
-        }
-        String groupKey = combined; // "student|example"
-        groupedClassMaps.computeIfAbsent(groupKey, k -> new HashMap<>());
+        String studentName = fileToStudent.get(keyPath);
+        if (studentName == null) continue;
+
+        groupedClassMaps.computeIfAbsent(studentName, k -> new HashMap<>());
 
         for (ClassOrInterfaceDeclaration clazz : cu.findAll(ClassOrInterfaceDeclaration.class)) {
-            groupedClassMaps.get(groupKey).put(clazz.getNameAsString(), clazz);
+            groupedClassMaps.get(studentName).put(clazz.getNameAsString(), clazz);
         }
         validUnits.add(cu);
     }
 
-    // declare all enums (global set across student's examples)
     Set<String> allEnumNames = collectAllEnumNames(validUnits);
 
     System.out.println("Parsed classes (grouped):");
     for (Map.Entry<String, Map<String, ClassOrInterfaceDeclaration>> entry : groupedClassMaps.entrySet()) {
-        System.out.println("Group: " + entry.getKey());
+        System.out.println("Student: " + entry.getKey());
         for (String className : entry.getValue().keySet()) {
             System.out.println(" - " + className);
         }
     }
 
-    // Perform detections per group (student|example)
+    // Perform detections per student
     for (Map.Entry<String, Map<String, ClassOrInterfaceDeclaration>> entry : groupedClassMaps.entrySet()) {
-        String groupKey = entry.getKey(); // student|example
-        String[] parts = groupKey.split("\\|", 2);
-        String studentName = parts[0];
-        String exampleFolder = parts.length > 1 ? parts[1] : "NoExample";
+        String studentName = entry.getKey();
         Map<String, ClassOrInterfaceDeclaration> classMap = entry.getValue();
 
-        System.out.println("\n=== Running detections for " + groupKey + " ===");
+        System.out.println("\n=== Running detections for " + studentName + " ===");
 
-        // Enum misuse detection & Type checking & Redundant overrides & Redundant superclass & Missing inheritance
         for (ClassOrInterfaceDeclaration clazz : classMap.values()) {
-            detectEnumTypeChecks(clazz, allEnumNames, studentName, exampleFolder);
+            detectEnumTypeChecks(clazz, allEnumNames, studentName, "N/A");
             if (hasTypeField(clazz)) {
-                detectTypeCheckingInMethods(clazz, studentName, exampleFolder);
+                detectTypeCheckingInMethods(clazz, studentName, "N/A");
             }
         }
 
-        // Redundant overrides: need parent lookup within same group
         for (ClassOrInterfaceDeclaration clazz : classMap.values()) {
             if (!clazz.getExtendedTypes().isEmpty()) {
                 String parentName = clazz.getExtendedTypes(0).getNameAsString();
                 ClassOrInterfaceDeclaration parentClass = classMap.get(parentName);
                 if (parentClass != null) {
-                    detectRedundantOverrides(clazz, parentClass, studentName, exampleFolder);
+                    detectRedundantOverrides(clazz, parentClass, studentName, "N/A");
                 }
             }
         }
 
-        // Missing inheritance detection within this group
-        detectMissingInheritance(classMap, studentName, exampleFolder);
-
-        // Redundant superclass detection within this group
-        detectRedundantSuperclass(classMap, studentName, exampleFolder);
+        detectMissingInheritance(classMap, studentName, "N/A");
+        detectRedundantSuperclass(classMap, studentName, "N/A");
     }
 
-    // write CSV
     writeCsv("oop_antipattern_results.csv");
 }
+
 
 private static void writeCsv(String fileName) {
     try (PrintWriter pw = new PrintWriter(new File(fileName))) {
@@ -181,7 +166,7 @@ private static String getExampleFolder(Path studentDirPath, Path filePath) {
             Path name = current.getFileName();
             if (name != null) {
                 String s = name.toString().toLowerCase().trim();
-                if (s.startsWith("example")) {
+                if (s.startsWith("assignment-1")) {
                     return name.toString(); // return original folder name
                 }
             }
@@ -202,7 +187,7 @@ private static boolean pathHasExampleDir(Path filePath, Path studentDirPath) {
             Path name = current.getFileName();
             if (name != null) {
                 String s = name.toString().toLowerCase();
-                if (s.startsWith("example")) return true; // case-insensitive
+                if (s.startsWith("assignment-1")) return true; // case-insensitive
             }
             current = current.getParent();
         }
