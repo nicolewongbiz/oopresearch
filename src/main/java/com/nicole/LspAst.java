@@ -99,9 +99,8 @@ public class LspAst {
         return false;
     }
 
-    // ------------------------
+
     // Helper classes for JSON
-    // ------------------------
     static class StudentClasses {
         String student;
         List<ClassInfo> classes;

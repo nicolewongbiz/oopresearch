@@ -20,14 +20,16 @@ client = OpenAI()
 def check_lsp_violation(student_name, class_data):
     """
     Sends the minimal class structure to the LLM and asks if any
-    class violates Liskov Substitution Principle (wrong abstraction).
+    class violates the Liskov Substitution Principle (wrong abstraction).
     Returns a list of issues in format:
-    [{ "class": "Cat", "method": "bark", "issue": "Wrong Abstraction" }, ...]
+    [
+      { "class": "Cat", "method": "bark", "issue": "Wrong Abstraction", "details": "Cat inherits bark() from Animal, which makes no semantic sense" }
+    ]
     """
     # Prompt to the LLM
     prompt = f"""
-You are analyzing Java class structures for violations of the Liskov Substitution Principle.
-Each class is given with its methods and parent classes.
+You are analyzing Java class structures for violations of the Liskov Substitution Principle (LSP).
+
 
 Class data for student {student_name}:
 
@@ -37,11 +39,7 @@ Return a JSON array of objects with fields:
 - class: name of the class that violates LSP
 - method: method that should not exist or is wrongly inherited
 - issue: always "Wrong Abstraction"
-
-Example output:
-[
-  {{ "class": "Cat", "method": "bark", "issue": "Wrong Abstraction" }}
-]
+- details: a short semantic reason why it makes no sense (e.g., "Cat inherits bark() from Animal, which makes no semantic sense").
 """
 
     response = client.chat.completions.create(
@@ -71,7 +69,7 @@ with open(JSON_FILE, "r") as f:
 # Append results to CSV
 
 with open(CSV_FILE, "a", newline="") as csvfile:
-    writer = csv.writer(csvfile)
+    writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
 
     for student_data in all_students:
         student_name = student_data.get("student", "Unknown")
@@ -80,13 +78,15 @@ with open(CSV_FILE, "a", newline="") as csvfile:
         issues = check_lsp_violation(student_name, classes)
 
         for issue in issues:
+            details = issue.get("details")
+            if not details:
+                details = f"{issue.get('class', '')} inherits {issue.get('method', '')} inappropriately (wrong abstraction)."
             writer.writerow([
                 student_name,
-                student_name,               # Example folder same as student - change
                 issue.get("class", ""),
                 issue.get("method", ""),
                 issue.get("issue", "Wrong Abstraction"),
-                "Detected by LSP analysis"
+                details
             ])
 
 print("LSP check complete, results appended to CSV.")

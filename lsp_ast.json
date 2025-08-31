@@ -1,0 +1,130 @@
+[
+  {
+    "student": "Example2",
+    "classes": [
+      {
+        "name": "inside",
+        "superclass": "RedundantOverride",
+        "methods": [
+          "speak"
+        ]
+      },
+      {
+        "name": "BadShapeHandler",
+        "methods": [
+          "drawIfElse",
+          "drawSwitch"
+        ]
+      },
+      {
+        "name": "RedundantOverride",
+        "methods": [
+          "speak",
+          "hello",
+          "main"
+        ]
+      },
+      {
+        "name": "Cat",
+        "superclass": "RedundantOverride",
+        "methods": [
+          "speak",
+          "hello"
+        ]
+      },
+      {
+        "name": "outside",
+        "methods": [
+          "speak"
+        ]
+      }
+    ]
+  },
+  {
+    "student": "Example4",
+    "classes": [
+      {
+        "name": "WrongAbstraction",
+        "methods": []
+      },
+      {
+        "name": "Animal",
+        "methods": [
+          "bark"
+        ]
+      },
+      {
+        "name": "Dog",
+        "superclass": "Animal",
+        "methods": []
+      },
+      {
+        "name": "Cat",
+        "superclass": "Animal",
+        "methods": []
+      }
+    ]
+  },
+  {
+    "student": "Example3",
+    "classes": [
+      {
+        "name": "missedInheritance",
+        "methods": []
+      },
+      {
+        "name": "Cats",
+        "methods": [
+          "eat"
+        ]
+      },
+      {
+        "name": "Dogs",
+        "methods": [
+          "eat"
+        ]
+      },
+      {
+        "name": "App",
+        "methods": [
+          "main"
+        ]
+      },
+      {
+        "name": "Animal",
+        "methods": [
+          "speak",
+          "main"
+        ]
+      }
+    ]
+  },
+  {
+    "student": "Example1",
+    "classes": [
+      {
+        "name": "newCat",
+        "methods": [
+          "eat"
+        ]
+      },
+      {
+        "name": "Bird",
+        "superclass": "RedundantSuperclass",
+        "methods": [
+          "fly"
+        ]
+      },
+      {
+        "name": "newDog",
+        "methods": [
+          "eat"
+        ]
+      },
+      {
+        "name": "RedundantSuperclass",
+        "methods": []
+      }
+    ]
+  }
+]
