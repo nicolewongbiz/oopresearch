@@ -1,0 +1,142 @@
+[
+  {
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"createPolicy\"",
+    "student": "\"assignment-1-141\"",
+    "details": "",
+    "class": "\"InsuranceSystem\""
+  },
+  {
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"createPolicy\"",
+    "student": "\"assignment-1-141\"",
+    "details": "",
+    "class": "\"InsuranceSystem\""
+  },
+  {
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"createPolicy\"",
+    "student": "\"assignment-1-141\"",
+    "details": "",
+    "class": "\"InsuranceSystem\""
+  },
+  {
+    "antipattern": "\"Redundant Inheritance\"",
+    "method": "\"\"",
+    "student": "\"assignment-1-109\"",
+    "details": "",
+    "class": "\"ProfileLoader\""
+  },
+  {
+    "antipattern": "\"Redundant Inheritance\"",
+    "method": "\"\"",
+    "student": "\"assignment-1-109\"",
+    "details": "",
+    "class": "\"ProfileUnloader\""
+  },
+  {
+    "antipattern": "\"Redundant Inheritance\"",
+    "method": "\"\"",
+    "student": "\"assignment-1-109\"",
+    "details": "",
+    "class": "\"ProfileDeleter\""
+  },
+  {
+    "antipattern": "\"Missing Inheritance\"",
+    "method": "\"void setTotal(int)\"",
+    "student": "\"assignment-1-113\"",
+    "details": "",
+    "class": "\"Policy;Profile\""
+  },
+  {
+    "antipattern": "\"Missing Inheritance\"",
+    "method": "\"void setUserName(String)\"",
+    "student": "\"assignment-1-113\"",
+    "details": "",
+    "class": "\"Policy;Profile\""
+  },
+  {
+    "antipattern": "\"Missing Inheritance\"",
+    "method": "\"void setAge(int)\"",
+    "student": "\"assignment-1-113\"",
+    "details": "",
+    "class": "\"Policy;Profile\""
+  },
+  {
+    "antipattern": "\"Missing Inheritance\"",
+    "method": "\"void deleteProfile(String)\"",
+    "student": "\"assignment-1-209\"",
+    "details": "",
+    "class": "\"InsuranceSystem;Database\""
+  },
+  {
+    "antipattern": "\"Missing Inheritance\"",
+    "method": "\"void unloadProfile()\"",
+    "student": "\"assignment-1-209\"",
+    "details": "",
+    "class": "\"InsuranceSystem;Database\""
+  },
+  {
+    "antipattern": "\"Missing Inheritance\"",
+    "method": "\"void loadProfile(String)\"",
+    "student": "\"assignment-1-209\"",
+    "details": "",
+    "class": "\"InsuranceSystem;Database\""
+  },
+  {
+    "antipattern": "\"Missing Inheritance\"",
+    "method": "\"void deleteProfile(String)\"",
+    "student": "\"assignment-1-25\"",
+    "details": "",
+    "class": "\"InsuranceSystem;Database\""
+  },
+  {
+    "antipattern": "\"Missing Inheritance\"",
+    "method": "\"void loadProfile(String)\"",
+    "student": "\"assignment-1-25\"",
+    "details": "",
+    "class": "\"InsuranceSystem;Database\""
+  },
+  {
+    "antipattern": "\"Enum Usage\"",
+    "method": "\"getPremium\"",
+    "student": "\"assignment-1-78\"",
+    "details": "\"Switch mixes object creation with some execution logic\"",
+    "class": "\"Policy\""
+  },
+  {
+    "antipattern": "\"Missing Inheritance\"",
+    "method": "\"void deleteProfile(String)\"",
+    "student": "\"assignment-1-62\"",
+    "details": "",
+    "class": "\"InsuranceSystem;ProfileDataBase\""
+  },
+  {
+    "antipattern": "\"Missing Inheritance\"",
+    "method": "\"void loadProfile(String)\"",
+    "student": "\"assignment-1-62\"",
+    "details": "",
+    "class": "\"InsuranceSystem;ProfileDataBase\""
+  },
+  {
+    "antipattern": "\"Redundant Inheritance\"",
+    "method": "\"\"",
+    "student": "\"assignment-1-169\"",
+    "details": "",
+    "class": "\"SetLifeInfo\""
+  },
+  {
+    "antipattern": "\"Redundant Inheritance\"",
+    "method": "\"\"",
+    "student": "\"assignment-1-169\"",
+    "details": "",
+    "class": "\"SetCarInfo\""
+  },
+  {
+    "antipattern": "\"Redundant Inheritance\"",
+    "method": "\"\"",
+    "student": "\"assignment-1-169\"",
+    "details": "",
+    "class": "\"SetHomeInfo\""
+  }
+]
