@@ -36,7 +36,138 @@ public class OOPAntiPatternDetector {
     // NEW: List for LLM candidates
     private static List<Map<String, Object>> llmCandidates = new ArrayList<>();
 
+    private static void addCsvRow(String studentName, String className, 
+                             String methodName, String issueType, 
+                             String severity, String details) {
     
+    csvRows.add(new String[]{
+        studentName,
+        className,
+        methodName,
+        issueType,
+        severity,
+        details
+    });
+}
+
+private static void detectLSPViolations(ClassOrInterfaceDeclaration childClass,
+                                       ClassOrInterfaceDeclaration parentClass,
+                                       String assignmentId) {
+    
+    Map<String, MethodDeclaration> parentMethods = getMethodSignatures(parentClass);
+    Map<String, MethodDeclaration> childMethods = getMethodSignatures(childClass);
+    
+    for (Map.Entry<String, MethodDeclaration> entry : childMethods.entrySet()) {
+        String signature = entry.getKey();
+        MethodDeclaration childMethod = entry.getValue();
+        MethodDeclaration parentMethod = parentMethods.get(signature);
+        
+        if (parentMethod == null) continue;
+        
+        if (parentMethod.isAbstract()) {
+            continue;
+        }
+        
+        Optional<BlockStmt> childBody = childMethod.getBody();
+        if (childBody.isEmpty()) {
+            continue;
+        }
+
+        boolean childIsEmpty = isEmptyBody(childBody.get());
+        if (!childIsEmpty) {
+            continue;
+        }
+        
+        Optional<BlockStmt> parentBody = parentMethod.getBody();
+        if (parentBody.isEmpty()) {
+            String details = "Empty override of interface/default method";
+            addCsvRow(assignmentId, childClass.getNameAsString(),
+                childMethod.getNameAsString(), "EmptyOverrideInterface",
+                "MEDIUM", details);
+            
+            addLLMCandidate(assignmentId, childClass.getNameAsString(),
+                childMethod.getNameAsString(), "EmptyOverrideInterface",
+                Map.of(
+                    "details", details,
+                    "parentSignature", parentMethod.getDeclarationAsString(),
+                    "childSignature", childMethod.getDeclarationAsString(),
+                    "parentType", "interface/default",
+                    "astVerdict", "NEEDS_LLM_REVIEW"
+                ));
+            continue;
+        }
+        
+        // Check if parent body is also empty
+        boolean parentIsEmpty = isEmptyBody(parentBody.get());
+        if (parentIsEmpty) {
+            // Both empty - usually fine, but check for comments
+            String parentBodyStr = parentBody.get().toString();
+            boolean parentHasComments = hasMeaningfulComments(parentBodyStr);
+            
+            if (parentHasComments) {
+                // Parent has comments suggesting expected behavior
+                String details = "Empty override of documented empty method";
+                addCsvRow(assignmentId, childClass.getNameAsString(),
+                    childMethod.getNameAsString(), "EmptyOverrideWithComments",
+                    "LOW", details);
+                
+                addLLMCandidate(assignmentId, childClass.getNameAsString(),
+                    childMethod.getNameAsString(), "EmptyOverrideWithComments",
+                    Map.of(
+                        "details", details,
+                        "parentSignature", parentMethod.getDeclarationAsString(),
+                        "childSignature", childMethod.getDeclarationAsString(),
+                        "parentBody", parentBodyStr,
+                        "parentHasComments", "true",
+                        "astVerdict", "NEEDS_LLM_REVIEW"
+                    ));
+            }
+            // If no comments, skip - both truly empty is fine
+            continue;
+        }
+        
+        // Parent has non-empty body, child overrides with empty
+        String parentBodyStr = parentBody.get().toString();
+        boolean parentHasRealLogic = hasRealLogic(parentBody.get());
+        
+        if (parentHasRealLogic) {
+            // Clear violation: parent has logic, child disables it
+            String details = "Empty override disables parent's logic";
+            addCsvRow(assignmentId, childClass.getNameAsString(),
+                childMethod.getNameAsString(), "DefectiveEmptyOverride",
+                "HIGH", details);
+            
+            addLLMCandidate(assignmentId, childClass.getNameAsString(),
+                childMethod.getNameAsString(), "DefectiveEmptyOverride",
+                Map.of(
+                    "details", details,
+                    "parentSignature", parentMethod.getDeclarationAsString(),
+                    "childSignature", childMethod.getDeclarationAsString(),
+                    "parentBodyPreview", getBodyPreview(parentBodyStr),
+                    "parentLogicComplexity", assessComplexity(parentBody.get()),
+                    "astVerdict", "CLEAR_VIOLATION"
+                ));
+        } else {
+            // Parent body exists but is trivial
+            String details = "Empty override of trivial parent method";
+            addCsvRow(assignmentId, childClass.getNameAsString(),
+                childMethod.getNameAsString(), "AmbiguousEmptyOverride",
+                "MEDIUM", details);
+            
+            addLLMCandidate(assignmentId, childClass.getNameAsString(),
+                childMethod.getNameAsString(), "AmbiguousEmptyOverride",
+                Map.of(
+                    "details", details,
+                    "parentSignature", parentMethod.getDeclarationAsString(),
+                    "childSignature", childMethod.getDeclarationAsString(),
+                    "parentBody", parentBodyStr,
+                    "parentIsTrivial", "true",
+                    "astVerdict", "NEEDS_LLM_REVIEW"
+                ));
+        }
+    }
+}
+
 
     public static void main(String[] args) throws Exception {
         // Hardcoded submissions directory
@@ -124,70 +255,57 @@ public class OOPAntiPatternDetector {
 
         System.out.println("\nParsed classes (grouped by student):");
         // Perform detections per student
-for (Map.Entry<String, Map<String, ClassOrInterfaceDeclaration>> entry : groupedClassMaps.entrySet()) {
+        for (Map.Entry<String, Map<String, ClassOrInterfaceDeclaration>> entry : groupedClassMaps.entrySet()) {
     String studentName = entry.getKey();
-    String assignmentId = extractAssignmentId(studentName); // <-- ADD THIS
+    String assignmentId = extractAssignmentId(studentName);
     Map<String, ClassOrInterfaceDeclaration> classMap = entry.getValue();
 
     System.out.println("\n=== Running detections for " + studentName + " (Assignment: " + assignmentId + ") ===");
 
-    // Basic detections on each class
+    // ========== PER-CLASS DETECTIONS ==========
     for (ClassOrInterfaceDeclaration clazz : classMap.values()) {
-    detectEnumTypeChecks(clazz, allEnumNames, studentName);
-    
-    if (hasTypeField(clazz)) {
-        detectTypeCheckingInMethods(clazz, studentName);
-    }
-    
-    //
-    // Check for parent class before calling detectLSPViolations
-    if (!clazz.getExtendedTypes().isEmpty()) {
-        String parentName = clazz.getExtendedTypes(0).getNameAsString();
-        ClassOrInterfaceDeclaration parentClass = classMap.get(parentName);
-        
-        if (parentClass != null) {
-            detectLSPViolations(clazz, parentClass, assignmentId);
-        }
-    }
-    
-    detectEmptyOverrides(clazz, assignmentId, classMap);
-}
+        analyzeEnumUsage(clazz, studentName);
 
-    // Inheritance-based detections
+        if (hasTypeField(clazz)) {
+            detectTypeCheckingInMethods(clazz, studentName);
+        }
+        
+        
+    }
+
+    // ========== INHERITANCE-BASED DETECTIONS ==========
     for (ClassOrInterfaceDeclaration clazz : classMap.values()) {
+
         if (!clazz.getExtendedTypes().isEmpty()) {
             String parentName = clazz.getExtendedTypes(0).getNameAsString();
             ClassOrInterfaceDeclaration parentClass = classMap.get(parentName);
             
             if (parentClass != null) {
+    
                 detectRedundantOverrides(clazz, parentClass, studentName, classMap);
-                // NEW: Detect LSP violations
-                detectLSPViolations(clazz, parentClass, assignmentId); // <-- PASS assignmentId
+
+                detectLSPViolations(clazz, parentClass, assignmentId);
             }
         }
-        
-        // NEW: Check for empty overrides (potential LSP violations)
-        detectEmptyOverrides(clazz, assignmentId, classMap);; // <-- PASS assignmentId
     }
 
-    // Cross-class detections
     detectMissingInheritance(classMap, studentName);
+
     detectRedundantSuperclass(classMap, studentName);
 }
 
         String outputFile = "oop_antipattern_all.csv";
         writeCsv(outputFile);
-        
-        // NEW: Write LLM candidates JSON
+
+        writeDetectorCandidates("llm_candidates_detector.json");
         writeLLMCandidates("llm_candidates.json");
+        
         
         System.out.println("\nAnalysis complete! Results saved to: " + outputFile);
         System.out.println("LLM candidates saved to: llm_candidates.json");
     }
 
     private static String extractAssignmentId(String studentName) {
-    // Extract assignment ID from student directory name
-    // Example: "assignment-1-109" or "109-1" etc.
     if (studentName.contains("assignment")) {
         return studentName;
     }
@@ -195,173 +313,35 @@ for (Map.Entry<String, Map<String, ClassOrInterfaceDeclaration>> entry : grouped
     // Try to find patterns
     String[] parts = studentName.split("[-_]");
     if (parts.length >= 2) {
-        // Check if it looks like "109-1" format
         try {
             Integer.parseInt(parts[0]);
-            return studentName; // Return as-is if it starts with a number
+            return studentName;
         } catch (NumberFormatException e) {
-            // Not a number, try to construct assignment ID
             if (parts.length >= 3) {
                 return "assignment-" + parts[parts.length-2] + "-" + parts[parts.length-1];
             }
         }
     }
     
-    // Default: return student name
     return studentName;
 }
 
-    // =============== NEW: LSP VIOLATION DETECTION ===============
-    
-    private static void detectLSPViolations(ClassOrInterfaceDeclaration childClass,
-                                       ClassOrInterfaceDeclaration parentClass,
-                                       String assignmentId) {
-    
-    Map<String, MethodDeclaration> parentMethods = getMethodSignatures(parentClass);
-    Map<String, MethodDeclaration> childMethods = getMethodSignatures(childClass);
-    
-    for (Map.Entry<String, MethodDeclaration> entry : childMethods.entrySet()) {
-        String signature = entry.getKey();
-        MethodDeclaration childMethod = entry.getValue();
-        MethodDeclaration parentMethod = parentMethods.get(signature);
-        
-        if (parentMethod == null) continue;
-        
-        // SKIP if parent is abstract - no LSP check needed for implementations
-        if (parentMethod.isAbstract()) {
-            continue; // Child is implementing, not overriding
-        }
-        
-        // Only check LSP for concrete method overrides
-        // ... rest of your LSP checks ...
+private static void writeDetectorCandidates(String filename) {
+    try (FileWriter writer = new FileWriter(filename)) {
+        GSON.toJson(llmCandidates, writer);
+        System.out.println("Detector LLM candidates written to " + filename);
+    } catch (Exception e) {
+        System.err.println("Failed to write detector candidates: " + e.getMessage());
+        e.printStackTrace();
     }
 }
-
-private static void detectEmptyOverrides(ClassOrInterfaceDeclaration childClass,
-                                        String assignmentId,
-                                        Map<String, ClassOrInterfaceDeclaration> classMap) {
-    
-    // Check if class has a parent
-    if (childClass.getExtendedTypes().isEmpty()) {
-        return; // No parent to override from
-    }
-    
-    String parentName = childClass.getExtendedTypes(0).getNameAsString();
-    ClassOrInterfaceDeclaration parentClass = classMap.get(parentName);
-    
-    if (parentClass == null) {
-        return; // Parent not in our class map
-    }
-    
-    // Get all parent method signatures
-    Map<String, MethodDeclaration> parentMethods = getMethodSignatures(parentClass);
-    
-    for (MethodDeclaration childMethod : childClass.getMethods()) {
-        String sig = childMethod.getSignature().asString();
-        MethodDeclaration parentMethod = parentMethods.get(sig);
-        
-        if (parentMethod == null) {
-            continue; // Not an override
-        }
-        
-        // SKIP if parent method is ABSTRACT - child MUST implement!
-        if (parentMethod.isAbstract()) {
-            continue; // This is VALID - implementing abstract method
-        }
-        
-        // Check if child method has a body
-        Optional<BlockStmt> childBody = childMethod.getBody();
-        if (childBody.isEmpty()) {
-            continue; // Abstract method in child
-        }
-        
-        // Check if child body is empty
-        boolean childIsEmpty = isEmptyBody(childBody.get());
-        if (!childIsEmpty) {
-            continue; // Child has implementation
-        }
-        
-        // Check if parent has a body
-        Optional<BlockStmt> parentBody = parentMethod.getBody();
-        if (parentBody.isEmpty()) {
-            // Parent has no body (interface default method?) - send to LLM
-            addLLMCandidate(assignmentId, childClass.getNameAsString(),
-                childMethod.getNameAsString(), "EmptyOverrideInterface",
-                Map.of(
-                    "details", "Empty override of interface/default method",
-                    "parentSignature", parentMethod.getDeclarationAsString(),
-                    "childSignature", childMethod.getDeclarationAsString(),
-                    "parentType", "interface/default",
-                    "astVerdict", "UNSURE_NEEDS_LLM"
-                ));
-            continue;
-        }
-        
-        // Check if parent body is also empty
-        boolean parentIsEmpty = isEmptyBody(parentBody.get());
-        if (parentIsEmpty) {
-            // Both empty - usually fine, but let LLM check for edge cases
-            String parentBodyStr = parentBody.get().toString();
-            boolean parentHasComments = hasMeaningfulComments(parentBodyStr);
-            
-            if (parentHasComments) {
-                // Parent has comments suggesting expected behavior
-                addLLMCandidate(assignmentId, childClass.getNameAsString(),
-                    childMethod.getNameAsString(), "EmptyOverrideWithComments",
-                    Map.of(
-                        "details", "Empty override of documented empty method",
-                        "parentSignature", parentMethod.getDeclarationAsString(),
-                        "childSignature", childMethod.getDeclarationAsString(),
-                        "parentBody", parentBodyStr,
-                        "parentHasComments", "true",
-                        "astVerdict", "MAYBE_NEEDS_LLM"
-                    ));
-            }
-            // If no comments, skip - both truly empty is fine
-            continue;
-        }
-        
-        // Parent has non-empty body, child overrides with empty
-        String parentBodyStr = parentBody.get().toString();
-        boolean parentHasRealLogic = hasRealLogic(parentBody.get());
-        
-        if (parentHasRealLogic) {
-            // Clear violation: parent has logic, child disables it
-            addLLMCandidate(assignmentId, childClass.getNameAsString(),
-                childMethod.getNameAsString(), "DefectiveEmptyOverride",
-                Map.of(
-                    "details", "Empty override disables parent's logic",
-                    "parentSignature", parentMethod.getDeclarationAsString(),
-                    "childSignature", childMethod.getDeclarationAsString(),
-                    "parentBodyPreview", getBodyPreview(parentBodyStr),
-                    "parentLogicComplexity", assessComplexity(parentBody.get()),
-                    "astVerdict", "CLEAR_VIOLATION"
-                ));
-        } else {
-            // Parent body exists but is trivial (e.g., just returns null/0)
-            // Send to LLM to decide if this violates contract
-            addLLMCandidate(assignmentId, childClass.getNameAsString(),
-                childMethod.getNameAsString(), "AmbiguousEmptyOverride",
-                Map.of(
-                    "details", "Empty override of trivial parent method",
-                    "parentSignature", parentMethod.getDeclarationAsString(),
-                    "childSignature", childMethod.getDeclarationAsString(),
-                    "parentBody", parentBodyStr,
-                    "parentIsTrivial", "true",
-                    "astVerdict", "UNSURE_NEEDS_LLM"
-                ));
-        }
-    }
-}
-
-// Helper methods
+ 
 private static boolean hasRealLogic(BlockStmt body) {
     String normalized = body.toString()
         .replaceAll("//.*|/\\*(.|\\R)*?\\*/", "")
         .replaceAll("\\s+", "")
         .replaceAll("[{};]", "");
-    
-    // Check for actual statements (not just empty or trivial returns)
+
     return !normalized.isEmpty() && 
            !normalized.equals("return") &&
            !normalized.equals("returnnull") &&
@@ -369,11 +349,10 @@ private static boolean hasRealLogic(BlockStmt body) {
            !normalized.equals("returnfalse") &&
            !normalized.equals("returntrue") &&
            !normalized.startsWith("returnthis") &&
-           normalized.length() > 10; // Arbitrary threshold for "real logic"
+           normalized.length() > 10;
 }
 
 private static boolean hasMeaningfulComments(String body) {
-    // Check if body has comments that might indicate expected behavior
     return body.contains("TODO") || 
            body.contains("FIXME") ||
            body.contains("IMPLEMENT") ||
@@ -401,45 +380,6 @@ private static String assessComplexity(BlockStmt body) {
         return "HIGH";
     }
 }
-
-// Add this helper method
-private static MethodDeclaration findParentMethod(MethodDeclaration childMethod,
-                                                 ClassOrInterfaceDeclaration parentClass) {
-    String childName = childMethod.getNameAsString();
-    List<Parameter> childParams = childMethod.getParameters();
-    
-    // Look for method with same name and parameters in parent
-    for (MethodDeclaration parentMethod : parentClass.getMethods()) {
-        if (!parentMethod.getNameAsString().equals(childName)) {
-            continue;
-        }
-        
-        // Check if parameters match
-        if (parentMethod.getParameters().size() != childParams.size()) {
-            continue;
-        }
-        
-        boolean paramsMatch = true;
-        for (int i = 0; i < childParams.size(); i++) {
-            String childParamType = childParams.get(i).getType().asString();
-            String parentParamType = parentMethod.getParameter(i).getType().asString();
-            
-            if (!childParamType.equals(parentParamType)) {
-                paramsMatch = false;
-                break;
-            }
-        }
-        
-        if (paramsMatch) {
-            return parentMethod;
-        }
-    }
-    
-    return null;
-}
- 
-
-
     
     // =============== HELPER METHODS FOR LSP DETECTION ===============
     
@@ -529,70 +469,86 @@ private static MethodDeclaration findParentMethod(MethodDeclaration childMethod,
     }
 
     private static void detectTypeCheckingInMethods(ClassOrInterfaceDeclaration clazz, 
-                                                   String studentName) {
-        for (MethodDeclaration method : clazz.getMethods()) {
-            Optional<BlockStmt> body = method.getBody();
-            if (body.isEmpty()) continue;
+                                               String studentName) {
+    for (MethodDeclaration method : clazz.getMethods()) {
+        Optional<BlockStmt> body = method.getBody();
+        if (body.isEmpty()) continue;
 
-            BlockStmt methodBody = body.get();
-            
-            for (Statement stmt : methodBody.getStatements()) {
-                if (stmt.isIfStmt()) {
-                    IfStmt ifStmt = stmt.asIfStmt();
-                    Expression cond = ifStmt.getCondition();
+        BlockStmt methodBody = body.get();
+        
+        for (Statement stmt : methodBody.getStatements()) {
+            if (stmt.isIfStmt()) {
+                IfStmt ifStmt = stmt.asIfStmt();
+                Expression cond = ifStmt.getCondition();
 
-                    if (isTypeEqualsCheck(cond)) {
-                        System.out.printf("Improper polymorphism in %s.%s(): type.equals(...) check%n",
-                                clazz.getNameAsString(), method.getNameAsString());
-
-                        csvRows.add(new String[]{
-                                studentName,
-                                clazz.getNameAsString(),
-                                method.getNameAsString(),
-                                "Improper Polymorphism",
-                                "HIGH",
-                                "type.equals(...) check"
-                        });
-                    }
+                if (isTypeEqualsCheck(cond)) {
+                    // Output to CSV (simple format)
+                    String details = "type.equals(...) check";
+                    addCsvRow(studentName, clazz.getNameAsString(),
+                        method.getNameAsString(), "Improper Polymorphism",
+                        "HIGH", details);
                     
-                    if (cond instanceof InstanceOfExpr) {
-                        System.out.printf("Type checking in %s.%s(): uses instanceof%n",
-                                clazz.getNameAsString(), method.getNameAsString());
-
-                        csvRows.add(new String[]{
-                                studentName,
-                                clazz.getNameAsString(),
-                                method.getNameAsString(),
-                                "Type Checking",
-                                "MEDIUM",
-                                "Uses instanceof instead of polymorphism"
-                        });
-                    }
+                    // Output to LLM candidates with richer context
+                    addLLMCandidate(studentName, clazz.getNameAsString(),
+                        method.getNameAsString(), "TypeChecking",
+                        Map.of(
+                            "details", details,
+                            "checkType", "type.equals",
+                            "condition", cond.toString(),
+                            "methodComplexity", assessMethodComplexity(method)
+                        ));
+                }
+                
+                if (cond instanceof InstanceOfExpr) {
+                    // Output to CSV (simple format)
+                    String details = "Uses instanceof instead of polymorphism";
+                    addCsvRow(studentName, clazz.getNameAsString(),
+                        method.getNameAsString(), "Type Checking",
+                        "MEDIUM", details);
+                    
+                    // Output to LLM candidates with richer context
+                    InstanceOfExpr instanceOf = (InstanceOfExpr) cond;
+                    addLLMCandidate(studentName, clazz.getNameAsString(),
+                        method.getNameAsString(), "InstanceOfCheck",
+                        Map.of(
+                            "details", details,
+                            "checkType", "instanceof",
+                            "checkedType", instanceOf.getType().toString(),
+                            "checkedExpression", instanceOf.getExpression().toString(),
+                            "methodComplexity", assessMethodComplexity(method)
+                        ));
                 }
             }
-            
-            methodBody.findAll(BinaryExpr.class).forEach(binaryExpr -> {
-                if (binaryExpr.getOperator() == BinaryExpr.Operator.EQUALS ||
-                    binaryExpr.getOperator() == BinaryExpr.Operator.NOT_EQUALS) {
-                    
-                    String expr = binaryExpr.toString();
-                    if (expr.contains(".getClass()") || expr.contains(".class")) {
-                        System.out.printf("Type checking in %s.%s(): getClass() or .class comparison%n",
-                                clazz.getNameAsString(), method.getNameAsString());
-
-                        csvRows.add(new String[]{
-                                studentName,
-                                clazz.getNameAsString(),
-                                method.getNameAsString(),
-                                "Type Checking",
-                                "MEDIUM",
-                                "Uses getClass() or .class comparison instead of polymorphism"
-                        });
-                    }
-                }
-            });
         }
+        
+        methodBody.findAll(BinaryExpr.class).forEach(binaryExpr -> {
+            if (binaryExpr.getOperator() == BinaryExpr.Operator.EQUALS ||
+                binaryExpr.getOperator() == BinaryExpr.Operator.NOT_EQUALS) {
+                
+                String expr = binaryExpr.toString();
+                if (expr.contains(".getClass()") || expr.contains(".class")) {
+                    // Output to CSV (simple format)
+                    String details = "Uses getClass() or .class comparison instead of polymorphism";
+                    addCsvRow(studentName, clazz.getNameAsString(),
+                        method.getNameAsString(), "Type Checking",
+                        "MEDIUM", details);
+                    
+                    // Output to LLM candidates with richer context
+                    addLLMCandidate(studentName, clazz.getNameAsString(),
+                        method.getNameAsString(), "GetClassCheck",
+                        Map.of(
+                            "details", details,
+                            "checkType", "getClass/.class",
+                            "expression", expr,
+                            "methodComplexity", assessMethodComplexity(method)
+                        ));
+                }
+            }
+        });
     }
+}
+
+
 
     private static boolean isTypeEqualsCheck(Expression expr) {
         if (!(expr instanceof MethodCallExpr)) return false;
@@ -605,72 +561,135 @@ private static MethodDeclaration findParentMethod(MethodDeclaration childMethod,
         return scope instanceof NameExpr && ((NameExpr) scope).getNameAsString().equals("type");
     }
 
-    private static void detectEnumTypeChecks(ClassOrInterfaceDeclaration clazz, Set<String> allEnumNames, 
-                                            String studentName) {
-        for (FieldDeclaration field : clazz.getFields()) {
-            String fieldName = field.getVariables().get(0).getNameAsString();
-            String fieldType = field.getElementType().asString();
-
-            if (!allEnumNames.contains(fieldType)) continue;
-
-            for (MethodDeclaration method : clazz.getMethods()) {
-                Optional<BlockStmt> body = method.getBody();
-                if (!body.isPresent()) continue;
-
-                body.get().findAll(IfStmt.class).forEach(ifStmt -> {
-                    Expression cond = ifStmt.getCondition();
-                    if (isEnumComparison(cond, fieldName)) {
-                        System.out.printf("Enum misuse in %s.%s(): enum comparison%n",
-                                clazz.getNameAsString(), method.getNameAsString());
-
-                        csvRows.add(new String[]{
-                                studentName,
-                                clazz.getNameAsString(),
-                                method.getNameAsString(),
-                                "Enum Misuse",
-                                "MEDIUM",
-                                "Enum comparison used"
-                        });
-                    }
-                });
-
-                body.get().findAll(SwitchStmt.class).forEach(switchStmt -> {
-                    Expression selector = switchStmt.getSelector();
-                    if (selector.isNameExpr() && selector.asNameExpr().getNameAsString().equals(fieldName)) {
-                        String severity = getSwitchSeverity(switchStmt);
-                        String details = getSwitchIssueDetails(switchStmt, severity);
-                        
-                        csvRows.add(new String[]{
-                            studentName,
-                            clazz.getNameAsString(),
-                            method.getNameAsString(),
-                            "Enum Usage",
-                            severity,
-                            details
-                        });
-                    }
-                });
+    private static void analyzeEnumUsage(ClassOrInterfaceDeclaration clazz, 
+                                    String studentName) {
+    
+    for (MethodDeclaration method : clazz.getMethods()) {
+        Optional<BlockStmt> body = method.getBody();
+        if (body.isEmpty()) continue;
+        
+        // Find ALL switches in this method
+        List<SwitchStmt> switches = body.get().findAll(SwitchStmt.class);
+        if (switches.isEmpty()) {
+            continue; // No switches in this method
+        }
+        
+        // Analyze ALL switches in this method
+        List<SwitchAnalysis> switchAnalyses = new ArrayList<>();
+        int totalSwitches = switches.size();
+        int totalCases = 0;
+        double totalComplexity = 0;
+        boolean hasComplexLogic = false;
+        boolean hasObjectCreation = false;
+        String highestSeverity = "LOW";
+        
+        for (SwitchStmt switchStmt : switches) {
+            SwitchAnalysis analysis = analyzeSwitchComplexity(switchStmt);
+            switchAnalyses.add(analysis);
+            
+            totalCases += analysis.caseCount;
+            totalComplexity += analysis.complexityScore;
+            if (analysis.hasComplexLogic) hasComplexLogic = true;
+            if (analysis.hasObjectCreation) hasObjectCreation = true;
+            
+            // Determine severity for this individual switch
+            String switchSeverity = getSwitchSeverity(switchStmt);
+            if (switchSeverity.equals("HIGH")) {
+                highestSeverity = "HIGH";
+            } else if (switchSeverity.equals("MEDIUM") && !highestSeverity.equals("HIGH")) {
+                highestSeverity = "MEDIUM";
             }
         }
+        
+        // Calculate averages
+        double avgCases = totalSwitches > 0 ? (double) totalCases / totalSwitches : 0;
+        double avgComplexity = totalSwitches > 0 ? totalComplexity / totalSwitches : 0;
+        
+        // Determine overall pattern based on ALL switches in this method
+        String overallPattern = determineOverallPattern(switchAnalyses);
+        
+        // Output ONE CSV entry for this method (aggregating all switches)
+        String details = String.format(
+            "Method contains %d switch(es) with %d total cases, avg %.1f cases/switch, pattern: %s",
+            totalSwitches, totalCases, avgCases, overallPattern
+        );
+        
+        addCsvRow(studentName, clazz.getNameAsString(),
+            method.getNameAsString(), // Method name
+            "Switch Complexity",
+            highestSeverity, // Use the highest severity among switches
+            details);
+        
+        // Create switch breakdown list first
+        List<Map<String, Object>> switchBreakdown = new ArrayList<>();
+        for (SwitchAnalysis analysis : switchAnalyses) {
+            Map<String, Object> switchInfo = new HashMap<>();
+            switchInfo.put("patternType", analysis.patternType);
+            switchInfo.put("caseCount", analysis.caseCount);
+            switchInfo.put("complexityScore", analysis.complexityScore);
+            switchInfo.put("hasComplexLogic", analysis.hasComplexLogic);
+            switchInfo.put("hasObjectCreation", analysis.hasObjectCreation);
+            switchBreakdown.add(switchInfo);
+        }
+
+        // Create evidence map using HashMap (no size limit)
+        Map<String, Object> evidence = new HashMap<>();
+        evidence.put("totalSwitches", String.valueOf(totalSwitches));
+        evidence.put("totalCases", String.valueOf(totalCases));
+        evidence.put("avgCasesPerSwitch", String.format("%.1f", avgCases));
+        evidence.put("avgComplexityScore", String.format("%.1f", avgComplexity));
+        evidence.put("overallPattern", overallPattern);
+        evidence.put("hasComplexLogic", String.valueOf(hasComplexLogic));
+        evidence.put("hasObjectCreation", String.valueOf(hasObjectCreation));
+        evidence.put("highestSeverity", highestSeverity);
+        evidence.put("methodSignature", method.getDeclarationAsString());
+        evidence.put("switchBreakdown", switchBreakdown);
+        evidence.put("suggestion", getSuggestionForSwitches(totalSwitches, avgCases, overallPattern));
+
+        // Now call addLLMCandidate
+        addLLMCandidate(studentName, clazz.getNameAsString(),
+            method.getNameAsString(), "SwitchComplexity", evidence);
+        
+        // Check if chains on enum-like comparisons (separate detection)
+        analyzeIfChainsForPolymorphism(method, clazz, studentName);
     }
+}
 
-    private static boolean isEnumComparison(Expression expr, String enumFieldName) {
-        if (!(expr instanceof BinaryExpr)) return false;
-        BinaryExpr be = (BinaryExpr) expr;
-
-        if (be.getOperator() != BinaryExpr.Operator.EQUALS &&
-            be.getOperator() != BinaryExpr.Operator.NOT_EQUALS) return false;
-
-        Expression left = be.getLeft();
-        Expression right = be.getRight();
-
-        return (isFieldName(left, enumFieldName) && right.isFieldAccessExpr()) ||
-               (isFieldName(right, enumFieldName) && left.isFieldAccessExpr());
+private static String determineOverallPattern(List<SwitchAnalysis> analyses) {
+    if (analyses.isEmpty()) return "NO_SWITCHES";
+    
+    // Count pattern types
+    Map<String, Integer> patternCounts = new HashMap<>();
+    for (SwitchAnalysis analysis : analyses) {
+        patternCounts.put(analysis.patternType, 
+            patternCounts.getOrDefault(analysis.patternType, 0) + 1);
     }
+    
+    // Return the most common pattern
+    return patternCounts.entrySet().stream()
+        .max(Map.Entry.comparingByValue())
+        .map(Map.Entry::getKey)
+        .orElse("MIXED");
+}
 
-    private static boolean isFieldName(Expression expr, String name) {
-        return expr.isNameExpr() && expr.asNameExpr().getNameAsString().equals(name);
+private static String getSuggestionForSwitches(int totalSwitches, double avgCases, String pattern) {
+    if (totalSwitches > 3) {
+        return "Consider refactoring - too many switches in one method";
     }
+    if (avgCases > 5) {
+        return "Switch has many cases - consider polymorphism";
+    }
+    if (pattern.equals("STATE_MACHINE")) {
+        return "State machine pattern detected - consider State pattern";
+    }
+    if (pattern.equals("FACTORY_PATTERN")) {
+        return "Factory pattern - acceptable but could use Factory Method pattern";
+    }
+    return "Review for potential polymorphism replacement";
+}
+
+
+   
 
     private static String getSwitchSeverity(SwitchStmt switchStmt) {
         List<SwitchEntry> entries = switchStmt.getEntries();
@@ -727,63 +746,548 @@ private static MethodDeclaration findParentMethod(MethodDeclaration childMethod,
         return "MEDIUM";
     }
 
-    private static String getSwitchIssueDetails(SwitchStmt switchStmt, String severity) {
-        switch (severity) {
-            case "HIGH":
-                return "Switch contains significant execution logic (>5 lines per case)";
-            case "MEDIUM":
-                return "Switch mixes object creation with some execution logic";
-            case "LOW":
-                return "Switch is factory pattern but could be improved";
-            default:
-                return "Switch on enum detected";
-        }
+    private static void detectRedundantOverrides(ClassOrInterfaceDeclaration child, 
+                                            ClassOrInterfaceDeclaration parent, 
+                                            String studentName,
+                                            Map<String, ClassOrInterfaceDeclaration> classMap) {
+    
+    Map<String, MethodDeclaration> parentMethods = new HashMap<>();
+    for (MethodDeclaration pm : parent.getMethods()) {
+        parentMethods.put(pm.getSignature().asString(), pm);
     }
 
-    private static void detectRedundantOverrides(ClassOrInterfaceDeclaration child, 
-                                                ClassOrInterfaceDeclaration parent, 
-                                                String studentName,
-                                                Map<String, ClassOrInterfaceDeclaration> classMap) {
-        
-        Map<String, MethodDeclaration> parentMethods = new HashMap<>();
-        for (MethodDeclaration pm : parent.getMethods()) {
-            parentMethods.put(pm.getSignature().asString(), pm);
+    for (MethodDeclaration childMethod : child.getMethods()) {
+        String sig = childMethod.getSignature().asString();
+        if (!parentMethods.containsKey(sig)) continue;
+
+        MethodDeclaration parentMethod = parentMethods.get(sig);
+
+        if (parentMethod.getBody().isPresent() && childMethod.getBody().isPresent()) {
+            BlockStmt parentBody = parentMethod.getBody().get();
+            BlockStmt childBody = childMethod.getBody().get();
+
+            removeAllComments(parentBody);
+            removeAllComments(childBody);
+
+            String parentBodyStr = parentBody.toString().trim().replaceAll("\\s+", " ");
+            String childBodyStr = childBody.toString().trim().replaceAll("\\s+", " ");
+
+            if (parentBodyStr.equals(childBodyStr)) {
+                if (!isJustifiedIdenticalOverride(childMethod, child, parent, classMap)) {
+                    // Output to CSV (simple format)
+                    String details = "Identical to parent method";
+                    addCsvRow(studentName, child.getNameAsString(),
+                        childMethod.getNameAsString(), "Redundant Override",
+                        "MEDIUM", details);
+                    
+                    // Output to LLM candidates with richer context
+                    addLLMCandidate(studentName, child.getNameAsString(),
+                        childMethod.getNameAsString(), "RedundantOverride",
+                        Map.of(
+                            "parentSignature", parentMethod.getDeclarationAsString(),
+                            "childSignature", childMethod.getDeclarationAsString(),
+                            "bodySimilarity", "100", // 100% identical
+                            "parentIsAbstract", String.valueOf(parentMethod.isAbstract()),
+                            "methodComplexity", assessMethodComplexity(parentMethod),
+                            "isGetterSetter", String.valueOf(isGetterOrSetter(childMethod)),
+                            "isConstructor", String.valueOf(checkIfConstructor(childMethod))
+                        ));
+                }
+            }
         }
+    }
+}
 
-        for (MethodDeclaration childMethod : child.getMethods()) {
-            String sig = childMethod.getSignature().asString();
-            if (!parentMethods.containsKey(sig)) continue;
 
-            MethodDeclaration parentMethod = parentMethods.get(sig);
+    // =============== METHOD COMPLEXITY ASSESSMENT ===============
 
-            if (parentMethod.getBody().isPresent() && childMethod.getBody().isPresent()) {
-                BlockStmt parentBody = parentMethod.getBody().get();
-                BlockStmt childBody = childMethod.getBody().get();
+private static String assessMethodComplexity(MethodDeclaration method) {
+    if (method.getBody().isEmpty()) {
+        return "ABSTRACT_OR_INTERFACE";
+    }
+    
+    BlockStmt body = method.getBody().get();
+    List<Statement> statements = body.getStatements();
+    
+    // Basic metrics
+    int statementCount = statements.size();
+    int lineCount = countNonEmptyLines(body.toString());
+    
+    // Control flow complexity
+    int ifCount = body.findAll(IfStmt.class).size();
+    int loopCount = body.findAll(ForStmt.class).size() + 
+                    body.findAll(WhileStmt.class).size() +
+                    body.findAll(DoStmt.class).size() +
+                    body.findAll(com.github.javaparser.ast.stmt.ForEachStmt.class).size();
+    int switchCount = body.findAll(SwitchStmt.class).size();
+    
+    // Method calls complexity
+    int methodCallCount = body.findAll(MethodCallExpr.class).size();
+    int externalCallCount = countExternalCalls(method);
+    
+    // Exception handling
+    int tryCatchCount = body.findAll(TryStmt.class).size();
+    
+    // Depth complexity (simplified)
+    int maxNestingDepth = calculateMaxNestingDepth(body);
+    
+    // Return type complexity
+    String returnTypeComplexity = assessReturnTypeComplexity(method.getType());
+    
+    // Parameter complexity
+    int paramCount = method.getParameters().size();
+    String paramComplexity = assessParameterComplexity(method.getParameters());
+    
+    // Calculate overall complexity score
+    int complexityScore = calculateComplexityScore(
+        statementCount, ifCount, loopCount, switchCount,
+        methodCallCount, externalCallCount, tryCatchCount,
+        maxNestingDepth, paramCount
+    );
+    
+    // Build complexity profile
+    Map<String, Object> profile = new HashMap<>();
+    profile.put("statementCount", statementCount);
+    profile.put("lineCount", lineCount);
+    profile.put("controlFlowElements", ifCount + loopCount + switchCount);
+    profile.put("methodCalls", methodCallCount);
+    profile.put("externalCalls", externalCallCount);
+    profile.put("exceptionHandlers", tryCatchCount);
+    profile.put("maxNestingDepth", maxNestingDepth);
+    profile.put("returnTypeComplexity", returnTypeComplexity);
+    profile.put("parameterComplexity", paramComplexity);
+    profile.put("complexityScore", complexityScore);
+    
+    // Determine complexity level
+    String complexityLevel;
+    if (complexityScore >= 30) {
+        complexityLevel = "HIGH";
+    } else if (complexityScore >= 15) {
+        complexityLevel = "MEDIUM";
+    } else if (complexityScore >= 5) {
+        complexityLevel = "LOW";
+    } else {
+        complexityLevel = "VERY_LOW";
+    }
+    
+    profile.put("complexityLevel", complexityLevel);
+    
+    // Additional heuristics for antipattern detection
+    profile.put("isGetterSetter", isGetterOrSetter(method));
+    profile.put("isConstructor", checkIfConstructor(method));
+    profile.put("isOverride", method.getAnnotationByName("Override").isPresent());
+    profile.put("hasSideEffects", hasSideEffects(body));
+    profile.put("isPureFunction", isPureFunction(method, body));
+    
+    // Convert to JSON string for easy parsing
+    return mapToJson(profile);
+}
 
-                removeAllComments(parentBody);
-                removeAllComments(childBody);
+private static boolean checkIfConstructor(MethodDeclaration method) {
+    // Check if the method has the same name as its parent class
+    Optional<Node> parent = method.getParentNode();
+    if (parent.isPresent() && parent.get() instanceof ClassOrInterfaceDeclaration) {
+        ClassOrInterfaceDeclaration clazz = (ClassOrInterfaceDeclaration) parent.get();
+        return method.getNameAsString().equals(clazz.getNameAsString());
+    }
+    return false;
+}
 
-                String parentBodyStr = parentBody.toString().trim().replaceAll("\\s+", " ");
-                String childBodyStr = childBody.toString().trim().replaceAll("\\s+", " ");
+private static int countNonEmptyLines(String code) {
+    return (int) code.lines()
+        .filter(line -> !line.trim().isEmpty() && !line.trim().startsWith("//"))
+        .count();
+}
 
-                if (parentBodyStr.equals(childBodyStr)) {
-                    if (!isJustifiedIdenticalOverride(childMethod, child, parent, classMap)) {
-                        System.out.printf("Redundant override in %s.%s(): identical to parent%n",
-                                child.getNameAsString(), childMethod.getSignature());
+private static int countExternalCalls(MethodDeclaration method) {
+    BlockStmt body = method.getBody().orElse(null);
+    if (body == null) return 0;
+    
+    Set<String> localMethods = new HashSet<>();
+    Node parentClass = method.getParentNode().orElse(null);
+    if (parentClass instanceof ClassOrInterfaceDeclaration) {
+        ClassOrInterfaceDeclaration clazz = (ClassOrInterfaceDeclaration) parentClass;
+        clazz.getMethods().forEach(m -> localMethods.add(m.getNameAsString()));
+        // Also get constructor names
+        clazz.getConstructors().forEach(c -> localMethods.add(c.getNameAsString()));
+    }
+    
+    int externalCalls = 0;
+    for (MethodCallExpr call : body.findAll(MethodCallExpr.class)) {
+        if (call.getScope().isPresent()) {
+            Expression scope = call.getScope().get();
+            // Check if it's calling methods on other objects (not this)
+            if (!scope.toString().equals("this") && 
+                !scope.toString().equals("super") &&
+                !(scope instanceof NameExpr && 
+                  ((NameExpr) scope).getNameAsString().equals(method.getNameAsString()))) {
+                externalCalls++;
+            }
+        } else if (!call.getNameAsString().equals(method.getNameAsString()) &&
+                  !localMethods.contains(call.getNameAsString())) {
+            // Static or local calls that aren't to this class's methods
+            externalCalls++;
+        }
+    }
+    
+    return externalCalls;
+}
 
-                        csvRows.add(new String[]{
-                                studentName,
-                                child.getNameAsString(),
-                                childMethod.getNameAsString(),
-                                "Redundant Override",
-                                "MEDIUM",
-                                "Identical to parent method"
-                        });
+private static int calculateMaxNestingDepth(Node node) {
+    int maxDepth = 0;
+    List<Node> children = node.getChildNodes();
+    
+    for (Node child : children) {
+        if (isControlFlowNode(child)) {
+            int childDepth = 1 + calculateMaxNestingDepth(child);
+            if (childDepth > maxDepth) {
+                maxDepth = childDepth;
+            }
+        } else {
+            int childDepth = calculateMaxNestingDepth(child);
+            if (childDepth > maxDepth) {
+                maxDepth = childDepth;
+            }
+        }
+    }
+    
+    return maxDepth;
+}
+
+private static boolean isControlFlowNode(Node node) {
+    return node instanceof IfStmt ||
+           node instanceof ForStmt ||
+           node instanceof WhileStmt ||
+           node instanceof DoStmt ||
+           node instanceof SwitchStmt ||
+           node instanceof TryStmt ||
+           node instanceof CatchClause ||
+           node instanceof SynchronizedStmt;
+}
+
+private static String assessReturnTypeComplexity(com.github.javaparser.ast.type.Type type) {
+    String typeStr = type.toString();
+    
+    if (typeStr.equals("void")) return "VOID";
+    if (typeStr.equals("boolean") || typeStr.equals("int") || 
+        typeStr.equals("long") || typeStr.equals("double") || 
+        typeStr.equals("float") || typeStr.equals("char") || 
+        typeStr.equals("byte") || typeStr.equals("short")) {
+        return "PRIMITIVE";
+    }
+    if (typeStr.equals("String")) return "STRING";
+    if (typeStr.startsWith("List<") || typeStr.startsWith("Set<") || 
+        typeStr.startsWith("Map<") || typeStr.startsWith("Collection<")) {
+        return "COLLECTION";
+    }
+    if (typeStr.contains("[]")) return "ARRAY";
+    if (typeStr.startsWith("Optional<")) return "OPTIONAL";
+    
+    // Check for complex generic types
+    if (typeStr.contains("<") && typeStr.contains(">")) {
+        return "COMPLEX_GENERIC";
+    }
+    
+    return "OBJECT";
+}
+
+private static String assessParameterComplexity(List<Parameter> parameters) {
+    if (parameters.isEmpty()) return "NO_PARAMS";
+    
+    int primitiveCount = 0;
+    int objectCount = 0;
+    int collectionCount = 0;
+    int optionalCount = 0;
+    
+    for (Parameter param : parameters) {
+        String typeStr = param.getType().toString();
+        if (typeStr.equals("boolean") || typeStr.equals("int") || 
+            typeStr.equals("long") || typeStr.equals("double") || 
+            typeStr.equals("float") || typeStr.equals("char") || 
+            typeStr.equals("byte") || typeStr.equals("short")) {
+            primitiveCount++;
+        } else if (typeStr.startsWith("List<") || typeStr.startsWith("Set<") || 
+                  typeStr.startsWith("Map<") || typeStr.startsWith("Collection<")) {
+            collectionCount++;
+        } else if (typeStr.startsWith("Optional<")) {
+            optionalCount++;
+        } else {
+            objectCount++;
+        }
+    }
+    
+    if (parameters.size() > 5) return "MANY_PARAMS";
+    if (collectionCount > 0) return "HAS_COLLECTIONS";
+    if (optionalCount > 0) return "HAS_OPTIONALS";
+    if (objectCount > primitiveCount) return "MOSTLY_OBJECTS";
+    
+    return "MOSTLY_PRIMITIVES";
+}
+
+private static int calculateComplexityScore(int... metrics) {
+    int score = 0;
+    
+    // Statement count weight
+    score += Math.min(metrics[0] * 2, 20); // Max 20 points
+    
+    // Control flow weight
+    score += (metrics[1] + metrics[2] + metrics[3]) * 3; // if/loops/switches
+    
+    // Method calls weight
+    score += Math.min(metrics[4] * 1, 10); // Internal calls
+    score += Math.min(metrics[5] * 2, 20); // External calls
+    
+    // Exception handling weight
+    score += metrics[6] * 4; // try-catch blocks
+    
+    // Nesting depth weight
+    score += metrics[7] * 5; // Nesting depth
+    
+    // Parameter count weight
+    score += Math.min(metrics[8], 5) * 2; // Parameters
+    
+    return score;
+}
+
+private static boolean isGetterOrSetter(MethodDeclaration method) {
+    String name = method.getNameAsString();
+    
+    if (method.getParameters().isEmpty()) {
+        // Potential getter
+        if (name.startsWith("get") && name.length() > 3 && 
+            Character.isUpperCase(name.charAt(3))) {
+            return true;
+        }
+        if (name.startsWith("is") && name.length() > 2 && 
+            Character.isUpperCase(name.charAt(2)) &&
+            method.getType().toString().equals("boolean")) {
+            return true;
+        }
+    } else if (method.getParameters().size() == 1 && 
+               method.getType().toString().equals("void")) {
+        // Potential setter
+        if (name.startsWith("set") && name.length() > 3 && 
+            Character.isUpperCase(name.charAt(3))) {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
+private static boolean hasSideEffects(BlockStmt body) {
+    // Check for assignments to fields, static variables, or method calls that might have side effects
+    List<AssignExpr> assignments = body.findAll(AssignExpr.class);
+    for (AssignExpr assign : assignments) {
+        String target = assign.getTarget().toString();
+        if (target.contains("this.") || 
+            target.contains(".") && !target.startsWith("local")) {
+            return true;
+        }
+    }
+    
+    // Check for method calls that typically have side effects
+    for (MethodCallExpr call : body.findAll(MethodCallExpr.class)) {
+        String name = call.getNameAsString().toLowerCase();
+        if (name.contains("add") || name.contains("remove") || 
+            name.contains("put") || name.contains("set") ||
+            name.contains("write") || name.contains("print") ||
+            name.contains("save") || name.contains("update") ||
+            name.contains("delete") || name.contains("create")) {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
+private static boolean isPureFunction(MethodDeclaration method, BlockStmt body) {
+    // A pure function: no side effects, deterministic output based only on inputs
+    if (hasSideEffects(body)) return false;
+    
+    // Check if it modifies any fields
+    ClassOrInterfaceDeclaration parentClass = method.findAncestor(ClassOrInterfaceDeclaration.class).orElse(null);
+    if (parentClass != null) {
+        Set<String> fieldNames = getAllFieldNames(parentClass);
+        String bodyStr = body.toString();
+        for (String field : fieldNames) {
+            // Check for field modifications (excluding "this.field" in assignments)
+            if (bodyStr.contains(field + " =") || 
+                bodyStr.contains(field + "+=") ||
+                bodyStr.contains(field + "-=") ||
+                bodyStr.contains(field + "++") ||
+                bodyStr.contains("++" + field) ||
+                bodyStr.contains(field + "--") ||
+                bodyStr.contains("--" + field)) {
+                return false;
+            }
+        }
+    }
+    
+    // Check for non-deterministic calls
+    for (MethodCallExpr call : body.findAll(MethodCallExpr.class)) {
+        String name = call.getNameAsString().toLowerCase();
+        if (name.contains("random") || name.contains("currenttimemillis") || 
+            name.contains("nanotime") || name.contains("system.") ||
+            name.contains("math.random")) {
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+// Helper class for switch analysis
+static class SwitchAnalysis {
+    String patternType;
+    int caseCount;
+    double avgLinesPerCase;
+    boolean hasComplexLogic;
+    boolean hasObjectCreation;
+    int complexityScore;
+}
+
+private static SwitchAnalysis analyzeSwitchComplexity(SwitchStmt switchStmt) {
+    SwitchAnalysis analysis = new SwitchAnalysis();
+    List<SwitchEntry> entries = switchStmt.getEntries();
+    
+    int totalCases = 0;
+    int totalLines = 0;
+    int casesWithLogic = 0;
+    int casesWithObjects = 0;
+    
+    for (SwitchEntry entry : entries) {
+        if (entry.getLabels().isEmpty()) continue; // Default case
+        
+        totalCases++;
+        int caseLines = 0;
+        boolean hasLogic = false;
+        boolean hasObjects = false;
+        
+        for (Statement stmt : entry.getStatements()) {
+            String stmtStr = stmt.toString();
+            caseLines += countNonEmptyLines(stmtStr);
+            
+            // Check for complex logic
+            if (stmt instanceof IfStmt || stmt instanceof ForStmt || 
+                stmt instanceof WhileStmt || stmt instanceof DoStmt ||
+                stmtStr.contains("++") || stmtStr.contains("--") ||
+                stmtStr.contains("+=") || stmtStr.contains("-=")) {
+                hasLogic = true;
+            }
+            
+            // Check for object creation
+            if (stmtStr.contains("new ") || stmtStr.contains(".create") ||
+                stmtStr.contains(".builder()") || stmtStr.contains("Factory")) {
+                hasObjects = true;
+            }
+        }
+        
+        totalLines += caseLines;
+        if (hasLogic) casesWithLogic++;
+        if (hasObjects) casesWithObjects++;
+    }
+    
+    analysis.caseCount = totalCases;
+    analysis.avgLinesPerCase = totalCases > 0 ? (double) totalLines / totalCases : 0;
+    analysis.hasComplexLogic = casesWithLogic > 0;
+    analysis.hasObjectCreation = casesWithObjects > 0;
+    
+    // Determine pattern type
+    if (casesWithObjects >= totalCases * 0.8 && !analysis.hasComplexLogic) {
+        analysis.patternType = "FACTORY_PATTERN";
+    } else if (casesWithLogic >= totalCases * 0.7 && analysis.avgLinesPerCase >= 3) {
+        analysis.patternType = "STATE_MACHINE";
+    } else if (analysis.avgLinesPerCase <= 2 && totalCases <= 3) {
+        analysis.patternType = "SIMPLE_DISPATCH";
+    } else {
+        analysis.patternType = "MIXED_LOGIC";
+    }
+    
+    // Calculate complexity score
+    analysis.complexityScore = (int) (analysis.avgLinesPerCase * 5) + 
+                               (casesWithLogic * 3) + 
+                               (casesWithObjects * 2) + 
+                               totalCases;
+    
+    return analysis;
+}
+
+private static void analyzeIfChainsForPolymorphism(MethodDeclaration method, 
+                                                  ClassOrInterfaceDeclaration clazz, 
+                                                  String studentName) {
+    BlockStmt body = method.getBody().orElse(null);
+    if (body == null) return;
+    
+    List<IfStmt> ifStatements = body.findAll(IfStmt.class);
+    if (ifStatements.size() < 2) return; // Need at least 2 ifs to be a chain
+    
+    // Check for chains of if-else checking the same variable
+    Map<String, Integer> varCheckCounts = new HashMap<>();
+    for (IfStmt ifStmt : ifStatements) {
+        Expression cond = ifStmt.getCondition();
+        
+        // Check for instanceof or .equals comparisons
+        if (cond instanceof InstanceOfExpr) {
+            InstanceOfExpr instanceOf = (InstanceOfExpr) cond;
+            String varName = instanceOf.getExpression().toString();
+            varCheckCounts.put(varName, varCheckCounts.getOrDefault(varName, 0) + 1);
+        } else if (cond instanceof MethodCallExpr) {
+            MethodCallExpr call = (MethodCallExpr) cond;
+            if (call.getNameAsString().equals("equals")) {
+                if (call.getScope().isPresent()) {
+                    String varName = call.getScope().get().toString();
+                    varCheckCounts.put(varName, varCheckCounts.getOrDefault(varName, 0) + 1);
+                }
+            }
+        } else if (cond instanceof BinaryExpr) {
+            BinaryExpr binary = (BinaryExpr) cond;
+            if (binary.getOperator() == BinaryExpr.Operator.EQUALS ||
+                binary.getOperator() == BinaryExpr.Operator.NOT_EQUALS) {
+                // Check if one side is a variable and the other is a constant/type
+                Expression left = binary.getLeft();
+                Expression right = binary.getRight();
+                
+                if (left instanceof NameExpr) {
+                    String varName = ((NameExpr) left).getNameAsString();
+                    if (right instanceof FieldAccessExpr || 
+                        right instanceof NameExpr && 
+                        Character.isUpperCase(right.toString().charAt(0))) {
+                        varCheckCounts.put(varName, varCheckCounts.getOrDefault(varName, 0) + 1);
+                    }
+                } else if (right instanceof NameExpr) {
+                    String varName = ((NameExpr) right).getNameAsString();
+                    if (left instanceof FieldAccessExpr || 
+                        left instanceof NameExpr && 
+                        Character.isUpperCase(left.toString().charAt(0))) {
+                        varCheckCounts.put(varName, varCheckCounts.getOrDefault(varName, 0) + 1);
                     }
                 }
             }
         }
     }
+    
+    // Report suspicious chains
+    for (Map.Entry<String, Integer> entry : varCheckCounts.entrySet()) {
+        if (entry.getValue() >= 3) { // Chain of 3+ checks on same variable
+            String details = "Chained type checks on variable: " + entry.getKey() + 
+                           " (" + entry.getValue() + " checks)";
+            addCsvRow(studentName, clazz.getNameAsString(),
+                method.getNameAsString(), "TypeCheckingChain",
+                "MEDIUM", details);
+            addLLMCandidate(studentName, clazz.getNameAsString(),
+                method.getNameAsString(), "TypeCheckingChain",
+                Map.of(
+                    "variable", entry.getKey(),
+                    "checkCount", String.valueOf(entry.getValue()),
+                    "pattern", "CHAINED_TYPE_CHECKS",
+                    "suggestion", "Consider polymorphism instead of explicit type checking"
+                ));
+        }
+    }
+}
+
+
 
     private static boolean isJustifiedIdenticalOverride(MethodDeclaration childMethod,
                                                        ClassOrInterfaceDeclaration childClass,
@@ -943,82 +1447,140 @@ private static MethodDeclaration findParentMethod(MethodDeclaration childMethod,
     }
 
     private static void detectMissingInheritance(Map<String, ClassOrInterfaceDeclaration> classMap,
-                                                String studentName) {
+                                            String studentName) {
 
-        Map<String, Set<String>> methodToClasses = new HashMap<>();
+    Map<String, Set<String>> methodToClasses = new HashMap<>();
 
-        for (ClassOrInterfaceDeclaration clazz : classMap.values()) {
-            if (isTestClass(clazz)) continue;
-            if (looksLikeInternalNode(clazz)) continue;
+    for (ClassOrInterfaceDeclaration clazz : classMap.values()) {
+        if (isTestClass(clazz)) continue;
+        if (looksLikeInternalNode(clazz)) continue;
+        
+        for (MethodDeclaration method : clazz.getMethods()) {
+            if (isMainMethod(method) || method.isStatic()) continue;
+            if (!method.isPublic()) continue;
             
-            for (MethodDeclaration method : clazz.getMethods()) {
-                if (isMainMethod(method) || method.isStatic()) continue;
-                if (!method.isPublic()) continue;
-                
-                String name = method.getNameAsString();
-                if (OBJECT_METHOD_NAMES.contains(name)) continue;
-                if (FRAMEWORK_METHOD_NAMES.contains(name)) continue;
-                
-                if (method.getBody().isEmpty()) continue;
-                
-                int stmtCount = method.getBody().get().getStatements().size();
-                if (stmtCount == 1 && method.getBody().get().getStatement(0).isReturnStmt()) {
-                    continue;
-                }
-                
-                if (OBJECT_METHOD_NAMES.contains(method.getNameAsString())) continue;
-
-                String sig = methodSignatureWithoutVisibility(method);
-                methodToClasses
-                    .computeIfAbsent(sig, k -> new HashSet<>())
-                    .add(clazz.getNameAsString());
+            String name = method.getNameAsString();
+            if (OBJECT_METHOD_NAMES.contains(name)) continue;
+            if (FRAMEWORK_METHOD_NAMES.contains(name)) continue;
+            
+            if (method.getBody().isEmpty()) continue;
+            
+            int stmtCount = method.getBody().get().getStatements().size();
+            if (stmtCount == 1 && method.getBody().get().getStatement(0).isReturnStmt()) {
+                continue;
             }
-        }
-
-        for (Map.Entry<String, Set<String>> entry : methodToClasses.entrySet()) {
-            Set<String> classes = entry.getValue();
-            if (classes.size() < 2) continue;
-
-            long sharedCount = methodToClasses.entrySet().stream()
-                .filter(e -> e.getValue().equals(classes))
-                .count();
-
-            if (sharedCount < 2) continue;
-
-            if (haveCommonAncestor(classes, classMap)) continue;
             
-            if (isDelegationPattern(entry.getKey(), classes, classMap)) continue;
-
-            if (classes.stream().anyMatch(c -> looksLikeInternalNode(classMap.get(c)))) continue;
-
-            boolean anyInternal = classes.stream()
-                .map(classMap::get)
-                .anyMatch(c -> c != null && looksLikeInternalNode(c));
-
-            if (anyInternal) continue;
-
-            Set<ClassOrInterfaceDeclaration> classDecls = classes.stream()
-                .map(classMap::get)
-                .filter(Objects::nonNull)
-                .collect(Collectors.toSet());
-
-            if (sharedCount < 2) continue;
-
-            if (!weaklyRelated(classDecls)) continue;
-
-            csvRows.add(new String[]{
-                    studentName,
-                    String.join(";", classes),
-                    entry.getKey(),
-                    "Missing Inheritance",
-                    "HIGH",
-                    "Classes define same method but do not share superclass or interface"
-            });
-
-            System.out.printf("Missing inheritance: %s | %s -> %s%n",
-                    studentName, classes, entry.getKey());
+            String sig = methodSignatureWithoutVisibility(method);
+            methodToClasses
+                .computeIfAbsent(sig, k -> new HashSet<>())
+                .add(clazz.getNameAsString());
         }
     }
+
+    for (Map.Entry<String, Set<String>> entry : methodToClasses.entrySet()) {
+        Set<String> classes = entry.getValue();
+        if (classes.size() < 2) continue;
+
+        long sharedCount = methodToClasses.entrySet().stream()
+            .filter(e -> e.getValue().equals(classes))
+            .count();
+
+        if (sharedCount < 2) continue;
+
+        if (haveCommonAncestor(classes, classMap)) continue;
+        
+        if (isDelegationPattern(entry.getKey(), classes, classMap)) continue;
+
+        if (classes.stream().anyMatch(c -> looksLikeInternalNode(classMap.get(c)))) continue;
+
+        boolean anyInternal = classes.stream()
+            .map(classMap::get)
+            .anyMatch(c -> c != null && looksLikeInternalNode(c));
+
+        if (anyInternal) continue;
+
+        Set<ClassOrInterfaceDeclaration> classDecls = classes.stream()
+            .map(classMap::get)
+            .filter(Objects::nonNull)
+            .collect(Collectors.toSet());
+
+        if (sharedCount < 2) continue;
+
+        if (!weaklyRelated(classDecls)) continue;
+
+        // Output to CSV (simple format)
+        String details = "Classes define same method but do not share superclass or interface";
+        addCsvRow(studentName, String.join(";", classes),
+            entry.getKey(), "Missing Inheritance",
+            "HIGH", details);
+        
+        // Output to LLM candidates with richer context
+        addLLMCandidate(studentName, String.join(";", classes),
+            entry.getKey(), "PotentialMissingInheritance",
+            Map.of(
+                "classes", String.join(";", classes),
+                "sharedMethods", String.valueOf(sharedCount),
+                "methodExamples", getExampleMethods(entry.getKey(), classes, classMap),
+                "similarityScore", String.valueOf(calculateClassSimilarity(classes, classMap)),
+                "weaklyRelated", "true",
+                "hasCommonAncestor", "false"
+            ));
+    }
+}
+
+
+    private static String getExampleMethods(String methodSig, Set<String> classes, 
+                                       Map<String, ClassOrInterfaceDeclaration> classMap) {
+    List<String> examples = new ArrayList<>();
+    for (String className : classes) {
+        ClassOrInterfaceDeclaration clazz = classMap.get(className);
+        if (clazz != null) {
+            // Find the method and get a preview
+            for (MethodDeclaration method : clazz.getMethods()) {
+                if (methodSignatureWithoutVisibility(method).equals(methodSig)) {
+                    examples.add(method.getDeclarationAsString());
+                    break;
+                }
+            }
+        }
+    }
+    return String.join(", ", examples.subList(0, Math.min(3, examples.size())));
+}
+
+private static int calculateClassSimilarity(Set<String> classes, 
+                                          Map<String, ClassOrInterfaceDeclaration> classMap) {
+    // Simple similarity metric (0-100)
+    int totalFields = 0;
+    int commonFields = 0;
+    
+    // Count field overlap
+    Set<String> allFields = new HashSet<>();
+    Map<String, Set<String>> classFields = new HashMap<>();
+    
+    for (String className : classes) {
+        ClassOrInterfaceDeclaration clazz = classMap.get(className);
+        if (clazz != null) {
+            Set<String> fields = getAllFieldNames(clazz);
+            classFields.put(className, fields);
+            allFields.addAll(fields);
+        }
+    }
+    
+    // Check which fields are in all classes
+    for (String field : allFields) {
+        boolean inAll = true;
+        for (Set<String> fields : classFields.values()) {
+            if (!fields.contains(field)) {
+                inAll = false;
+                break;
+            }
+        }
+        if (inAll) commonFields++;
+    }
+    
+    totalFields = allFields.size();
+    return totalFields > 0 ? (commonFields * 100 / totalFields) : 0;
+}
 
     private static boolean weaklyRelated(Set<ClassOrInterfaceDeclaration> classes) {
         List<ClassOrInterfaceDeclaration> list = new ArrayList<>(classes);
