@@ -1,61 +1,93 @@
 "Student","Class","Method","Antipattern","Details"
-"""assignment-1-141""","""InsuranceSystem""","""createPolicy""","""Enum Misuse""","```json
+"""escaipe-room-beta-and-final-team-10""","""DifficultyController""","""onClickContinue""","""Enum Misuse""","```json
 {
-  ""details"": ""The 'Enum Misuse' antipattern occurs when an enumeration is used inappropriately, often as a substitute for a more suitable data structure or design pattern. In the context of the 'createPolicy' method within the 'InsuranceSystem' class, this could mean that the enum is being used to represent complex states or behaviors that would be better served by"
-"""assignment-1-141""","""InsuranceSystem""","""createPolicy""","""Enum Misuse""","```json
+  ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used inappropriately, such as for comparison or control flow, instead of leveraging their intended purpose of representing a fixed set of constants. In the 'onClickContinue' method of the 'DifficultyController' class, using enum comparisons can lead to code that is less flexible and harder to maintain,"
+"""escaipe-room-beta-and-final-team-10""","""DifficultyController""","""onClickContinue""","""Enum Misuse""","```json
 {
-  ""details"": ""The 'Enum Misuse' antipattern occurs when an enumeration is used inappropriately, often as a substitute for a more suitable data structure or design pattern. In the context of the 'createPolicy' method within the 'InsuranceSystem' class, this could mean that the enum is being used to represent complex states or behaviors that would be better served by"
-"""assignment-1-141""","""InsuranceSystem""","""createPolicy""","""Enum Misuse""","```json
+  ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used inappropriately, such as for comparison or control flow, instead of leveraging their intended purpose of representing a fixed set of constants. In the 'onClickContinue' method of the 'DifficultyController' class, using enum comparisons can lead to code that is less flexible and harder to maintain,"
+"""escaipe-room-beta-and-final-team-10""","""DifficultyController""","""onClickContinue""","""Enum Misuse""","```json
 {
-  ""details"": ""The 'Enum Misuse' antipattern occurs when an enumeration is used inappropriately, often as a substitute for a more suitable data structure or design pattern. In the context of the 'createPolicy' method within the 'InsuranceSystem' class, this could mean that the enum is being used to represent complex states or behaviors that would be better served by"
-"""assignment-1-109""","""ProfileLoader""","""""","""Redundant Inheritance""","```json
+  ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used inappropriately, such as for comparison or control flow, instead of leveraging their intended purpose of representing a fixed set of constants. In the 'onClickContinue' method of the 'DifficultyController' class, using enum comparisons can lead to code that is less flexible and harder to maintain,"
+"""escaipe-room-beta-and-final-team-26""","""SceneManager""","""getCurrentController""","""Enum Misuse""","```json
 {
-  ""details"": ""Redundant Inheritance occurs when a class inherits from another class that is not necessary, often leading to unnecessary complexity and confusion. In the case of 'ProfileLoader', if it inherits from a class that does not add any unique functionality or properties relevant to 'ProfileLoader', it creates redundancy. This can make the codebase harder to maintain and understand, as"
-"""assignment-1-109""","""ProfileUnloader""","""""","""Redundant Inheritance""","```json
+  ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used inappropriately, such as for control flow or state management, instead of using them for their intended purpose of representing a fixed set of constants. In the 'getCurrentController' method of the 'SceneManager' class, using enum comparison can lead to code that is difficult to maintain and"
+"""escaipe-room-beta-and-final-team-26""","""SceneManager""","""getCurrentController""","""Enum Misuse""","```json
 {
-  ""details"": ""Redundant Inheritance occurs when a class inherits from another class that is not necessary, often leading to unnecessary complexity and confusion. In the case of 'ProfileUnloader', if it inherits from a class that does not add any unique functionality or properties relevant to 'ProfileUnloader', it creates redundancy. This can make the codebase harder to maintain and understand"
-"""assignment-1-109""","""ProfileDeleter""","""""","""Redundant Inheritance""","```json
+  ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used inappropriately, such as for control flow or state management, instead of using them for their intended purpose of representing a fixed set of constants. In the 'getCurrentController' method of the 'SceneManager' class, using enum comparison can lead to code that is difficult to maintain and"
+"""escaipe-room-beta-and-final-team-26""","""SceneManager""","""getCurrentController""","""Enum Misuse""","```json
 {
-  ""details"": ""Redundant Inheritance occurs when a class inherits from another class that provides no additional functionality or properties, leading to unnecessary complexity and confusion. In the case of 'ProfileDeleter', if it inherits from a base class that does not enhance or modify its behavior, it creates redundancy without adding value, making the code harder to maintain and understand.""
-}
+  ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used inappropriately, such as for control flow or state management, instead of using them for their intended purpose of representing a fixed set of constants. In the 'getCurrentController' method of the 'SceneManager' class, using enum comparison can lead to code that is difficult to maintain and"
+"""escaipe-room-beta-and-final-team-25""","""HackerAiManager""","""getQuickHint""","""Enum Misuse""","```json
+{ ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used inappropriately, such as for comparison or control flow, instead of leveraging their intended purpose of representing a fixed set of constants. In the context of the 'getQuickHint' method in the 'HackerAiManager' class, using enum comparisons can lead to code that is less flexible,"
+"""escaipe-room-beta-and-final-team-25""","""HackerAiManager""","""getQuickHint""","""Enum Misuse""","```json
+{ ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used inappropriately, such as for comparison or control flow, instead of leveraging their intended purpose of representing a fixed set of constants. In the context of the 'getQuickHint' method in the 'HackerAiManager' class, using enum comparisons can lead to code that is less flexible,"
+"""escaipe-room-beta-and-final-team-25""","""HackerAiManager""","""processInput""","""Enum Misuse""","```json
+{
+  ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used inappropriately, such as for comparison or control flow, instead of their intended purpose of representing a fixed set of constants. In the 'processInput' method of the 'HackerAiManager' class, using enum comparisons can lead to code that is less flexible, harder to maintain,"
+"""escaipe-room-beta-and-final-team-25""","""HackerAiManager""","""processInput""","""Enum Misuse""","```json
+{
+  ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used inappropriately, such as for comparison or control flow, instead of their intended purpose of representing a fixed set of constants. In the 'processInput' method of the 'HackerAiManager' class, using enum comparisons can lead to code that is less flexible, harder to maintain,"
+"""escaipe-room-beta-and-final-team-25""","""GameManager""","""createGame""","""Enum Usage""","```json
+{ ""details"": ""The 'Enum Usage' antipattern occurs when an enumeration is used inappropriately, often leading to a mix of responsibilities. In the 'createGame' method of the 'GameManager' class, the use of enums for object creation alongside execution logic can lead to code that is difficult to maintain and extend. This mixing of concerns can result in a violation of"
+"""escaipe-room-beta-and-final-team-25""","""GameManager""","""getDifficultyString""","""Enum Usage""","```json
+{ ""details"": ""The 'Enum Usage' antipattern occurs when an enumeration is used in a way that combines object creation with execution logic, leading to tightly coupled code that is difficult to maintain and extend. In the method 'getDifficultyString' of the 'GameManager' class, this mixing of responsibilities can make it challenging to modify the behavior of the enum or to add new"
+"""escaipe-room-beta-and-final-team-25""","""GameManager""","""completeObjective""","""Enum Misuse""","```json
+{
+  ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used inappropriately, such as for comparison in a way that violates their intended purpose. Enums should represent a fixed set of constants, but using them for comparison can lead to code that is hard to maintain and understand. In the 'completeObjective' method of the 'GameManager' class"
+"""escaipe-room-beta-and-final-team-25""","""GameManager""","""completeObjective""","""Enum Misuse""","```json
+{
+  ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used inappropriately, such as for comparison in a way that violates their intended purpose. Enums should represent a fixed set of constants, but using them for comparison can lead to code that is hard to maintain and understand. In the 'completeObjective' method of the 'GameManager' class"
+"""escaipe-room-beta-and-final-team-25""","""GameManager""","""completeObjective""","""Enum Misuse""","```json
+{
+  ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used inappropriately, such as for comparison in a way that violates their intended purpose. Enums should represent a fixed set of constants, but using them for comparison can lead to code that is hard to maintain and understand. In the 'completeObjective' method of the 'GameManager' class"
+"""escaipe-room-beta-and-final-team-25""","""GameManager""","""completeObjective""","""Enum Misuse""","```json
+{
+  ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used inappropriately, such as for comparison in a way that violates their intended purpose. Enums should represent a fixed set of constants, but using them for comparison can lead to code that is hard to maintain and understand. In the 'completeObjective' method of the 'GameManager' class"
+"""escaipe-room-beta-and-final-team-25""","""GameManager""","""completeObjective""","""Enum Misuse""","```json
+{
+  ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used inappropriately, such as for comparison in a way that violates their intended purpose. Enums should represent a fixed set of constants, but using them for comparison can lead to code that is hard to maintain and understand. In the 'completeObjective' method of the 'GameManager' class"
+"""escaipe-room-beta-and-final-team-25""","""GameManager""","""completeObjective""","""Enum Misuse""","```json
+{
+  ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used inappropriately, such as for comparison in a way that violates their intended purpose. Enums should represent a fixed set of constants, but using them for comparison can lead to code that is hard to maintain and understand. In the 'completeObjective' method of the 'GameManager' class"
+"""escaipe-room-beta-and-final-team-25""","""GameManager""","""completeObjective""","""Enum Misuse""","```json
+{
+  ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used inappropriately, such as for comparison in a way that violates their intended purpose. Enums should represent a fixed set of constants, but using them for comparison can lead to code that is hard to maintain and understand. In the 'completeObjective' method of the 'GameManager' class"
+"""escaipe-room-beta-and-final-team-25""","""GameManager""","""completeObjective""","""Enum Usage""","```json
+{ ""details"": ""The 'Enum Usage' antipattern occurs when an enumeration is used in a way that combines object creation with execution logic, leading to a violation of the Single Responsibility Principle. In the 'completeObjective' method of the 'GameManager' class, using enums to dictate behavior can make the code less flexible and harder to maintain, as it tightly couples the logic to"
+"""escaipe-room-beta-and-final-team-25""","""GameManager""","""getObjectiveString""","""Enum Usage""","```json
+{ ""details"": ""The 'Enum Usage' antipattern occurs when an enumeration is used in a way that combines object creation with execution logic, leading to tightly coupled code that is difficult to maintain and extend. In the method 'getObjectiveString' of the 'GameManager' class, this mixing of responsibilities can result in a violation of the Single Responsibility Principle, making the code less"
+"""escaipe-room-beta-and-final-team-27""","""GameOverController""","""""","""Redundant Inheritance""","```json
+{ ""details"": ""Redundant Inheritance occurs when a class inherits from a superclass but does not override or reuse any of its methods. This leads to unnecessary complexity in the class hierarchy, as the subclass does not gain any functional benefits from the inheritance. In the case of 'GameOverController', if it simply inherits from a superclass without implementing or utilizing any of its methods, it"
+"""escaipe-room-beta-and-final-team-05""","""PopupController""","""getNextHighlightState""","""Enum Usage""","```json
+{ ""details"": ""The 'Enum Usage' antipattern occurs when an enumeration is used in a way that combines object creation with execution logic, leading to tightly coupled code that is difficult to maintain and extend. In the method 'getNextHighlightState' of the 'PopupController' class, the use of a switch statement to handle different enum values can result in a scenario where adding"
+"""escaipe-room-beta-and-final-team-05""","""ComputerTile""","""initalizeConnections""","""Enum Usage""","```json
+{ ""details"": ""Using enums for object creation can lead to a mix of responsibilities, where the enum is not only defining constants but also handling logic related to object instantiation. This can make the code harder to maintain and understand, as it blurs the lines between data representation and behavior."" }
 ```"
-"""assignment-1-113""","""Policy;Profile""","""void setTotal(int)""","""Missing Inheritance""","```json
+"""escaipe-room-beta-and-final-team-05""","""NavigationComputerPuzzleController""","""startFlashing""","""Enum Misuse""","```json
 {
-  ""details"": ""The 'Missing Inheritance' antipattern occurs when a class fails to inherit from a parent class that would provide shared functionality or properties. In this case, the method 'void setTotal(int)' is likely intended to be part of a class hierarchy where 'Policy' or 'Profile' should inherit common behavior. By not utilizing inheritance, the code may lead"
-"""assignment-1-113""","""Policy;Profile""","""void setUserName(String)""","""Missing Inheritance""","```json
+  ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used for purposes they were not intended for, such as performing comparisons or representing states that could be better handled with other data structures. In the context of the 'startFlashing' method in the 'NavigationComputerPuzzleController' class, using enum comparisons can lead to code that is less flexible,"
+"""escaipe-room-beta-and-final-team-05""","""NavigationComputerPuzzleController""","""onTilesClicked""","""Enum Misuse""","```json
 {
-  ""details"": ""The 'Missing Inheritance' antipattern occurs when a class fails to inherit from a superclass that would provide common functionality or properties. In this case, the method 'void setUserName(String)' in the 'Policy' or 'Profile' class suggests that there may be a shared behavior related to user management that could be inherited from a parent class. By"
-"""assignment-1-113""","""Policy;Profile""","""void setAge(int)""","""Missing Inheritance""","```json
+  ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used inappropriately, such as for comparison or control flow, instead of their intended purpose of representing a fixed set of constants. In the method 'onTilesClicked' of the 'NavigationComputerPuzzleController' class, using enum comparisons can lead to code that is less flexible and harder to maintain"
+"""escaipe-room-beta-and-final-team-37""","""GptAndTextAreaManager""","""sendMessage""","""Enum Misuse""","```json
+{ ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used for purposes they were not intended for, such as for comparison in a way that leads to unclear or error-prone code. In the context of the 'sendMessage' method in the 'GptAndTextAreaManager' class, using enum comparisons can lead to issues with maintainability and readability"
+"""escaipe-room-beta-and-final-team-37""","""GptAndTextAreaManager""","""sendMessage""","""Enum Misuse""","```json
+{ ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used for purposes they were not intended for, such as for comparison in a way that leads to unclear or error-prone code. In the context of the 'sendMessage' method in the 'GptAndTextAreaManager' class, using enum comparisons can lead to issues with maintainability and readability"
+"""escaipe-room-beta-and-final-team-37""","""GptAndTextAreaManager""","""sendMessage""","""Enum Misuse""","```json
+{ ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used for purposes they were not intended for, such as for comparison in a way that leads to unclear or error-prone code. In the context of the 'sendMessage' method in the 'GptAndTextAreaManager' class, using enum comparisons can lead to issues with maintainability and readability"
+"""escaipe-room-beta-and-final-team-37""","""GptAndTextAreaManager""","""sendMessage""","""Enum Misuse""","```json
+{ ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used for purposes they were not intended for, such as for comparison in a way that leads to unclear or error-prone code. In the context of the 'sendMessage' method in the 'GptAndTextAreaManager' class, using enum comparisons can lead to issues with maintainability and readability"
+"""escaipe-room-beta-and-final-team-37""","""GptAndTextAreaManager""","""runGpt""","""Enum Misuse""","```json
 {
-  ""details"": ""The 'Missing Inheritance' antipattern occurs when a subclass fails to inherit properties or methods from its superclass, leading to code duplication and a lack of shared behavior. In this case, the method 'setAge(int)' is likely intended to be part of a base class (e.g., 'Profile') that manages common attributes like age. If the '"
-"""assignment-1-209""","""InsuranceSystem;Database""","""void deleteProfile(String)""","""Missing Inheritance""","```json
+  ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used inappropriately, such as for comparison or control flow, rather than for their intended purpose of representing a fixed set of constants. In the context of the 'runGpt' method within the 'GptAndTextAreaManager' class, using enum comparisons can lead to code that is"
+"""escaipe-room-beta-and-final-team-37""","""GptAndTextAreaManager""","""runGpt""","""Enum Misuse""","```json
 {
-  ""details"": ""The 'Missing Inheritance' antipattern occurs when a class fails to inherit from a more general class or interface that it should logically extend. In this case, the 'InsuranceSystem;Database' class has a method 'void deleteProfile(String)' that may be better suited as part of a base class for handling profiles. By not utilizing inheritance, the class"
-"""assignment-1-25""","""InsuranceSystem;Database""","""void deleteProfile(String)""","""Missing Inheritance""","```json
+  ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used inappropriately, such as for comparison or control flow, rather than for their intended purpose of representing a fixed set of constants. In the context of the 'runGpt' method within the 'GptAndTextAreaManager' class, using enum comparisons can lead to code that is"
+"""escaipe-room-beta-and-final-team-37""","""GptAndTextAreaManager""","""runGpt""","""Enum Misuse""","```json
 {
-  ""details"": ""The 'Missing Inheritance' antipattern occurs when a class fails to inherit from a more general class or interface that it should logically extend. In this case, the 'InsuranceSystem;Database' class has a method 'void deleteProfile(String)' that may be better suited as part of a base class for handling profiles. By not utilizing inheritance, the class"
-"""assignment-1-209""","""InsuranceSystem;Database""","""void unloadProfile()""","""Missing Inheritance""","```json
+  ""details"": ""The 'Enum Misuse' antipattern occurs when enums are used inappropriately, such as for comparison or control flow, rather than for their intended purpose of representing a fixed set of constants. In the context of the 'runGpt' method within the 'GptAndTextAreaManager' class, using enum comparisons can lead to code that is"
+"""escaipe-room-beta-and-final-team-15""","""GlitchSound;Sound""","""void play()""","""Missing Inheritance""","```json
+{ ""details"": ""The 'Missing Inheritance' antipattern occurs when multiple classes define the same method, such as 'void play()', but do not share a common superclass or interface. This leads to code duplication and inconsistency, making it harder to maintain and extend the codebase. In this case, 'GlitchSound' and 'Sound' both implement 'play()'"
+"""escaipe-room-beta-and-final-team-15""","""GlitchSound;Sound""","""void stop()""","""Missing Inheritance""","```json
 {
-  ""details"": ""The 'Missing Inheritance' antipattern occurs when a class fails to inherit from a parent class or interface that it should logically extend. In this case, the method 'void unloadProfile()' in the 'InsuranceSystem;Database' class suggests that it should have common functionality related to profile management. However, if this class does not inherit from a base"
-"""assignment-1-209""","""InsuranceSystem;Database""","""void loadProfile(String)""","""Missing Inheritance""","```json
-{
-  ""details"": ""The 'Missing Inheritance' antipattern occurs when a class fails to inherit from a parent class or interface that it should logically extend. In this case, the method 'void loadProfile(String)' in the 'InsuranceSystem;Database' class suggests that it should inherit functionality related to loading profiles from a base class that handles such operations. By not utilizing inheritance"
-"""assignment-1-25""","""InsuranceSystem;Database""","""void loadProfile(String)""","""Missing Inheritance""","```json
-{
-  ""details"": ""The 'Missing Inheritance' antipattern occurs when a class fails to inherit from a parent class or interface that it should logically extend. In this case, the method 'void loadProfile(String)' in the 'InsuranceSystem;Database' class suggests that it should inherit functionality related to loading profiles from a base class that handles such operations. By not utilizing inheritance"
-"""assignment-1-78""","""Policy""","""getPremium""","""Enum Usage""","```json
-{ ""details"": ""Using enums in a way that combines object creation with execution logic can lead to code that is difficult to maintain and extend. This 'Enum Usage' antipattern often results in a switch statement that not only determines the type of object to create but also executes logic based on that type. This violates the Single Responsibility Principle, making the code less modular and harder to test"
-"""assignment-1-62""","""InsuranceSystem;ProfileDataBase""","""void deleteProfile(String)""","""Missing Inheritance""","```json
-{
-  ""details"": ""The 'Missing Inheritance' antipattern occurs when a class fails to inherit from a superclass that would provide common functionality or properties. In this case, the method 'void deleteProfile(String)' in the 'InsuranceSystem;ProfileDataBase' class may be missing inherited behavior or attributes from a parent class that could streamline the deletion process or ensure consistency across similar"
-"""assignment-1-62""","""InsuranceSystem;ProfileDataBase""","""void loadProfile(String)""","""Missing Inheritance""","```json
-{
-  ""details"": ""The 'Missing Inheritance' antipattern occurs when a class fails to inherit from a more general class or interface that it should logically extend. In this case, the method 'void loadProfile(String)' in the 'InsuranceSystem;ProfileDataBase' class suggests that it is handling profile data, which may be a specialized behavior of a more general profile management"
-"""assignment-1-169""","""SetLifeInfo""","""""","""Redundant Inheritance""","{
-  ""details"": ""Redundant Inheritance occurs when a class inherits from multiple parent classes that provide the same or similar functionality, leading to unnecessary complexity and potential confusion. In the case of the 'SetLifeInfo' class, if it inherits from multiple classes that define similar methods or properties, it can create ambiguity in method resolution and increase maintenance overhead. This antipattern can also lead to code"
-"""assignment-1-169""","""SetCarInfo""","""""","""Redundant Inheritance""","```json
-{
-  ""details"": ""Redundant Inheritance occurs when a class inherits from another class that does not add any new functionality or properties, effectively duplicating the base class's behavior without any enhancement. In the case of 'SetCarInfo', if it inherits from a class that provides no additional methods or attributes, it creates unnecessary complexity and can lead to confusion in the class hierarchy,"
-"""assignment-1-169""","""SetHomeInfo""","""""","""Redundant Inheritance""","```json
-{
-  ""details"": ""Redundant Inheritance occurs when a class inherits from another class that is not necessary for its functionality, leading to unnecessary complexity and potential confusion. In the case of 'SetHomeInfo', if it inherits from a class that does not provide any additional relevant behavior or properties, it creates redundancy. This can make the codebase harder to maintain and understand, as"
+  ""details"": ""The 'Missing Inheritance' antipattern occurs when multiple classes define the same method, such as 'void stop()', but do not share a common superclass or interface. This leads to code duplication and inconsistency, making it harder to maintain and extend the codebase. In this case, both 'GlitchSound' and 'Sound' implement the 'stop"

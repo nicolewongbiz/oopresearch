@@ -1,142 +1,247 @@
 [
   {
     "antipattern": "\"Enum Misuse\"",
-    "method": "\"createPolicy\"",
-    "student": "\"assignment-1-141\"",
-    "details": "",
-    "class": "\"InsuranceSystem\""
+    "method": "\"onClickContinue\"",
+    "student": "\"escaipe-room-beta-and-final-team-10\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"DifficultyController\""
   },
   {
     "antipattern": "\"Enum Misuse\"",
-    "method": "\"createPolicy\"",
-    "student": "\"assignment-1-141\"",
-    "details": "",
-    "class": "\"InsuranceSystem\""
+    "method": "\"onClickContinue\"",
+    "student": "\"escaipe-room-beta-and-final-team-10\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"DifficultyController\""
   },
   {
     "antipattern": "\"Enum Misuse\"",
-    "method": "\"createPolicy\"",
-    "student": "\"assignment-1-141\"",
-    "details": "",
-    "class": "\"InsuranceSystem\""
+    "method": "\"onClickContinue\"",
+    "student": "\"escaipe-room-beta-and-final-team-10\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"DifficultyController\""
   },
   {
-    "antipattern": "\"Redundant Inheritance\"",
-    "method": "\"\"",
-    "student": "\"assignment-1-109\"",
-    "details": "",
-    "class": "\"ProfileLoader\""
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"getCurrentController\"",
+    "student": "\"escaipe-room-beta-and-final-team-26\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"SceneManager\""
   },
   {
-    "antipattern": "\"Redundant Inheritance\"",
-    "method": "\"\"",
-    "student": "\"assignment-1-109\"",
-    "details": "",
-    "class": "\"ProfileUnloader\""
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"getCurrentController\"",
+    "student": "\"escaipe-room-beta-and-final-team-26\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"SceneManager\""
   },
   {
-    "antipattern": "\"Redundant Inheritance\"",
-    "method": "\"\"",
-    "student": "\"assignment-1-109\"",
-    "details": "",
-    "class": "\"ProfileDeleter\""
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"getCurrentController\"",
+    "student": "\"escaipe-room-beta-and-final-team-26\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"SceneManager\""
   },
   {
-    "antipattern": "\"Missing Inheritance\"",
-    "method": "\"void setTotal(int)\"",
-    "student": "\"assignment-1-113\"",
-    "details": "",
-    "class": "\"Policy;Profile\""
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"getQuickHint\"",
+    "student": "\"escaipe-room-beta-and-final-team-25\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"HackerAiManager\""
   },
   {
-    "antipattern": "\"Missing Inheritance\"",
-    "method": "\"void setUserName(String)\"",
-    "student": "\"assignment-1-113\"",
-    "details": "",
-    "class": "\"Policy;Profile\""
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"getQuickHint\"",
+    "student": "\"escaipe-room-beta-and-final-team-25\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"HackerAiManager\""
   },
   {
-    "antipattern": "\"Missing Inheritance\"",
-    "method": "\"void setAge(int)\"",
-    "student": "\"assignment-1-113\"",
-    "details": "",
-    "class": "\"Policy;Profile\""
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"processInput\"",
+    "student": "\"escaipe-room-beta-and-final-team-25\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"HackerAiManager\""
   },
   {
-    "antipattern": "\"Missing Inheritance\"",
-    "method": "\"void deleteProfile(String)\"",
-    "student": "\"assignment-1-209\"",
-    "details": "",
-    "class": "\"InsuranceSystem;Database\""
-  },
-  {
-    "antipattern": "\"Missing Inheritance\"",
-    "method": "\"void unloadProfile()\"",
-    "student": "\"assignment-1-209\"",
-    "details": "",
-    "class": "\"InsuranceSystem;Database\""
-  },
-  {
-    "antipattern": "\"Missing Inheritance\"",
-    "method": "\"void loadProfile(String)\"",
-    "student": "\"assignment-1-209\"",
-    "details": "",
-    "class": "\"InsuranceSystem;Database\""
-  },
-  {
-    "antipattern": "\"Missing Inheritance\"",
-    "method": "\"void deleteProfile(String)\"",
-    "student": "\"assignment-1-25\"",
-    "details": "",
-    "class": "\"InsuranceSystem;Database\""
-  },
-  {
-    "antipattern": "\"Missing Inheritance\"",
-    "method": "\"void loadProfile(String)\"",
-    "student": "\"assignment-1-25\"",
-    "details": "",
-    "class": "\"InsuranceSystem;Database\""
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"processInput\"",
+    "student": "\"escaipe-room-beta-and-final-team-25\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"HackerAiManager\""
   },
   {
     "antipattern": "\"Enum Usage\"",
-    "method": "\"getPremium\"",
-    "student": "\"assignment-1-78\"",
+    "method": "\"createGame\"",
+    "student": "\"escaipe-room-beta-and-final-team-25\"",
     "details": "\"Switch mixes object creation with some execution logic\"",
-    "class": "\"Policy\""
+    "class": "\"GameManager\""
+  },
+  {
+    "antipattern": "\"Enum Usage\"",
+    "method": "\"getDifficultyString\"",
+    "student": "\"escaipe-room-beta-and-final-team-25\"",
+    "details": "\"Switch mixes object creation with some execution logic\"",
+    "class": "\"GameManager\""
+  },
+  {
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"completeObjective\"",
+    "student": "\"escaipe-room-beta-and-final-team-25\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"GameManager\""
+  },
+  {
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"completeObjective\"",
+    "student": "\"escaipe-room-beta-and-final-team-25\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"GameManager\""
+  },
+  {
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"completeObjective\"",
+    "student": "\"escaipe-room-beta-and-final-team-25\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"GameManager\""
+  },
+  {
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"completeObjective\"",
+    "student": "\"escaipe-room-beta-and-final-team-25\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"GameManager\""
+  },
+  {
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"completeObjective\"",
+    "student": "\"escaipe-room-beta-and-final-team-25\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"GameManager\""
+  },
+  {
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"completeObjective\"",
+    "student": "\"escaipe-room-beta-and-final-team-25\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"GameManager\""
+  },
+  {
+    "antipattern": "\"Enum Usage\"",
+    "method": "\"completeObjective\"",
+    "student": "\"escaipe-room-beta-and-final-team-25\"",
+    "details": "\"Switch mixes object creation with some execution logic\"",
+    "class": "\"GameManager\""
+  },
+  {
+    "antipattern": "\"Enum Usage\"",
+    "method": "\"getObjectiveString\"",
+    "student": "\"escaipe-room-beta-and-final-team-25\"",
+    "details": "\"Switch mixes object creation with some execution logic\"",
+    "class": "\"GameManager\""
+  },
+  {
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"completeObjective\"",
+    "student": "\"escaipe-room-beta-and-final-team-25\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"GameManager\""
+  },
+  {
+    "antipattern": "\"Redundant Inheritance\"",
+    "method": "\"\"",
+    "student": "\"escaipe-room-beta-and-final-team-27\"",
+    "details": "\"Class inherits but does not override/reuse superclass methods\"",
+    "class": "\"GameOverController\""
+  },
+  {
+    "antipattern": "\"Enum Usage\"",
+    "method": "\"getNextHighlightState\"",
+    "student": "\"escaipe-room-beta-and-final-team-05\"",
+    "details": "\"Switch mixes object creation with some execution logic\"",
+    "class": "\"PopupController\""
+  },
+  {
+    "antipattern": "\"Enum Usage\"",
+    "method": "\"initalizeConnections\"",
+    "student": "\"escaipe-room-beta-and-final-team-05\"",
+    "details": "\"Switch mixes object creation with some execution logic\"",
+    "class": "\"ComputerTile\""
+  },
+  {
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"startFlashing\"",
+    "student": "\"escaipe-room-beta-and-final-team-05\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"NavigationComputerPuzzleController\""
+  },
+  {
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"onTilesClicked\"",
+    "student": "\"escaipe-room-beta-and-final-team-05\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"NavigationComputerPuzzleController\""
+  },
+  {
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"sendMessage\"",
+    "student": "\"escaipe-room-beta-and-final-team-37\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"GptAndTextAreaManager\""
+  },
+  {
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"sendMessage\"",
+    "student": "\"escaipe-room-beta-and-final-team-37\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"GptAndTextAreaManager\""
+  },
+  {
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"sendMessage\"",
+    "student": "\"escaipe-room-beta-and-final-team-37\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"GptAndTextAreaManager\""
+  },
+  {
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"sendMessage\"",
+    "student": "\"escaipe-room-beta-and-final-team-37\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"GptAndTextAreaManager\""
+  },
+  {
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"runGpt\"",
+    "student": "\"escaipe-room-beta-and-final-team-37\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"GptAndTextAreaManager\""
+  },
+  {
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"runGpt\"",
+    "student": "\"escaipe-room-beta-and-final-team-37\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"GptAndTextAreaManager\""
+  },
+  {
+    "antipattern": "\"Enum Misuse\"",
+    "method": "\"runGpt\"",
+    "student": "\"escaipe-room-beta-and-final-team-37\"",
+    "details": "\"Enum comparison used\"",
+    "class": "\"GptAndTextAreaManager\""
   },
   {
     "antipattern": "\"Missing Inheritance\"",
-    "method": "\"void deleteProfile(String)\"",
-    "student": "\"assignment-1-62\"",
-    "details": "",
-    "class": "\"InsuranceSystem;ProfileDataBase\""
+    "method": "\"void play()\"",
+    "student": "\"escaipe-room-beta-and-final-team-15\"",
+    "details": "\"Classes define same method but do not share superclass or interface\"",
+    "class": "\"GlitchSound;Sound\""
   },
   {
     "antipattern": "\"Missing Inheritance\"",
-    "method": "\"void loadProfile(String)\"",
-    "student": "\"assignment-1-62\"",
-    "details": "",
-    "class": "\"InsuranceSystem;ProfileDataBase\""
-  },
-  {
-    "antipattern": "\"Redundant Inheritance\"",
-    "method": "\"\"",
-    "student": "\"assignment-1-169\"",
-    "details": "",
-    "class": "\"SetLifeInfo\""
-  },
-  {
-    "antipattern": "\"Redundant Inheritance\"",
-    "method": "\"\"",
-    "student": "\"assignment-1-169\"",
-    "details": "",
-    "class": "\"SetCarInfo\""
-  },
-  {
-    "antipattern": "\"Redundant Inheritance\"",
-    "method": "\"\"",
-    "student": "\"assignment-1-169\"",
-    "details": "",
-    "class": "\"SetHomeInfo\""
+    "method": "\"void stop()\"",
+    "student": "\"escaipe-room-beta-and-final-team-15\"",
+    "details": "\"Classes define same method but do not share superclass or interface\"",
+    "class": "\"GlitchSound;Sound\""
   }
 ]
