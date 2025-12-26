@@ -37,9 +37,32 @@ public class OOPAntiPatternDetector {
     private static List<Map<String, Object>> llmCandidates = new ArrayList<>();
 
     private static void addCsvRow(String studentName, String className, 
-                             String methodName, String issueType, 
-                             String severity, String details) {
+                         String methodName, String issueType, 
+                         String severity, String details) {
+    if (shouldSkipClassName(className)) {
+        return;
+    }
     
+    // Create a unique key for this detection
+    String uniqueKey = studentName + "|" + className + "|" + methodName;
+    
+    // If we already have an issue for this method, check if we should keep it
+    for (int i = 0; i < csvRows.size(); i++) {
+        String[] existingRow = csvRows.get(i);
+        if (existingRow[0].equals(studentName) && 
+            existingRow[1].equals(className) && 
+            existingRow[2].equals(methodName)) {
+            
+            // Keep the HIGHER severity issue
+            if (getSeverityLevel(severity) > getSeverityLevel(existingRow[4])) {
+                csvRows.set(i, new String[]{studentName, className, methodName, 
+                                           issueType, severity, details});
+            }
+            return; // Don't add duplicate
+        }
+    }
+    
+    // No existing issue for this method, add it
     csvRows.add(new String[]{
         studentName,
         className,
@@ -48,6 +71,23 @@ public class OOPAntiPatternDetector {
         severity,
         details
     });
+}
+
+private static int getSeverityLevel(String severity) {
+    switch (severity) {
+        case "HIGH": return 3;
+        case "MEDIUM": return 2;
+        case "LOW": return 1;
+        default: return 0;
+    }
+}
+
+private static boolean shouldSkipClassName(String className) {
+    return className.equals("Main") || 
+           className.endsWith("Test") ||
+           className.contains("Test") ||
+           className.equals("MessageCli") ||
+           className.equals("Types");
 }
 
 private static void detectLSPViolations(ClassOrInterfaceDeclaration childClass,
@@ -110,6 +150,7 @@ private static void detectLSPViolations(ClassOrInterfaceDeclaration childClass,
                 addCsvRow(assignmentId, childClass.getNameAsString(),
                     childMethod.getNameAsString(), "EmptyOverrideWithComments",
                     "LOW", details);
+                    
                 
                 addLLMCandidate(assignmentId, childClass.getNameAsString(),
                     childMethod.getNameAsString(), "EmptyOverrideWithComments",
@@ -171,7 +212,7 @@ private static void detectLSPViolations(ClassOrInterfaceDeclaration childClass,
 
     public static void main(String[] args) throws Exception {
         // Hardcoded submissions directory
-        File submissionsDir = new File("C:\\Users\\GGPC\\Downloads\\escaipe-room-beta-anonymised\\escaipe-room-beta-anonymised");
+        File submissionsDir = new File("C:\\Users\\GGPC\\Downloads\\assignment-1\\assignment-2023-1\\assignment-1-repos");
         
         if (!submissionsDir.exists()) {
             System.err.println("Submissions folder not found: " + submissionsDir.getAbsolutePath());
@@ -238,59 +279,96 @@ private static void detectLSPViolations(ClassOrInterfaceDeclaration childClass,
         List<CompilationUnit> validUnits = new ArrayList<>();
 
         for (CompilationUnit cu : units) {
-            if (!cu.getStorage().isPresent()) continue;
-            String keyPath = cu.getStorage().get().getPath().toAbsolutePath().toString();
-            String studentName = fileToStudent.get(keyPath);
-            if (studentName == null) continue;
+    if (!cu.getStorage().isPresent()) continue;
+    String keyPath = cu.getStorage().get().getPath().toAbsolutePath().toString();
+    String studentName = fileToStudent.get(keyPath);
+    if (studentName == null) continue;
 
-            groupedClassMaps.computeIfAbsent(studentName, k -> new HashMap<>());
+    groupedClassMaps.computeIfAbsent(studentName, k -> new HashMap<>());
 
-            for (ClassOrInterfaceDeclaration clazz : cu.findAll(ClassOrInterfaceDeclaration.class)) {
-                groupedClassMaps.get(studentName).put(clazz.getNameAsString(), clazz);
-            }
-            validUnits.add(cu);
+    for (ClassOrInterfaceDeclaration clazz : cu.findAll(ClassOrInterfaceDeclaration.class)) {
+        // FILTER HERE - BEFORE adding to map!
+        String className = clazz.getNameAsString();
+        
+        // Skip Main and other framework classes
+        if (className.equals("Main") || 
+            className.equals("MessageCli") || 
+            className.equals("Types") ||
+            className.endsWith("Test") ||
+            className.contains("Test")) {
+            System.out.println("Skipping framework class: " + className + " for " + studentName);
+            continue;
         }
+        
+        groupedClassMaps.get(studentName).put(className, clazz);
+
+        System.out.println("\n=== DEBUG: Checking for Main classes ===");
+int mainClassCount = 0;
+for (Map.Entry<String, Map<String, ClassOrInterfaceDeclaration>> entry : groupedClassMaps.entrySet()) {
+    String student = entry.getKey();
+    Map<String, ClassOrInterfaceDeclaration> classes = entry.getValue();
+    
+    if (classes.containsKey("Main")) {
+        mainClassCount++;
+        System.out.println("FOUND: Student " + student + " has Main class!");
+    }
+}
+System.out.println("Total Main classes found: " + mainClassCount);
+    }
+    validUnits.add(cu);
+}
 
         Set<String> allEnumNames = collectAllEnumNames(validUnits);
 
         System.out.println("\nParsed classes (grouped by student):");
-        // Perform detections per student
-        for (Map.Entry<String, Map<String, ClassOrInterfaceDeclaration>> entry : groupedClassMaps.entrySet()) {
+// Perform detections per student
+for (Map.Entry<String, Map<String, ClassOrInterfaceDeclaration>> entry : groupedClassMaps.entrySet()) {
     String studentName = entry.getKey();
     String assignmentId = extractAssignmentId(studentName);
     Map<String, ClassOrInterfaceDeclaration> classMap = entry.getValue();
 
     System.out.println("\n=== Running detections for " + studentName + " (Assignment: " + assignmentId + ") ===");
 
+    // DEBUG: Show what classes we have
+    System.out.println("Classes for " + studentName + ": " + String.join(", ", classMap.keySet()));
+
     // ========== PER-CLASS DETECTIONS ==========
     for (ClassOrInterfaceDeclaration clazz : classMap.values()) {
+        String className = clazz.getNameAsString();
+        
+        // CRITICAL FIX: Skip framework classes EARLY
+        if (shouldSkipClass(clazz)) {
+            System.out.println("Skipping class: " + className);
+            continue;
+        }
+        
+        System.out.println("Analyzing class: " + className);
+        
         analyzeEnumUsage(clazz, studentName);
 
         if (hasTypeField(clazz)) {
             detectTypeCheckingInMethods(clazz, studentName);
         }
-        
-        
     }
 
     // ========== INHERITANCE-BASED DETECTIONS ==========
     for (ClassOrInterfaceDeclaration clazz : classMap.values()) {
-
+        if (shouldSkipClass(clazz)) {
+            continue;
+        }
+        
         if (!clazz.getExtendedTypes().isEmpty()) {
             String parentName = clazz.getExtendedTypes(0).getNameAsString();
             ClassOrInterfaceDeclaration parentClass = classMap.get(parentName);
             
             if (parentClass != null) {
-    
                 detectRedundantOverrides(clazz, parentClass, studentName, classMap);
-
                 detectLSPViolations(clazz, parentClass, assignmentId);
             }
         }
     }
 
     detectMissingInheritance(classMap, studentName);
-
     detectRedundantSuperclass(classMap, studentName);
 }
 
@@ -324,6 +402,47 @@ private static void detectLSPViolations(ClassOrInterfaceDeclaration childClass,
     }
     
     return studentName;
+}
+
+private static boolean shouldSkipClass(ClassOrInterfaceDeclaration clazz) {
+    String className = clazz.getNameAsString();
+    
+    // Skip framework/boilerplate classes
+    if (className.equals("Main") || 
+        className.equals("MessageCli") ||
+        className.equals("Types") ||
+        className.equals("OperatorManagementSystem") || // If this is provided framework
+        className.endsWith("Test") ||
+        className.contains("Test") ||
+        className.startsWith("Test") ||
+        className.contains("CliTest")) {
+        return true;
+    }
+    
+    // Skip classes with only static methods (likely utilities)
+    boolean allMethodsStatic = true;
+    for (MethodDeclaration method : clazz.getMethods()) {
+        if (!method.isStatic()) {
+            allMethodsStatic = false;
+            break;
+        }
+    }
+    if (allMethodsStatic && clazz.getMethods().size() > 0) {
+        return true; // Skip utility classes
+    }
+    
+    // Skip empty classes
+    if (clazz.getMethods().isEmpty() && clazz.getFields().isEmpty()) {
+        return true;
+    }
+    
+    // Skip inner classes (they're part of another class's design)
+    Optional<Node> parent = clazz.getParentNode();
+    if (parent.isPresent() && parent.get() instanceof ClassOrInterfaceDeclaration) {
+        return true; // Skip inner classes
+    }
+    
+    return false;
 }
 
 private static void writeDetectorCandidates(String filename) {
@@ -405,6 +524,10 @@ private static String assessComplexity(BlockStmt body) {
     private static void addLLMCandidate(String assignmentId, String className, 
                                    String methodName, String issueType,
                                    Map<String, Object> evidence) {
+
+        if (shouldSkipClassName(className)) {
+        return;
+    }
     Map<String, Object> candidate = new HashMap<>();
     candidate.put("assignment", assignmentId);  // <-- KEY: "assignment" not "student"
     candidate.put("class", className);
@@ -563,6 +686,10 @@ private static String assessComplexity(BlockStmt body) {
 
     private static void analyzeEnumUsage(ClassOrInterfaceDeclaration clazz, 
                                     String studentName) {
+    // CRITICAL: Check if this is a Main class or should be skipped
+    if (shouldSkipClass(clazz)) {
+        return; // Exit immediately
+    }
     
     for (MethodDeclaration method : clazz.getMethods()) {
         Optional<BlockStmt> body = method.getBody();
@@ -571,7 +698,7 @@ private static String assessComplexity(BlockStmt body) {
         // Find ALL switches in this method
         List<SwitchStmt> switches = body.get().findAll(SwitchStmt.class);
         if (switches.isEmpty()) {
-            continue; // No switches in this method
+            continue; // No switches in this method - SKIP ENTIRELY
         }
         
         // Analyze ALL switches in this method
@@ -585,6 +712,14 @@ private static String assessComplexity(BlockStmt body) {
         
         for (SwitchStmt switchStmt : switches) {
             SwitchAnalysis analysis = analyzeSwitchComplexity(switchStmt);
+            
+            // Skip trivial switches (3 or fewer cases, no complex logic)
+            if (analysis.caseCount <= 3 && !analysis.hasComplexLogic) {
+                System.out.println("Skipping trivial switch: " + analysis.caseCount + " cases");
+                totalSwitches--;  // Decrement count for trivial switches
+                continue; // Skip to next switch
+            }
+            
             switchAnalyses.add(analysis);
             
             totalCases += analysis.caseCount;
@@ -598,7 +733,14 @@ private static String assessComplexity(BlockStmt body) {
                 highestSeverity = "HIGH";
             } else if (switchSeverity.equals("MEDIUM") && !highestSeverity.equals("HIGH")) {
                 highestSeverity = "MEDIUM";
+            } else if (highestSeverity.equals("LOW")) {
+                // Keep it LOW if no higher severity found
             }
+        }
+        
+        // Check if we have ANY valid switches left
+        if (totalSwitches == 0 || switchAnalyses.isEmpty()) {
+            continue; // Skip this method entirely
         }
         
         // Calculate averages
@@ -608,7 +750,7 @@ private static String assessComplexity(BlockStmt body) {
         // Determine overall pattern based on ALL switches in this method
         String overallPattern = determineOverallPattern(switchAnalyses);
         
-        // Output ONE CSV entry for this method (aggregating all switches)
+        // Only output ONCE per method with ALL switches aggregated
         String details = String.format(
             "Method contains %d switch(es) with %d total cases, avg %.1f cases/switch, pattern: %s",
             totalSwitches, totalCases, avgCases, overallPattern
@@ -620,43 +762,83 @@ private static String assessComplexity(BlockStmt body) {
             highestSeverity, // Use the highest severity among switches
             details);
         
-        // Create switch breakdown list first
+        // Create switch breakdown with more details
         List<Map<String, Object>> switchBreakdown = new ArrayList<>();
         for (SwitchAnalysis analysis : switchAnalyses) {
             Map<String, Object> switchInfo = new HashMap<>();
             switchInfo.put("patternType", analysis.patternType);
+            switchInfo.put("contentPattern", analysis.contentPattern);
             switchInfo.put("caseCount", analysis.caseCount);
             switchInfo.put("complexityScore", analysis.complexityScore);
             switchInfo.put("hasComplexLogic", analysis.hasComplexLogic);
             switchInfo.put("hasObjectCreation", analysis.hasObjectCreation);
+            
+            // Add what the switch actually does
+            switchInfo.put("isStringMapping", analysis.contentPattern.equals("STRING_MAPPING"));
+            switchInfo.put("isSimpleMapping", analysis.contentPattern.equals("SIMPLE_MAPPING") || 
+                                               analysis.contentPattern.equals("STRING_MAPPING"));
             switchBreakdown.add(switchInfo);
         }
 
-        // Create evidence map using HashMap (no size limit)
+        // Update evidence map
         Map<String, Object> evidence = new HashMap<>();
         evidence.put("totalSwitches", String.valueOf(totalSwitches));
         evidence.put("totalCases", String.valueOf(totalCases));
         evidence.put("avgCasesPerSwitch", String.format("%.1f", avgCases));
         evidence.put("avgComplexityScore", String.format("%.1f", avgComplexity));
         evidence.put("overallPattern", overallPattern);
+        evidence.put("contentPattern", getDominantContentPattern(switchAnalyses));
         evidence.put("hasComplexLogic", String.valueOf(hasComplexLogic));
         evidence.put("hasObjectCreation", String.valueOf(hasObjectCreation));
         evidence.put("highestSeverity", highestSeverity);
         evidence.put("methodSignature", method.getDeclarationAsString());
         evidence.put("switchBreakdown", switchBreakdown);
         evidence.put("suggestion", getSuggestionForSwitches(totalSwitches, avgCases, overallPattern));
+        evidence.put("isConfigurationSwitch", isConfigurationSwitch(switchAnalyses));
+        evidence.put("methodName", method.getNameAsString());
+        evidence.put("className", clazz.getNameAsString());
+        evidence.put("isEventHandler", method.getNameAsString().toLowerCase().contains("click") || 
+                                       method.getNameAsString().toLowerCase().contains("mouse") || 
+                                       method.getNameAsString().toLowerCase().contains("key"));
+        evidence.put("isGetterSetter", method.getNameAsString().startsWith("get") || 
+                                        method.getNameAsString().startsWith("set") ||
+                                        method.getNameAsString().startsWith("is"));
 
-        // Now call addLLMCandidate
+        // Now call addLLMCandidate - ONLY ONCE
         addLLMCandidate(studentName, clazz.getNameAsString(),
             method.getNameAsString(), "SwitchComplexity", evidence);
-        
-        // Check if chains on enum-like comparisons (separate detection)
-        analyzeIfChainsForPolymorphism(method, clazz, studentName);
     }
 }
 
+private static String getDominantContentPattern(List<SwitchAnalysis> analyses) {
+    if (analyses.isEmpty()) return "UNKNOWN";
+    
+    Map<String, Integer> patternCounts = new HashMap<>();
+    for (SwitchAnalysis analysis : analyses) {
+        patternCounts.put(analysis.contentPattern, 
+            patternCounts.getOrDefault(analysis.contentPattern, 0) + 1);
+    }
+    
+    return patternCounts.entrySet().stream()
+        .max(Map.Entry.comparingByValue())
+        .map(Map.Entry::getKey)
+        .orElse("MIXED");
+}
+
+private static boolean isConfigurationSwitch(List<SwitchAnalysis> analyses) {
+    for (SwitchAnalysis analysis : analyses) {
+        if (analysis.contentPattern.equals("STRING_MAPPING") || 
+            analysis.contentPattern.equals("SIMPLE_MAPPING")) {
+            return true;
+        }
+    }
+    return false;
+}
+
 private static String determineOverallPattern(List<SwitchAnalysis> analyses) {
-    if (analyses.isEmpty()) return "NO_SWITCHES";
+    if (analyses.isEmpty()) {
+        return "NO_VALID_SWITCHES";
+    }
     
     // Count pattern types
     Map<String, Integer> patternCounts = new HashMap<>();
@@ -673,6 +855,10 @@ private static String determineOverallPattern(List<SwitchAnalysis> analyses) {
 }
 
 private static String getSuggestionForSwitches(int totalSwitches, double avgCases, String pattern) {
+    if (pattern.equals("NO_VALID_SWITCHES")) {
+        return "No complex switches found"; // Or return null/empty
+    }
+    
     if (totalSwitches > 3) {
         return "Consider refactoring - too many switches in one method";
     }
@@ -688,64 +874,43 @@ private static String getSuggestionForSwitches(int totalSwitches, double avgCase
     return "Review for potential polymorphism replacement";
 }
 
-
-   
-
     private static String getSwitchSeverity(SwitchStmt switchStmt) {
-        List<SwitchEntry> entries = switchStmt.getEntries();
-        
-        int totalLines = 0;
-        int totalCases = 0;
-        int casesWithExecution = 0;
-        int casesWithObjectCreation = 0;
-        
-        for (SwitchEntry entry : entries) {
-            if (entry.getLabels().isEmpty()) continue;
-            totalCases++;
-            boolean hasExecution = false;
-            boolean hasObjectCreation = false;
-            
-            for (Statement stmt : entry.getStatements()) {
-                String stmtStr = stmt.toString().toLowerCase();
-                totalLines += stmtStr.split("\n").length;
-                
-                if (stmtStr.contains("round++") ||
-                    stmtStr.contains("++") ||
-                    stmtStr.contains("--") ||
-                    stmtStr.contains(".add(") ||
-                    stmtStr.contains("if(") ||
-                    stmtStr.contains("while(") ||
-                    stmtStr.contains("print")) {
-                    hasExecution = true;
-                }
-                
-                if (stmtStr.contains("new ") || stmtStr.contains("factory")) {
-                    hasObjectCreation = true;
-                }
-            }
-            
-            if (hasExecution) casesWithExecution++;
-            if (hasObjectCreation) casesWithObjectCreation++;
+    // Get full analysis (already includes content pattern)
+    SwitchAnalysis analysis = analyzeSwitchComplexity(switchStmt);
+    
+    // ========== NEW LOGIC FIRST ==========
+    // Content-based severity overrides
+    if (analysis.contentPattern.equals("STRING_MAPPING") || 
+        analysis.contentPattern.equals("SIMPLE_MAPPING")) {
+        return "LOW"; // Simple mapping switches are fine
+    } else if (analysis.contentPattern.equals("METHOD_DISPATCH")) {
+        // Method dispatch could be problematic
+        if (analysis.hasObjectCreation && analysis.caseCount > 3) {
+            return "MEDIUM"; // Factory with many cases
+        } else {
+            return "LOW"; // Simple method dispatch
         }
-        
-        if (totalCases == 0) return "LOW";
-        double avgLines = (double) totalLines / totalCases;
+    } else if (analysis.contentPattern.equals("COMPLEX_LOGIC")) {
+        return "HIGH"; // Complex logic is always high
+    } else if (analysis.contentPattern.equals("STATE_CHANGE")) {
+        return "MEDIUM"; // State changes are medium
+    }
+    
+    // ========== ORIGINAL LOGIC (for other patterns) ==========
+    if (analysis.caseCount == 0) return "LOW";
+    double avgLines = analysis.avgLinesPerCase;
 
-        if (casesWithExecution > totalCases * 0.7 || avgLines >= 5.0) {
-            return "HIGH";
-        }
-        
-        if (casesWithExecution > 0 && casesWithObjectCreation > 0) {
-            return "MEDIUM";
-        }
-        
-        if (casesWithObjectCreation >= totalCases * 0.7 && avgLines <= 3.0) {
-            return "LOW";
-        }
-        
+    if (analysis.hasComplexLogic || avgLines >= 5.0) {
+        return "HIGH";
+    } else if (analysis.hasObjectCreation && avgLines >= 3.0) {
+        return "MEDIUM";
+    } else if (analysis.hasObjectCreation && avgLines <= 2.0) {
+        return "LOW";
+    } else {
+        // Default for remaining cases
         return "MEDIUM";
     }
-
+}
     private static void detectRedundantOverrides(ClassOrInterfaceDeclaration child, 
                                             ClassOrInterfaceDeclaration parent, 
                                             String studentName,
@@ -1140,6 +1305,7 @@ private static boolean isPureFunction(MethodDeclaration method, BlockStmt body) 
 // Helper class for switch analysis
 static class SwitchAnalysis {
     String patternType;
+    String contentPattern;  // NEW
     int caseCount;
     double avgLinesPerCase;
     boolean hasComplexLogic;
@@ -1151,6 +1317,7 @@ private static SwitchAnalysis analyzeSwitchComplexity(SwitchStmt switchStmt) {
     SwitchAnalysis analysis = new SwitchAnalysis();
     List<SwitchEntry> entries = switchStmt.getEntries();
     
+    // ========== ORIGINAL LOGIC FIRST ==========
     int totalCases = 0;
     int totalLines = 0;
     int casesWithLogic = 0;
@@ -1188,6 +1355,7 @@ private static SwitchAnalysis analyzeSwitchComplexity(SwitchStmt switchStmt) {
         if (hasObjects) casesWithObjects++;
     }
     
+    // SET BASIC ANALYSIS FIELDS
     analysis.caseCount = totalCases;
     analysis.avgLinesPerCase = totalCases > 0 ? (double) totalLines / totalCases : 0;
     analysis.hasComplexLogic = casesWithLogic > 0;
@@ -1204,87 +1372,122 @@ private static SwitchAnalysis analyzeSwitchComplexity(SwitchStmt switchStmt) {
         analysis.patternType = "MIXED_LOGIC";
     }
     
-    // Calculate complexity score
+    // Calculate initial complexity score
     analysis.complexityScore = (int) (analysis.avgLinesPerCase * 5) + 
                                (casesWithLogic * 3) + 
                                (casesWithObjects * 2) + 
                                totalCases;
     
+    // ========== NEW: CONTENT ANALYSIS ==========
+    analysis.contentPattern = analyzeSwitchContent(switchStmt);
+    
+    // ========== ADJUST BASED ON CONTENT ==========
+    if (analysis.contentPattern.equals("STRING_MAPPING") || 
+        analysis.contentPattern.equals("SIMPLE_MAPPING")) {
+        // Simple mappings are much less complex
+        analysis.complexityScore = Math.max(1, analysis.complexityScore / 3);
+        analysis.hasComplexLogic = false; // Override - simple returns aren't complex
+    } else if (analysis.contentPattern.equals("METHOD_DISPATCH")) {
+        // Method dispatch is somewhat complex
+        if (!analysis.hasComplexLogic && analysis.caseCount <= 4) {
+            analysis.complexityScore = Math.max(1, analysis.complexityScore / 2);
+        }
+    }
+    // COMPLEX_LOGIC and STATE_CHANGE keep their original scores
+    
     return analysis;
 }
 
-private static void analyzeIfChainsForPolymorphism(MethodDeclaration method, 
-                                                  ClassOrInterfaceDeclaration clazz, 
-                                                  String studentName) {
-    BlockStmt body = method.getBody().orElse(null);
-    if (body == null) return;
+private static String analyzeSwitchContent(SwitchStmt switchStmt) {
+    List<SwitchEntry> entries = switchStmt.getEntries();
     
-    List<IfStmt> ifStatements = body.findAll(IfStmt.class);
-    if (ifStatements.size() < 2) return; // Need at least 2 ifs to be a chain
+    int stringReturns = 0;
+    int methodCalls = 0;
+    int assignments = 0;
+    int complexLogic = 0;
+    int totalCases = 0;
+    boolean allReturn = true;
+    boolean allSameType = true;
+    String firstReturnType = null;
     
-    // Check for chains of if-else checking the same variable
-    Map<String, Integer> varCheckCounts = new HashMap<>();
-    for (IfStmt ifStmt : ifStatements) {
-        Expression cond = ifStmt.getCondition();
+    // First pass: count non-default cases
+    for (SwitchEntry entry : entries) {
+        if (!entry.getLabels().isEmpty()) {
+            totalCases++;
+        }
+    }
+    
+    // If no actual cases (only default), return early
+    if (totalCases == 0) {
+        return "DEFAULT_ONLY";
+    }
+    
+    // Second pass: analyze content
+    for (SwitchEntry entry : entries) {
+        List<Statement> statements = entry.getStatements();
+        if (statements.isEmpty()) {
+            continue;
+        }
         
-        // Check for instanceof or .equals comparisons
-        if (cond instanceof InstanceOfExpr) {
-            InstanceOfExpr instanceOf = (InstanceOfExpr) cond;
-            String varName = instanceOf.getExpression().toString();
-            varCheckCounts.put(varName, varCheckCounts.getOrDefault(varName, 0) + 1);
-        } else if (cond instanceof MethodCallExpr) {
-            MethodCallExpr call = (MethodCallExpr) cond;
-            if (call.getNameAsString().equals("equals")) {
-                if (call.getScope().isPresent()) {
-                    String varName = call.getScope().get().toString();
-                    varCheckCounts.put(varName, varCheckCounts.getOrDefault(varName, 0) + 1);
+        // Check last statement type
+        Statement lastStmt = statements.get(statements.size() - 1);
+        if (lastStmt instanceof ReturnStmt) {
+            ReturnStmt returnStmt = (ReturnStmt) lastStmt;
+            if (returnStmt.getExpression().isPresent()) {
+                Expression expr = returnStmt.getExpression().get();
+                
+                if (expr instanceof StringLiteralExpr) {
+                    stringReturns++;
+                    if (firstReturnType == null) {
+                        firstReturnType = "STRING_LITERAL";
+                    } else if (!firstReturnType.equals("STRING_LITERAL")) {
+                        allSameType = false;
+                    }
+                } else if (expr instanceof NameExpr || expr instanceof FieldAccessExpr) {
+                    if (firstReturnType == null) {
+                        firstReturnType = "VARIABLE";
+                    } else if (!firstReturnType.equals("VARIABLE")) {
+                        allSameType = false;
+                    }
+                } else if (expr instanceof MethodCallExpr) {
+                    methodCalls++;
+                    if (firstReturnType == null) {
+                        firstReturnType = "METHOD_CALL";
+                    } else if (!firstReturnType.equals("METHOD_CALL")) {
+                        allSameType = false;
+                    }
                 }
             }
-        } else if (cond instanceof BinaryExpr) {
-            BinaryExpr binary = (BinaryExpr) cond;
-            if (binary.getOperator() == BinaryExpr.Operator.EQUALS ||
-                binary.getOperator() == BinaryExpr.Operator.NOT_EQUALS) {
-                // Check if one side is a variable and the other is a constant/type
-                Expression left = binary.getLeft();
-                Expression right = binary.getRight();
-                
-                if (left instanceof NameExpr) {
-                    String varName = ((NameExpr) left).getNameAsString();
-                    if (right instanceof FieldAccessExpr || 
-                        right instanceof NameExpr && 
-                        Character.isUpperCase(right.toString().charAt(0))) {
-                        varCheckCounts.put(varName, varCheckCounts.getOrDefault(varName, 0) + 1);
-                    }
-                } else if (right instanceof NameExpr) {
-                    String varName = ((NameExpr) right).getNameAsString();
-                    if (left instanceof FieldAccessExpr || 
-                        left instanceof NameExpr && 
-                        Character.isUpperCase(left.toString().charAt(0))) {
-                        varCheckCounts.put(varName, varCheckCounts.getOrDefault(varName, 0) + 1);
-                    }
+        } else {
+            allReturn = false;
+        }
+        
+        // Check for complex logic
+        for (Statement stmt : statements) {
+            if (stmt instanceof IfStmt || stmt instanceof ForStmt || 
+                stmt instanceof WhileStmt || stmt instanceof DoStmt) {
+                complexLogic++;
+                break;
+            }
+            if (stmt instanceof ExpressionStmt) {
+                ExpressionStmt exprStmt = (ExpressionStmt) stmt;
+                if (exprStmt.getExpression() instanceof AssignExpr) {
+                    assignments++;
+                } else if (exprStmt.getExpression() instanceof MethodCallExpr) {
+                    methodCalls++;
                 }
             }
         }
     }
     
-    // Report suspicious chains
-    for (Map.Entry<String, Integer> entry : varCheckCounts.entrySet()) {
-        if (entry.getValue() >= 3) { // Chain of 3+ checks on same variable
-            String details = "Chained type checks on variable: " + entry.getKey() + 
-                           " (" + entry.getValue() + " checks)";
-            addCsvRow(studentName, clazz.getNameAsString(),
-                method.getNameAsString(), "TypeCheckingChain",
-                "MEDIUM", details);
-            addLLMCandidate(studentName, clazz.getNameAsString(),
-                method.getNameAsString(), "TypeCheckingChain",
-                Map.of(
-                    "variable", entry.getKey(),
-                    "checkCount", String.valueOf(entry.getValue()),
-                    "pattern", "CHAINED_TYPE_CHECKS",
-                    "suggestion", "Consider polymorphism instead of explicit type checking"
-                ));
-        }
-    }
+    // Determine pattern
+    if (allReturn && stringReturns == totalCases) return "STRING_MAPPING";
+    if (allReturn && allSameType && complexLogic == 0) return "SIMPLE_MAPPING";
+    if (methodCalls > totalCases * 0.5) return "METHOD_DISPATCH";
+    if (complexLogic > 0) return "COMPLEX_LOGIC";
+    if (assignments > 0) return "STATE_CHANGE";
+    
+    return "MIXED";
 }
 
 
