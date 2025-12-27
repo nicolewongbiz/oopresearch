@@ -1,0 +1,48 @@
+============================================================
+LLM ANALYSIS STATISTICS
+============================================================
+Timestamp: 2025-12-27 16:00:34.981092
+
+Total candidates loaded: 114
+After deduplication: 114
+Duplicates removed: 0
+
+ANALYSIS RESULTS
+----------------------------------------
+Total analyzed: 114
+Confirmed (YES): 106 (93.0%)
+Rejected (NO): 8 (7.0%)
+Errors/Unknown: 0 (0.0%)
+
+BREAKDOWN BY ANTIPATTERN
+----------------------------------------
+SwitchComplexity:
+  Analyzed: 100
+  Confirmed: 95 (95.0%)
+  Rejected: 5
+
+PotentialMissingInheritance:
+  Analyzed: 3
+  Confirmed: 0 (0.0%)
+  Rejected: 3
+
+PotentialMissingInheritanceGroup:
+  Analyzed: 4
+  Confirmed: 4 (100.0%)
+  Rejected: 0
+
+RedundantInheritance:
+  Analyzed: 6
+  Confirmed: 6 (100.0%)
+  Rejected: 0
+
+RedundantInheritanceGroup:
+  Analyzed: 1
+  Confirmed: 1 (100.0%)
+  Rejected: 0
+
+PERFORMANCE METRICS
+----------------------------------------
+Total time: 278.8s
+Average per candidate: 2.45s
+Candidates per minute: 24.5

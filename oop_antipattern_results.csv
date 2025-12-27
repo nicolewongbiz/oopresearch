@@ -1,1 +1,3289 @@
 "Assignment","Class","Method","Antipattern","Confirmed","Explanation","Evidence"
+"assignment-2-191","Side","setSizePrice","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `setSizePrice` method exhibits complex logic and has a complexity score of 18.0, which indicates that it is not a simple mapping and involves more than just straightforward case handling. Given that it has complex logic and is not a simple switch with only a few cases, it suggests that the current implementation may be difficult to maintain and extend. Refactoring with polymorphism could simplify the code by encapsulating the behavior associated with each case into separate","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""setSizePrice"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Side"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 18.0
+    }
+  ],
+  ""avgComplexityScore"": ""18.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": true,
+  ""methodSignature"": ""public void setSizePrice()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""2.0"",
+  ""totalCases"": ""2""
+}"
+"assignment-2-75","BurgerShop","addSnack","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `addSnack` method of the `BurgerShop` class exhibits a complexity score of 22.0, which indicates that it contains complex logic despite having only three cases. The presence of mixed content patterns and the suggestion to review for potential polymorphism replacement further highlight that the current implementation may not be optimal. Given that the switch has complex logic and does not follow the typical pattern of simple cases, refactoring with polymorphism could lead to cleaner,","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""addSnack"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    }
+  ],
+  ""avgComplexityScore"": ""22.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addSnack(String name, float price, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-75","BurgerShop","addDrink","SwitchComplexity","YES","**Answer: YES**: The switch statement in the `addDrink` method exhibits complex logic and a high complexity score of 22.0, which indicates that it may be handling multiple responsibilities or conditions that could be better managed through polymorphism. Given that there are 3 cases and the overall pattern is classified as SIMPLE_DISPATCH, this suggests that the switch is not merely a straightforward mapping but involves more intricate decision-making. Refactoring to use polymorphism could enhance maintainability, readability, and","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""addDrink"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    }
+  ],
+  ""avgComplexityScore"": ""22.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addDrink(String name, float price, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-180","BurgerShop","addSnack","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `addSnack` method of the `BurgerShop` class exhibits complex logic and has a complexity score of 13.0, which indicates that it is not a simple mapping and involves more than just straightforward case handling. Given that it has complex logic and is not a simple switch with only a few cases, it suggests that the current implementation may be difficult to maintain and extend. Refactoring with polymorphism could simplify the code, improve readability, and","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""addSnack"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 13.0
+    }
+  ],
+  ""avgComplexityScore"": ""13.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addSnack(String name, float price, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""2.0"",
+  ""totalCases"": ""2""
+}"
+"assignment-2-180","BurgerShop","addDrink","SwitchComplexity","YES","**Answer: YES**: The switch statement in the `addDrink` method exhibits complex logic and has a relatively high complexity score of 13.0, which indicates that it may be handling more than just simple case mappings. Given that it has complex logic and is not a simple mapping, it suggests that the switch could benefit from refactoring to use polymorphism. This would enhance maintainability and readability, especially if the logic within the cases is intricate or if the number of cases is expected to","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""addDrink"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 13.0
+    }
+  ],
+  ""avgComplexityScore"": ""13.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addDrink(String name, float price, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""2.0"",
+  ""totalCases"": ""2""
+}"
+"assignment-2-180","BurgerShop","addCombo","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `addCombo` method of the `BurgerShop` class exhibits complex logic, as indicated by the complexity score of 28.0 and the classification as a state machine pattern. Given that the switch has mixed content and is not a simple mapping, it suggests that the logic is not straightforward and may lead to difficulties in maintenance and readability. Refactoring this switch statement using polymorphism, such as implementing the State pattern, would enhance code clarity, reduce","{
+  ""overallPattern"": ""STATE_MACHINE"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""State machine pattern detected - consider State pattern"",
+  ""methodName"": ""addCombo"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""STATE_MACHINE"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 28.0
+    }
+  ],
+  ""avgComplexityScore"": ""28.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addCombo(String nameBurger, float priceBurger, String nameSnack, float priceSnack, String nameDrink, float priceDrink, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""2.0"",
+  ""totalCases"": ""2""
+}"
+"assignment-2-180","BurgerShop","confirmOrder","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `confirmOrder` method of the `BurgerShop` class exhibits high complexity, as indicated by the complexity score of 17.0 and the presence of complex logic. With a total of 6 cases across 2 switches, the average complexity per switch is also significant. Given that the guidelines suggest that switches with complex logic are likely candidates for refactoring, and considering the suggestion to review for potential polymorphism replacement, it would be prudent to ref","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""confirmOrder"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 17.0
+    },
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 17.0
+    }
+  ],
+  ""avgComplexityScore"": ""17.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void confirmOrder()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""2"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""6""
+}"
+"assignment-2-182","BurgerShop","confirmOrder","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `confirmOrder` method of the `BurgerShop` class exhibits a complexity score of 22.0, which indicates that it contains complex logic and is not a simple mapping. Given that the switch has mixed content and involves three cases, the complexity is high enough to suggest that it may be beneficial to refactor it using polymorphism. This approach could enhance maintainability and readability by replacing the switch statement with a more flexible design, such as a","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""confirmOrder"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    }
+  ],
+  ""avgComplexityScore"": ""22.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void confirmOrder()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-184","ItemCart","addSnack","SwitchComplexity","YES","**Answer: YES**: The switch statement in the `addSnack` method has a complexity score of 22.0 and contains complex logic, which indicates that it is not straightforward and may lead to maintenance challenges. Given that it has mixed content patterns and is not a simple mapping, refactoring with polymorphism could simplify the code structure, enhance readability, and make it easier to extend in the future.","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""addSnack"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""ItemCart"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    }
+  ],
+  ""avgComplexityScore"": ""22.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addSnack(String snackName, float snackPrice, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-184","ItemCart","addDrink","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `addDrink` method exhibits complex logic and a high complexity score of 22. Given that it has mixed content patterns and is not a simple mapping, this indicates that the logic within the switch is not straightforward. The presence of complex logic, combined with the suggestion to review for potential polymorphism replacement, suggests that refactoring to use polymorphism could simplify the code and improve maintainability. Additionally, the switch statement has 3 cases, which,","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""addDrink"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""ItemCart"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    }
+  ],
+  ""avgComplexityScore"": ""22.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addDrink(String drinkName, float drinkPrice, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-184","ItemCart","remove","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `remove` method of the `ItemCart` class exhibits high complexity, with an average complexity score of 30.7 and a total of 10 cases across 3 switches. The presence of complex logic and the classification as a state machine further indicate that the switch is not straightforward. Given these factors, refactoring with polymorphism could simplify the code, enhance maintainability, and improve readability by replacing the switch logic with a more object-oriented approach","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""remove"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""ItemCart"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""STATE_MACHINE"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 4.0,
+      ""complexityScore"": 48.0
+    },
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    },
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    }
+  ],
+  ""avgComplexityScore"": ""30.7"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void remove(int id)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""3"",
+  ""avgCasesPerSwitch"": ""3.3"",
+  ""totalCases"": ""10""
+}"
+"assignment-2-69","BurgerShop","confirmOrder","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `confirmOrder` method of the `BurgerShop` class exhibits high complexity, as indicated by the complexity score of 18.0 and the presence of complex logic within the cases. With a total of 4 cases across 2 switches, the average complexity is also significant. Given that the guidelines suggest that switches with complex logic are likely candidates for refactoring, and considering the suggestion to review for potential polymorphism replacement, it would be prudent to","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""confirmOrder"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 18.0
+    },
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 18.0
+    }
+  ],
+  ""avgComplexityScore"": ""18.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void confirmOrder()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""2"",
+  ""avgCasesPerSwitch"": ""2.0"",
+  ""totalCases"": ""4""
+}"
+"assignment-2-62","BurgerShop","addCombo","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `addCombo` method of the `BurgerShop` class exhibits complex logic with a complexity score of 23.0, which indicates that it is not a simple mapping and involves more intricate decision-making. Given that it is identified as a state machine pattern, this suggests that the logic could be better managed using the State pattern, which would enhance maintainability and readability. Refactoring to use polymorphism would allow for cleaner code, easier testing, and","{
+  ""overallPattern"": ""STATE_MACHINE"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""State machine pattern detected - consider State pattern"",
+  ""methodName"": ""addCombo"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""STATE_MACHINE"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 23.0
+    }
+  ],
+  ""avgComplexityScore"": ""23.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addCombo(String nameBurger, float priceBurger, String nameSnack, float priceSnack, String nameDrink, float priceDrink, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""2.0"",
+  ""totalCases"": ""2""
+}"
+"assignment-2-61","Cart","calculateEstSec","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `calculateEstSec` method exhibits complex logic, as indicated by the high complexity scores (78.0 and 47.0) and the overall pattern identified as a state machine. With a total of 7 cases and an average complexity score of 62.5, the switch statement is not only complex but also indicates a potential violation of the Single Responsibility Principle. Refactoring this switch statement into a state pattern or using polymorphism would enhance maintain","{
+  ""overallPattern"": ""STATE_MACHINE"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""State machine pattern detected - consider State pattern"",
+  ""methodName"": ""calculateEstSec"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Cart"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""COMPLEX_LOGIC"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""STATE_MACHINE"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 4.0,
+      ""complexityScore"": 78.0
+    },
+    {
+      ""contentPattern"": ""COMPLEX_LOGIC"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""STATE_MACHINE"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 47.0
+    }
+  ],
+  ""avgComplexityScore"": ""62.5"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""COMPLEX_LOGIC"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""private int calculateEstSec()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""2"",
+  ""avgCasesPerSwitch"": ""3.5"",
+  ""totalCases"": ""7""
+}"
+"assignment-2-175","Item","SizeCost","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `SizeCost` method exhibits complex logic and has a complexity score of 18.0, which indicates that it is not a simple mapping and involves more than just straightforward case handling. Given that it has complex logic and is not a simple switch with only a few cases, it suggests that the current implementation may benefit from refactoring to use polymorphism. This could improve maintainability and readability by encapsulating the behavior associated with different cases into separate classes","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""SizeCost"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Item"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 18.0
+    }
+  ],
+  ""avgComplexityScore"": ""18.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""protected float SizeCost(float price, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""2.0"",
+  ""totalCases"": ""2""
+}"
+"assignment-2-175","Combo","SizeCost","SwitchComplexity","YES","Answer: YES: The switch statement in the `SizeCost` method exhibits complex logic with a complexity score of 27.0 and is identified as a state machine pattern. Given that it has more than 3 cases and involves complex logic, it suggests that the switch statement could become difficult to maintain and extend. Refactoring to use the State pattern would enhance readability, reduce complexity, and improve the overall design by leveraging polymorphism.","{
+  ""overallPattern"": ""STATE_MACHINE"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""State machine pattern detected - consider State pattern"",
+  ""methodName"": ""SizeCost"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Combo"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""STATE_MACHINE"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 27.0
+    }
+  ],
+  ""avgComplexityScore"": ""27.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""private float SizeCost(float priceBurger, float priceSnack, float priceDrink, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-54","Drink","setPrice","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `setPrice` method of the `Drink` class exhibits complex logic, as indicated by the complexity score of 17.0 and the presence of multiple cases (3 total). Given that the switch is categorized as having complex logic and is not a simple mapping, it suggests that the logic could be difficult to maintain and extend. Refactoring this switch statement to use polymorphism could improve code readability, reduce complexity, and enhance maintainability by encapsulating","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""setPrice"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Drink"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 17.0
+    }
+  ],
+  ""avgComplexityScore"": ""17.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": true,
+  ""methodSignature"": ""public void setPrice()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-54","Snack","setPrice","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `setPrice` method of the `Snack` class exhibits complex logic with a complexity score of 17.0, which indicates that it is not a simple dispatch. Given that there are 3 cases and the presence of complex logic, this suggests that the switch statement may be handling multiple states or behaviors that could be better represented using polymorphism. Refactoring to use polymorphism could improve code readability, maintainability, and extensibility by encapsulating","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""setPrice"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Snack"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 17.0
+    }
+  ],
+  ""avgComplexityScore"": ""17.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": true,
+  ""methodSignature"": ""public void setPrice()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-53","Order","setCount","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `setCount` method exhibits complex logic with a high complexity score of 28.0 and contains 4 cases, which indicates that it is not a simple mapping. Given that the overall pattern is classified as ""MIXED_LOGIC"" and the suggestion is to review for potential polymorphism replacement, it suggests that the current implementation may be difficult to maintain and understand. Refactoring this switch statement into a polymorphic design could enhance readability, reduce","{
+  ""overallPattern"": ""MIXED_LOGIC"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""setCount"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Order"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""MIXED_LOGIC"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 4.0,
+      ""complexityScore"": 28.0
+    }
+  ],
+  ""avgComplexityScore"": ""28.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": true,
+  ""methodSignature"": ""public void setCount(char type, String size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""4.0"",
+  ""totalCases"": ""4""
+}"
+"assignment-2-53","Food","chooseSize","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `chooseSize` method exhibits complex logic with a complexity score of 17.0, which indicates that it is not a simple mapping and involves more intricate decision-making. Given that the switch has 3 cases and is categorized as having complex logic, it suggests that the current implementation may be difficult to maintain and extend. Refactoring this switch statement to use polymorphism could enhance code readability, reduce complexity, and improve maintainability by encapsulating behavior in","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""chooseSize"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Food"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 17.0
+    }
+  ],
+  ""avgComplexityScore"": ""17.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""protected void chooseSize(SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-280","CartItems","setPrice","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `setPrice` method exhibits complex logic and has a complexity score of 18.0, which indicates that it is not a simple mapping and involves more intricate decision-making. Given that it has only 2 cases but is classified as having complex logic, this suggests that the current implementation may be difficult to maintain and extend. Refactoring with polymorphism could simplify the code by encapsulating the behavior associated with each case into separate classes, thereby enhancing readability","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""setPrice"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""CartItems"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 18.0
+    }
+  ],
+  ""avgComplexityScore"": ""18.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": true,
+  ""methodSignature"": ""public void setPrice()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""2.0"",
+  ""totalCases"": ""2""
+}"
+"assignment-2-49","BurgerShop; Cart","clearCart; removeItem","PotentialMissingInheritanceGroup","YES","Answer: YES: The presence of multiple methods with similar names and functionality in different classes (BurgerShop and Cart) suggests a lack of a proper inheritance hierarchy. This indicates that there may be an opportunity to refactor the code to promote code reuse and maintainability by introducing a common ancestor or interface that encapsulates the shared behavior. The absence of a common ancestor and the weak relationship between the classes further support the need for a design improvement.","{
+  ""details"": ""Multiple methods suggest missing inheritance hierarchy"",
+  ""methodExamples"": ""public void clearCart() | public void removeItem(int posCart)"",
+  ""similarityScore"": ""0"",
+  ""sharedMethodNames"": ""clearCart; removeItem"",
+  ""weaklyRelated"": ""true"",
+  ""hasCommonAncestor"": ""false"",
+  ""classes"": ""BurgerShop; Cart"",
+  ""sharedMethodsCount"": ""2"",
+  ""methodSignatures"": ""void clearCart(); void removeItem(int)""
+}"
+"assignment-2-281","BurgerShop","missedCombo","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `missedCombo` method of the `BurgerShop` class exhibits complex logic and has a high complexity score of 22.0, which indicates that it is not straightforward and may lead to maintenance challenges. Additionally, the presence of mixed content patterns and the fact that it is not a simple mapping further suggest that the logic could be better organized. Refactoring this switch statement to use polymorphism could enhance code readability, reduce complexity, and make it","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""missedCombo"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    },
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    }
+  ],
+  ""avgComplexityScore"": ""22.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public boolean missedCombo()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""2"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""6""
+}"
+"assignment-2-161","BurgerShop","confirmOrder","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `confirmOrder` method of the `BurgerShop` class exhibits high complexity, with a complexity score of 31.0 and 4 cases, indicating that it likely contains complex logic. Given that it follows a state machine pattern, it suggests that the logic could be better managed using the State pattern, which would enhance maintainability and readability. Refactoring to use polymorphism would help eliminate the need for the switch statement, making the code cleaner and","{
+  ""overallPattern"": ""STATE_MACHINE"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""State machine pattern detected - consider State pattern"",
+  ""methodName"": ""confirmOrder"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""STATE_MACHINE"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 4.0,
+      ""complexityScore"": 31.0
+    }
+  ],
+  ""avgComplexityScore"": ""31.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void confirmOrder()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""4.0"",
+  ""totalCases"": ""4""
+}"
+"assignment-2-278","BurgerShop","findNewPrice","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `findNewPrice` method exhibits complex logic and has a complexity score of 18.0, which indicates that it is not a simple mapping and involves more intricate decision-making. Given that there are only 2 cases, the complexity suggests that the logic may be better handled through polymorphism, which can enhance maintainability and readability. Additionally, the suggestion to review for potential polymorphism replacement aligns with the findings, indicating that refactoring could simplify the","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""findNewPrice"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 18.0
+    }
+  ],
+  ""avgComplexityScore"": ""18.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public float findNewPrice(float originalPrice, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""2.0"",
+  ""totalCases"": ""2""
+}"
+"assignment-2-274","Burger","","RedundantInheritance","YES","Answer: YES: The inheritance is redundant because the `Burger` class inherits from the `Item` class but does not override or utilize any of the methods or properties from the `Item` class. This suggests that the `Burger` class does not benefit from the inheritance, making it unnecessary.","{
+  ""severity"": ""HIGH"",
+  ""parentClass"": ""Item"",
+  ""details"": ""Class inherits but does not override/reuse superclass methods"",
+  ""childClass"": ""Burger""
+}"
+"assignment-2-153","Food","","RedundantInheritance","YES","Answer: YES: The inheritance is redundant because the child class ""Food"" does not override or utilize any methods or features from the parent class ""BurgerShop."" This indicates that the child class does not benefit from the inheritance, making it unnecessary.","{
+  ""severity"": ""HIGH"",
+  ""parentClass"": ""BurgerShop"",
+  ""details"": ""Class inherits but does not override/reuse superclass methods"",
+  ""childClass"": ""Food""
+}"
+"assignment-2-154","MenuItems","priceWithSize","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `priceWithSize` method exhibits complex logic and has a complexity score of 18.0, which indicates that it is not a simple mapping and involves more than just straightforward case handling. Given that it has only 2 cases but is classified as having complex logic, this suggests that the logic within each case may be intricate or involve significant processing. 
+
+Additionally, the suggestion to ""Review for potential polymorphism replacement"" implies that there may be a","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""priceWithSize"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""MenuItems"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 18.0
+    }
+  ],
+  ""avgComplexityScore"": ""18.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public float priceWithSize(float price, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""2.0"",
+  ""totalCases"": ""2""
+}"
+"assignment-2-155","Drink","getTrueCost","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `getTrueCost` method exhibits complex logic and has a complexity score of 17.0, which indicates that it is not a simple mapping and involves more intricate decision-making. Given that it has 3 cases and is categorized as a ""STATE_CHANGE,"" it suggests that the logic may be better represented using polymorphism, such as through a state machine or strategy pattern. This would enhance maintainability and readability, reducing the risk of errors associated with","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""getTrueCost"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Drink"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 17.0
+    }
+  ],
+  ""avgComplexityScore"": ""17.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": true,
+  ""methodSignature"": ""private void getTrueCost()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-155","Snack","getTrueCost","SwitchComplexity","YES","**Answer: YES**: The switch statement in the `getTrueCost` method exhibits complex logic and has a complexity score of 17.0, which indicates that it is not a simple mapping and involves more intricate decision-making. Given that it has 3 cases and is categorized as a state change, it suggests that the logic could be better managed through polymorphism, potentially improving maintainability and readability. Refactoring to use polymorphism could simplify the code structure and reduce the complexity associated with the","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""getTrueCost"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Snack"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 17.0
+    }
+  ],
+  ""avgComplexityScore"": ""17.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": true,
+  ""methodSignature"": ""private void getTrueCost()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-155","BurgerShop","confirmOrder","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `confirmOrder` method of the `BurgerShop` class exhibits complex logic and has a high complexity score of 22.0, which indicates that the logic is not straightforward and may be difficult to maintain or extend. Additionally, the presence of multiple cases (6 total across 2 switches) and the indication of potential state changes suggest that the switch statement could benefit from a more flexible design, such as polymorphism. Refactoring to use polymorphism","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""confirmOrder"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    },
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    }
+  ],
+  ""avgComplexityScore"": ""22.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void confirmOrder()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""2"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""6""
+}"
+"assignment-2-271","OrderCheck; ItemsInCart","printCart; getTotalPrice","PotentialMissingInheritanceGroup","YES","Answer: YES: The presence of multiple methods with similar names and functionality across different classes (OrderCheck and ItemsInCart) without a common ancestor suggests a lack of a proper inheritance hierarchy. This can lead to code duplication and maintenance challenges, indicating a violation of the DRY (Don't Repeat Yourself) principle in OOP. Establishing a common superclass or interface could help unify these methods and promote better code organization.","{
+  ""details"": ""Multiple methods suggest missing inheritance hierarchy"",
+  ""methodExamples"": ""public void printCart(Float total) | public float getTotalPrice()"",
+  ""similarityScore"": ""8"",
+  ""sharedMethodNames"": ""printCart; getTotalPrice"",
+  ""weaklyRelated"": ""true"",
+  ""hasCommonAncestor"": ""false"",
+  ""classes"": ""OrderCheck; ItemsInCart"",
+  ""sharedMethodsCount"": ""2"",
+  ""methodSignatures"": ""void printCart(Float); float getTotalPrice()""
+}"
+"assignment-2-150","BurgerShop","confirmOrder","SwitchComplexity","YES","Answer: YES: The switch statement in the `confirmOrder` method exhibits complex logic with a high complexity score of 88.0 and contains 4 cases, indicating that it is not a simple mapping. Given that it follows a state machine pattern, refactoring it using the State pattern would enhance maintainability and readability, reducing the risk of errors associated with complex switch statements.","{
+  ""overallPattern"": ""STATE_MACHINE"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""State machine pattern detected - consider State pattern"",
+  ""methodName"": ""confirmOrder"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""COMPLEX_LOGIC"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""STATE_MACHINE"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 4.0,
+      ""complexityScore"": 88.0
+    }
+  ],
+  ""avgComplexityScore"": ""88.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""COMPLEX_LOGIC"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void confirmOrder()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""4.0"",
+  ""totalCases"": ""4""
+}"
+"assignment-2-268","BurgerShop","removeItem","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `removeItem` method of the `BurgerShop` class exhibits a complexity score of 22.0, which indicates that it contains complex logic and is not a simple mapping. With a total of 6 cases across 2 switches, the average complexity is high, and the presence of mixed content patterns further complicates the logic. Given these factors, it is advisable to consider refactoring the switch statement with polymorphism to improve maintainability and readability","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""removeItem"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    },
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    }
+  ],
+  ""avgComplexityScore"": ""22.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void removeItem(int posCart)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""2"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""6""
+}"
+"assignment-2-269","BurgerShop","confirmOrder","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `confirmOrder` method of the `BurgerShop` class exhibits complex logic, as indicated by the complexity score of 53.0 and the classification as a state machine pattern. Given that it has 3 cases and is not a simple mapping, the complexity suggests that the switch statement is handling intricate decision-making processes. This complexity can lead to difficulties in maintenance, readability, and testing.
+
+Refactoring this switch statement using polymorphism, such as implementing","{
+  ""overallPattern"": ""STATE_MACHINE"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""State machine pattern detected - consider State pattern"",
+  ""methodName"": ""confirmOrder"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""COMPLEX_LOGIC"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""STATE_MACHINE"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 53.0
+    }
+  ],
+  ""avgComplexityScore"": ""53.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""COMPLEX_LOGIC"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void confirmOrder()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-149","BurgerShop","confirmOrder","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `confirmOrder` method of the `BurgerShop` class exhibits a high complexity score of 22.0, indicating that it contains complex logic and is not a simple mapping. With a total of 6 cases across 2 switches, the average complexity per switch is also significant. Given that the guidelines suggest that switches with complex logic are likely candidates for refactoring, and considering the suggestion to review for potential polymorphism replacement, it would be prudent","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""confirmOrder"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    },
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    }
+  ],
+  ""avgComplexityScore"": ""22.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void confirmOrder()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""2"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""6""
+}"
+"assignment-2-142","Cart","calculateWaitTime","SwitchComplexity","YES","Answer: YES: The switch statement in the `calculateWaitTime` method exhibits complex logic with a high complexity score of 46.0 and contains 4 cases, indicating that it is not a simple mapping. Given that it follows a state machine pattern, refactoring it to use the State pattern would enhance maintainability and readability, reducing the risk of errors associated with complex switch logic.","{
+  ""overallPattern"": ""STATE_MACHINE"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""State machine pattern detected - consider State pattern"",
+  ""methodName"": ""calculateWaitTime"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Cart"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""COMPLEX_LOGIC"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""STATE_MACHINE"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 4.0,
+      ""complexityScore"": 46.0
+    }
+  ],
+  ""avgComplexityScore"": ""46.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""COMPLEX_LOGIC"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public int[] calculateWaitTime()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""4.0"",
+  ""totalCases"": ""4""
+}"
+"assignment-2-264","BurgerShop","addBurger","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `addBurger` method has 7 cases, which indicates a higher complexity level. The overall pattern is classified as ""MIXED_LOGIC,"" and while it does not contain complex logic, the number of cases (7) suggests that the switch is handling multiple distinct behaviors. This can lead to difficulties in maintenance and readability. Refactoring with polymorphism would allow for cleaner, more modular code by encapsulating the behavior associated with each case in separate","{
+  ""overallPattern"": ""MIXED_LOGIC"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Switch has many cases - consider polymorphism"",
+  ""methodName"": ""addBurger"",
+  ""hasComplexLogic"": ""false"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""MIXED_LOGIC"",
+      ""hasComplexLogic"": false,
+      ""caseCount"": 7.0,
+      ""complexityScore"": 9.0
+    }
+  ],
+  ""avgComplexityScore"": ""9.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addBurger(String name, float price)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""7.0"",
+  ""totalCases"": ""7""
+}"
+"assignment-2-264","BurgerShop","addSnack","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `addSnack` method of the `BurgerShop` class exhibits a high complexity score of 21.0, with 5 cases and complex logic involved. This indicates that the switch statement is not only handling multiple cases but also involves intricate decision-making, which can lead to difficulties in maintenance and readability. Given the mixed logic and the potential for polymorphism to simplify the design, refactoring to use polymorphism would likely enhance the code's clarity and","{
+  ""overallPattern"": ""MIXED_LOGIC"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""addSnack"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""COMPLEX_LOGIC"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""MIXED_LOGIC"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 5.0,
+      ""complexityScore"": 21.0
+    }
+  ],
+  ""avgComplexityScore"": ""21.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""COMPLEX_LOGIC"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addSnack(String name, float price, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""5.0"",
+  ""totalCases"": ""5""
+}"
+"assignment-2-264","BurgerShop","addDrink","SwitchComplexity","YES","**Answer: YES**: The switch statement in the `addDrink` method exhibits complex logic with a high complexity score of 23. Given that it has 4 cases and is categorized as having mixed logic, this indicates that the switch is not straightforward and may lead to maintenance challenges. Refactoring with polymorphism could simplify the code, enhance readability, and make it easier to extend in the future, especially if new drink types need to be added.","{
+  ""overallPattern"": ""MIXED_LOGIC"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""addDrink"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""COMPLEX_LOGIC"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""MIXED_LOGIC"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 4.0,
+      ""complexityScore"": 23.0
+    }
+  ],
+  ""avgComplexityScore"": ""23.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""COMPLEX_LOGIC"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addDrink(String name, float price, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""4.0"",
+  ""totalCases"": ""4""
+}"
+"assignment-2-264","BurgerShop","addCombo","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `addCombo` method of the `BurgerShop` class exhibits high complexity, with a total of 16 cases spread across 3 switches and an average complexity score of 17.7. The presence of complex logic in multiple cases indicates that the switch is not only handling a variety of scenarios but also likely involves intricate decision-making processes. Given that the highest severity is marked as ""HIGH,"" this suggests that the complexity could lead to maintenance challenges,","{
+  ""overallPattern"": ""MIXED_LOGIC"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Switch has many cases - consider polymorphism"",
+  ""methodName"": ""addCombo"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""MIXED_LOGIC"",
+      ""hasComplexLogic"": false,
+      ""caseCount"": 7.0,
+      ""complexityScore"": 9.0
+    },
+    {
+      ""contentPattern"": ""COMPLEX_LOGIC"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""MIXED_LOGIC"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 5.0,
+      ""complexityScore"": 21.0
+    },
+    {
+      ""contentPattern"": ""COMPLEX_LOGIC"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""MIXED_LOGIC"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 4.0,
+      ""complexityScore"": 23.0
+    }
+  ],
+  ""avgComplexityScore"": ""17.7"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""COMPLEX_LOGIC"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addCombo(String nameBurger, float priceBurger, String nameSnack, float priceSnack, String nameDrink, float priceDrink, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""3"",
+  ""avgCasesPerSwitch"": ""5.3"",
+  ""totalCases"": ""16""
+}"
+"assignment-2-262","BurgerShop","confirmOrder","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `confirmOrder` method of the `BurgerShop` class exhibits high complexity, as indicated by the complexity score of 22.0 and the presence of complex logic within the cases. With a total of 6 cases across 2 switches, the average complexity per switch is also significant. Given that the guidelines suggest that switches with complex logic are likely candidates for refactoring, and considering the suggestion to review for potential polymorphism replacement, it would be","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""confirmOrder"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    },
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    }
+  ],
+  ""avgComplexityScore"": ""22.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void confirmOrder()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""2"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""6""
+}"
+"assignment-2-139","MenuItem","","RedundantInheritance","YES","Answer: YES: The inheritance from the `Menu` class to the `MenuItem` class is redundant because the `MenuItem` class does not override or utilize any of the methods or features provided by the `Menu` class. This suggests that `MenuItem` does not benefit from the inheritance, making it unnecessary.","{
+  ""severity"": ""HIGH"",
+  ""parentClass"": ""Menu"",
+  ""details"": ""Class inherits but does not override/reuse superclass methods"",
+  ""childClass"": ""MenuItem""
+}"
+"assignment-2-135","BurgerShop","addSnack","SwitchComplexity","YES","**Answer: YES**: The switch statement in the `addSnack` method exhibits complex logic with a complexity score of 17.0, which indicates that it is not a simple dispatch. Given that it has 3 cases and involves state changes, the complexity suggests that the switch may be handling multiple responsibilities or behaviors that could be better managed through polymorphism. Refactoring to use polymorphism could enhance maintainability, readability, and scalability of the code by encapsulating the behavior associated with each case","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""addSnack"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 17.0
+    }
+  ],
+  ""avgComplexityScore"": ""17.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addSnack(String name, float price, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-135","BurgerShop","addDrink","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `addDrink` method of the `BurgerShop` class exhibits complex logic, as indicated by the complexity score of 17.0 and the presence of multiple cases (3 total). Given that the guidelines suggest that switches with complex logic are likely candidates for refactoring, and considering the suggestion to review for potential polymorphism replacement, it would be prudent to refactor this switch statement. Polymorphism can simplify the code, enhance maintainability, and","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""addDrink"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 17.0
+    }
+  ],
+  ""avgComplexityScore"": ""17.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addDrink(String name, float price, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-135","BurgerShop","addCombo","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `addCombo` method of the `BurgerShop` class exhibits complex logic, as indicated by the complexity score of 22.0 and the presence of mixed logic patterns. Given that there are 3 cases, the complexity suggests that the switch is not straightforward and may lead to maintenance challenges. Additionally, the suggestion to review for potential polymorphism replacement indicates that the current implementation could benefit from a more flexible design, such as using polymorphism to handle","{
+  ""overallPattern"": ""MIXED_LOGIC"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""addCombo"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""MIXED_LOGIC"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    }
+  ],
+  ""avgComplexityScore"": ""22.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addCombo(String nameBurger, float priceBurger, String nameSnack, float priceSnack, String nameDrink, float priceDrink, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-131","BurgerShop","incrementCost","SwitchComplexity","YES","Answer: YES: The switch statement in the `incrementCost` method exhibits complex logic with a high complexity score of 37.0 and is identified as a state machine pattern. Given that it has 3 cases and is not a simple mapping, this complexity suggests that the switch statement could benefit from refactoring into a more maintainable design using polymorphism, such as the State pattern. This would enhance readability, reduce complexity, and improve the overall design of the code.","{
+  ""overallPattern"": ""STATE_MACHINE"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""State machine pattern detected - consider State pattern"",
+  ""methodName"": ""incrementCost"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""COMPLEX_LOGIC"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""STATE_MACHINE"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 37.0
+    }
+  ],
+  ""avgComplexityScore"": ""37.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""COMPLEX_LOGIC"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public int incrementCost(boolean first, int foodType)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-96","Drink","","RedundantInheritance","YES","Answer: YES: The inheritance is redundant because the child class ""Drink"" inherits from the parent class ""Snack"" but does not override or reuse any of its methods. This suggests that ""Drink"" does not benefit from the features of ""Snack,"" making the inheritance unnecessary.","{
+  ""severity"": ""HIGH"",
+  ""parentClass"": ""Snack"",
+  ""details"": ""Class inherits but does not override/reuse superclass methods"",
+  ""childClass"": ""Drink""
+}"
+"assignment-2-126","Side","adjustPrice","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `adjustPrice` method exhibits complex logic and has a complexity score of 17.0, which indicates that it is not a simple mapping and involves more intricate decision-making. Given that it has 3 cases and is categorized as a ""SIMPLE_DISPATCH"" with a ""STATE_CHANGE"" content pattern, it suggests that the logic could be better handled through polymorphism. Refactoring to use polymorphism could enhance maintainability, readability, and extens","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""adjustPrice"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Side"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 17.0
+    }
+  ],
+  ""avgComplexityScore"": ""17.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""private void adjustPrice()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-126","BurgerShop","confirmOrder","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `confirmOrder` method of the `BurgerShop` class exhibits complex logic with a complexity score of 22.0 and contains 4 cases, which indicates that it is not a simple mapping. Given that the overall pattern is classified as ""MIXED_LOGIC"" and the presence of complex logic, this suggests that the switch statement may be handling multiple responsibilities or states in a way that could be better managed through polymorphism. Refactoring to","{
+  ""overallPattern"": ""MIXED_LOGIC"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""confirmOrder"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""MIXED_LOGIC"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 4.0,
+      ""complexityScore"": 22.0
+    }
+  ],
+  ""avgComplexityScore"": ""22.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void confirmOrder()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""4.0"",
+  ""totalCases"": ""4""
+}"
+"assignment-2-243","BurgerShop","confirmOrder","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `confirmOrder` method of the `BurgerShop` class exhibits complex logic with a high complexity score of 43. Given that it has 4 cases and is identified as a state machine pattern, this suggests that the logic is not straightforward and may lead to difficulties in maintenance and readability. Refactoring this switch statement using polymorphism, such as implementing the State pattern, would enhance the code's clarity and flexibility, making it easier to manage and extend","{
+  ""overallPattern"": ""STATE_MACHINE"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""State machine pattern detected - consider State pattern"",
+  ""methodName"": ""confirmOrder"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""COMPLEX_LOGIC"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""STATE_MACHINE"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 4.0,
+      ""complexityScore"": 43.0
+    }
+  ],
+  ""avgComplexityScore"": ""43.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""COMPLEX_LOGIC"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void confirmOrder()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""4.0"",
+  ""totalCases"": ""4""
+}"
+"assignment-2-122","BurgerShop","confirmOrder","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `confirmOrder` method of the `BurgerShop` class exhibits high complexity, as indicated by the complexity score of 22.0 and the presence of complex logic within the cases. With a total of 6 cases across 2 switches, the average complexity and the mixed content pattern suggest that the logic is not straightforward and may lead to maintenance challenges. Given these factors, refactoring the switch statement to utilize polymorphism could simplify the code, enhance","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""confirmOrder"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    },
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    }
+  ],
+  ""avgComplexityScore"": ""22.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void confirmOrder()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""2"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""6""
+}"
+"assignment-2-6","Extra","increasePrice","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `increasePrice` method exhibits complex logic, as indicated by the complexity score of 18.0 and the presence of a `STATE_CHANGE` content pattern. Given that the switch has only 2 cases but involves complex logic, it suggests that the current implementation may not be easily maintainable or extensible. Refactoring to use polymorphism could simplify the code, enhance readability, and allow for easier future modifications, especially if additional cases or behaviors are","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""increasePrice"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Extra"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 18.0
+    }
+  ],
+  ""avgComplexityScore"": ""18.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""protected void increasePrice(SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""2.0"",
+  ""totalCases"": ""2""
+}"
+"assignment-2-238","ArrayModify; MenuDisp; ModifyArray","getSizes; getCombo; removeNumber; getBurger","PotentialMissingInheritanceGroup","YES","Answer: YES: The presence of multiple methods across different classes that share similar functionality but lack a common inheritance hierarchy suggests a violation of the principles of object-oriented programming (OOP). Specifically, the absence of a common ancestor indicates that there may be an opportunity to refactor the code to promote code reuse and maintainability through inheritance or interfaces. This can lead to a more organized structure and reduce redundancy in method definitions.","{
+  ""details"": ""Multiple methods suggest missing inheritance hierarchy"",
+  ""methodExamples"": ""public ArrayList<String> getCombo(String nameBurger, String nameSnack, SIZE size, String nameDrink, ... | public ArrayList<String> getSizes(String name, float snackPrice, SIZE size, ArrayList<String> cartAr... | public float removeNumber(ArrayList<String> cartArray, int position) | public ArrayList<String> getBurger(String name, float price, ArrayList<String> cartArray)"",
+  ""similarityScore"": ""0"",
+  ""sharedMethodNames"": ""getSizes; getCombo; removeNumber; getBurger"",
+  ""weaklyRelated"": ""true"",
+  ""hasCommonAncestor"": ""false"",
+  ""classes"": ""ArrayModify; MenuDisp; ModifyArray"",
+  ""sharedMethodsCount"": ""4"",
+  ""methodSignatures"": ""ArrayList<String> getSizes(String,float,SIZE,ArrayList<String>); ArrayList<String> getCombo(String,String,SIZE,String,float,ArrayList<String>); float removeNumber(ArrayList<String>,int); ArrayList<String> getBurger(String,float,ArrayList<String>)""
+}"
+"assignment-2-238","ArrayModify; ModifyArray","","RedundantInheritanceGroup","YES","Answer: YES: The presence of multiple classes redundantly inheriting from the same parent class (in this case, `Increment`) indicates a violation of the DRY (Don't Repeat Yourself) principle in object-oriented programming. This redundancy can lead to maintenance challenges, increased complexity, and potential inconsistencies in behavior across the child classes. It is advisable to refactor the design to eliminate the redundant inheritance.","{
+  ""childClasses"": ""ArrayModify; ModifyArray"",
+  ""childCount"": ""2"",
+  ""details"": ""2 classes redundantly inherit from Increment"",
+  ""severity"": ""HIGH"",
+  ""pattern"": ""Multiple classes with same redundant inheritance"",
+  ""parentClass"": ""Increment""
+}"
+"assignment-2-239","Cart","checkMissedCombo","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `checkMissedCombo` method exhibits complex logic and has a high complexity score of 22.0, which indicates that the logic within the switch cases is not straightforward. Additionally, the presence of mixed content patterns and the fact that there are two switches with a total of six cases further complicates the structure. Given these factors, it is advisable to consider refactoring the switch statement with polymorphism to improve maintainability and readability, as well as","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""checkMissedCombo"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Cart"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    },
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    }
+  ],
+  ""avgComplexityScore"": ""22.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public boolean checkMissedCombo()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""2"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""6""
+}"
+"assignment-2-230","Combo","adjustPrice","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `adjustPrice` method exhibits complex logic, as indicated by the complexity score of 18.0 and the presence of a `STATE_CHANGE` content pattern. Given that the switch has only 2 cases but involves complex logic, it suggests that the current implementation may not be easily maintainable or extendable. Refactoring with polymorphism could simplify the code by encapsulating the behavior associated with each case into separate classes, thereby enhancing readability and reducing the","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""adjustPrice"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Combo"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 18.0
+    }
+  ],
+  ""avgComplexityScore"": ""18.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void adjustPrice()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""2.0"",
+  ""totalCases"": ""2""
+}"
+"assignment-2-230","Drink","adjustPrice","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `adjustPrice` method exhibits complex logic and has a complexity score of 18.0, which indicates that it is not a simple mapping and involves more intricate decision-making. Given that the switch has only 2 cases but contains complex logic, it suggests that the current implementation may be difficult to maintain and extend. Refactoring this switch statement to use polymorphism could improve code readability, reduce complexity, and enhance maintainability by encapsulating the behavior associated","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""adjustPrice"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Drink"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 18.0
+    }
+  ],
+  ""avgComplexityScore"": ""18.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void adjustPrice()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""2.0"",
+  ""totalCases"": ""2""
+}"
+"assignment-2-230","Snack","adjustPrice","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `adjustPrice` method exhibits complex logic and has a complexity score of 18.0, which indicates that it is not a simple dispatch. Given that it has only 2 cases but involves complex logic, it suggests that the switch statement may be handling multiple responsibilities or conditions that could be better managed through polymorphism. Refactoring to use polymorphism could enhance code readability, maintainability, and scalability by encapsulating the behavior associated with each case in","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""adjustPrice"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Snack"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 18.0
+    }
+  ],
+  ""avgComplexityScore"": ""18.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void adjustPrice()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""2.0"",
+  ""totalCases"": ""2""
+}"
+"assignment-2-232","BurgerShop","addBurger","SwitchComplexity","YES","**Answer: YES**: The switch statement in the `addBurger` method has 7 cases, which exceeds the guideline threshold of 3 simple cases. Although the logic is not complex, the use of a switch with multiple cases suggests that it could benefit from polymorphism to improve maintainability and scalability. Refactoring to use polymorphism would allow for cleaner code and easier extension in the future, aligning with the factory pattern identified in the analysis.","{
+  ""overallPattern"": ""FACTORY_PATTERN"",
+  ""hasObjectCreation"": ""true"",
+  ""suggestion"": ""Switch has many cases - consider polymorphism"",
+  ""methodName"": ""addBurger"",
+  ""hasComplexLogic"": ""false"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""METHOD_DISPATCH"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": true,
+      ""patternType"": ""FACTORY_PATTERN"",
+      ""hasComplexLogic"": false,
+      ""caseCount"": 7.0,
+      ""complexityScore"": 36.0
+    }
+  ],
+  ""avgComplexityScore"": ""36.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""METHOD_DISPATCH"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addBurger(String name, float price)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""7.0"",
+  ""totalCases"": ""7""
+}"
+"assignment-2-233","Combo","setSizePrice","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `setSizePrice` method exhibits complex logic and has a complexity score of 17.0, which indicates that it is not a simple mapping and involves more intricate decision-making. Given that it has 3 cases and is categorized as a ""STATE_CHANGE"" pattern, it suggests that the logic could be better managed through polymorphism. Refactoring to use polymorphism could enhance code readability, maintainability, and scalability, especially if the logic within the","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""setSizePrice"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Combo"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 17.0
+    }
+  ],
+  ""avgComplexityScore"": ""17.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": true,
+  ""methodSignature"": ""public float setSizePrice(float price, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-233","Food","setSizePrice","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `setSizePrice` method exhibits complex logic and has a complexity score of 17.0, which indicates that it is not a simple mapping and involves more than just straightforward case handling. Given that it has 3 cases and is categorized as a ""SIMPLE_DISPATCH"" with a ""STATE_CHANGE"" content pattern, it suggests that the logic could be better managed through polymorphism. Refactoring to use polymorphism would enhance maintainability, readability","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""setSizePrice"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Food"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 17.0
+    }
+  ],
+  ""avgComplexityScore"": ""17.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": true,
+  ""methodSignature"": ""public float setSizePrice(SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-227","BurgerShop","confirmOrder","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `confirmOrder` method of the `BurgerShop` class exhibits complex logic with a complexity score of 42. Given that it has 3 cases and is identified as a state machine pattern, this indicates that the logic is not straightforward and could benefit from refactoring. The presence of complex logic suggests that maintaining or extending this code could become cumbersome, making it a candidate for refactoring with polymorphism, such as implementing the State pattern. This would","{
+  ""overallPattern"": ""STATE_MACHINE"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""State machine pattern detected - consider State pattern"",
+  ""methodName"": ""confirmOrder"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""COMPLEX_LOGIC"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""STATE_MACHINE"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 42.0
+    }
+  ],
+  ""avgComplexityScore"": ""42.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""COMPLEX_LOGIC"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void confirmOrder()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-106","BurgerShop","addSnack","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `addSnack` method of the `BurgerShop` class exhibits complex logic and a mixed pattern type, which indicates that it may not be straightforward or easily maintainable. With a complexity score of 20.0 and the presence of state change logic, this suggests that the switch is handling more than simple case mappings. Given that there are only two cases, the complexity is disproportionate to the number of cases, making it a candidate for refactoring","{
+  ""overallPattern"": ""MIXED_LOGIC"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""addSnack"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""MIXED_LOGIC"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 20.0
+    }
+  ],
+  ""avgComplexityScore"": ""20.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addSnack(String name, float price, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""2.0"",
+  ""totalCases"": ""2""
+}"
+"assignment-2-106","BurgerShop","addDrink","SwitchComplexity","YES","Answer: YES: The switch statement in the `addDrink` method exhibits complex logic and is identified as a state machine pattern. With a complexity score of 23.0 and the presence of multiple cases (2 in total), it suggests that the logic is not straightforward and could benefit from refactoring. Implementing the State pattern would enhance maintainability and readability, reducing the complexity associated with managing state transitions within the switch statement.","{
+  ""overallPattern"": ""STATE_MACHINE"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""State machine pattern detected - consider State pattern"",
+  ""methodName"": ""addDrink"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""STATE_MACHINE"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 23.0
+    }
+  ],
+  ""avgComplexityScore"": ""23.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addDrink(String name, float price, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""2.0"",
+  ""totalCases"": ""2""
+}"
+"assignment-2-228","Cart","addSide","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `addSide` method exhibits complex logic and has a complexity score of 17.0, which indicates that it is not a simple mapping and involves more than just straightforward case handling. Given that there are 3 cases and the overall pattern is classified as ""SIMPLE_DISPATCH,"" it suggests that the switch is handling state changes in a way that could benefit from polymorphism. Refactoring to use polymorphism could improve code maintainability, readability,","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""addSide"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Cart"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 17.0
+    }
+  ],
+  ""avgComplexityScore"": ""17.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addSide(String name, float price, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-228","Cart","addCombo","SwitchComplexity","YES","**Answer: YES**: The switch statement in the `addCombo` method exhibits complex logic with a complexity score of 22.0, which indicates that it is not a simple mapping and involves more intricate decision-making. Given that the switch has 3 cases and is categorized as having complex logic, it suggests that the current implementation may be difficult to maintain and extend. Refactoring with polymorphism could simplify the code by encapsulating the behavior associated with each case into separate classes, thereby enhancing readability","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""addCombo"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Cart"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    }
+  ],
+  ""avgComplexityScore"": ""22.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addCombo(String nameBurger, float priceBurger, String nameSnack, float priceSnack, String nameDrink, float priceDrink, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-221","BurgerShop","calculateWaitingTime","SwitchComplexity","YES","Answer: YES: The switch statement in the `calculateWaitingTime` method exhibits complex logic with a high complexity score of 66.0 and contains 4 cases, indicating that it is not a simple mapping. Given that it follows a state machine pattern, refactoring it to use the State pattern would enhance maintainability and readability, reducing the risk of errors associated with complex switch logic.","{
+  ""overallPattern"": ""STATE_MACHINE"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""State machine pattern detected - consider State pattern"",
+  ""methodName"": ""calculateWaitingTime"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""COMPLEX_LOGIC"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""STATE_MACHINE"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 4.0,
+      ""complexityScore"": 66.0
+    }
+  ],
+  ""avgComplexityScore"": ""66.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""COMPLEX_LOGIC"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public String calculateWaitingTime(List<Item> cart)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""4.0"",
+  ""totalCases"": ""4""
+}"
+"assignment-2-222","BurgerShop","comboCheck","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `comboCheck` method exhibits complex logic and has a complexity score of 20.0, which indicates that the logic is not straightforward and may involve multiple conditions or operations within each case. Given that the switch has 3 cases and is categorized as having complex logic, it suggests that the current implementation could benefit from refactoring to use polymorphism. This would enhance maintainability, readability, and potentially reduce the risk of errors associated with complex switch statements","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""comboCheck"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 20.0
+    }
+  ],
+  ""avgComplexityScore"": ""20.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public boolean comboCheck(ArrayList<ItemInCart> snacks, ArrayList<ItemInCart> drinks)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-216","ItemMenu; Combos","setCart; setPrice","PotentialMissingInheritanceGroup","YES","Answer: YES: The presence of multiple methods with similar names (`setCart` and `setPrice`) in different classes (`ItemMenu` and `Combos`) without a common ancestor suggests a lack of a proper inheritance hierarchy. This can lead to code duplication and maintenance challenges, indicating a potential violation of the DRY (Don't Repeat Yourself) principle. Establishing a common base class or interface could improve code organization and reusability.","{
+  ""details"": ""Multiple methods suggest missing inheritance hierarchy"",
+  ""methodExamples"": ""public void setCart(int cart) | public void setPrice(float price)"",
+  ""similarityScore"": ""16"",
+  ""sharedMethodNames"": ""setCart; setPrice"",
+  ""weaklyRelated"": ""true"",
+  ""hasCommonAncestor"": ""false"",
+  ""classes"": ""ItemMenu; Combos"",
+  ""sharedMethodsCount"": ""2"",
+  ""methodSignatures"": ""void setCart(int); void setPrice(float)""
+}"
+"assignment-2-211","BurgerShop","confirmOrder","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `confirmOrder` method of the `BurgerShop` class exhibits complex logic with a high complexity score of 37.0 and a total of 6 cases across 2 switches. This indicates that the logic is not straightforward and could lead to maintenance challenges, especially as the number of cases or complexity increases. Given that the overall pattern is identified as a state machine, refactoring to use the State pattern would enhance code readability, maintainability, and","{
+  ""overallPattern"": ""STATE_MACHINE"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""State machine pattern detected - consider State pattern"",
+  ""methodName"": ""confirmOrder"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""COMPLEX_LOGIC"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""STATE_MACHINE"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 37.0
+    },
+    {
+      ""contentPattern"": ""COMPLEX_LOGIC"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""STATE_MACHINE"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 37.0
+    }
+  ],
+  ""avgComplexityScore"": ""37.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""COMPLEX_LOGIC"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void confirmOrder()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""2"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""6""
+}"
+"assignment-2-206","Consumable","","RedundantInheritance","YES","Answer: YES: The inheritance from `BurgerShop` to `Consumable` is redundant because the `Consumable` class does not override or utilize any methods or features from the `BurgerShop` superclass. This suggests that `Consumable` does not benefit from the inheritance, making it unnecessary.","{
+  ""severity"": ""HIGH"",
+  ""parentClass"": ""BurgerShop"",
+  ""details"": ""Class inherits but does not override/reuse superclass methods"",
+  ""childClass"": ""Consumable""
+}"
+"assignment-2-208","SizedItem","sizing","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `sizing` method exhibits complex logic and has a complexity score of 17.0, which indicates that it is not a simple mapping and involves more intricate decision-making. Given that it has 3 cases and is categorized as having complex logic, it suggests that the switch statement may be handling multiple states or behaviors that could be better represented using polymorphism. Refactoring to use polymorphism could enhance code readability, maintainability, and extensibility by","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""sizing"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""SizedItem"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 17.0
+    }
+  ],
+  ""avgComplexityScore"": ""17.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""private void sizing()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-322","Hanbao","","RedundantInheritance","YES","Answer: YES: The inheritance is redundant because the child class ""Hanbao"" does not override or utilize any methods or features from the parent class ""BurgerShop."" This suggests that ""Hanbao"" does not benefit from the inheritance, making it unnecessary.","{
+  ""severity"": ""HIGH"",
+  ""parentClass"": ""BurgerShop"",
+  ""details"": ""Class inherits but does not override/reuse superclass methods"",
+  ""childClass"": ""Hanbao""
+}"
+"assignment-2-202","BurgerShop","addCombo","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `addCombo` method of the `BurgerShop` class exhibits complex logic and a mixed pattern of state changes, which indicates that it may not be easily maintainable or extensible. With a complexity score of 20.0 and the presence of complex logic, this switch is likely to become problematic as the codebase evolves. Refactoring to use polymorphism could simplify the logic, improve readability, and make it easier to add new cases in the","{
+  ""overallPattern"": ""MIXED_LOGIC"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""addCombo"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""MIXED_LOGIC"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 20.0
+    }
+  ],
+  ""avgComplexityScore"": ""20.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addCombo(String nameBurger, float priceBurger, String nameSnack, float priceSnack, String nameDrink, float priceDrink, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""2.0"",
+  ""totalCases"": ""2""
+}"
+"assignment-2-203","BurgerShop","confirmOrder","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `confirmOrder` method of the `BurgerShop` class exhibits high complexity, with a complexity score of 46.0 and 8 cases, indicating that it contains mixed logic and is not a simple mapping. The presence of complex logic suggests that the switch statement is difficult to maintain and understand, which can lead to errors and increased difficulty in extending functionality. Refactoring this switch statement using polymorphism would improve code readability, maintainability, and scalability","{
+  ""overallPattern"": ""MIXED_LOGIC"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Switch has many cases - consider polymorphism"",
+  ""methodName"": ""confirmOrder"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""MIXED_LOGIC"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 8.0,
+      ""complexityScore"": 46.0
+    }
+  ],
+  ""avgComplexityScore"": ""46.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void confirmOrder()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""8.0"",
+  ""totalCases"": ""8""
+}"
+"assignment-2-204","SnackItem","calculateExtraCost","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `calculateExtraCost` method exhibits complex logic and has a complexity score of 18.0, which indicates that it is not a simple mapping and involves more intricate decision-making. Given that it has only 2 cases but still presents complexity, it suggests that the logic could be better managed through polymorphism. Refactoring to use polymorphism could enhance maintainability, readability, and scalability of the code, especially if the logic continues to grow or change","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""calculateExtraCost"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""SnackItem"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 18.0
+    }
+  ],
+  ""avgComplexityScore"": ""18.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": "" void calculateExtraCost()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""2.0"",
+  ""totalCases"": ""2""
+}"
+"assignment-2-320","BurgerShop","orderTimes","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `orderTimes` method of the `BurgerShop` class exhibits a complexity score of 28.0, which indicates that it contains complex logic and is not a simple mapping. With 4 cases and a mixed logic pattern, the switch is likely difficult to maintain and understand. Given the high complexity and the suggestion to review for potential polymorphism replacement, refactoring to use polymorphism could simplify the code, enhance readability, and improve maintainability.","{
+  ""overallPattern"": ""MIXED_LOGIC"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""orderTimes"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""MIXED_LOGIC"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 4.0,
+      ""complexityScore"": 28.0
+    }
+  ],
+  ""avgComplexityScore"": ""28.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""private Integer[] orderTimes()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""4.0"",
+  ""totalCases"": ""4""
+}"
+"assignment-2-42","BurgerShop","addSnack","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `addSnack` method of the `BurgerShop` class exhibits complex logic with a complexity score of 22.0 and contains 3 cases, which indicates that it is not a simple mapping. Given that the overall pattern is classified as ""MIXED_LOGIC"" and the presence of complex logic, this suggests that the switch statement may be handling multiple responsibilities or states, which can lead to maintenance challenges and reduced readability. 
+
+Refactoring this","{
+  ""overallPattern"": ""MIXED_LOGIC"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""addSnack"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""MIXED_LOGIC"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    }
+  ],
+  ""avgComplexityScore"": ""22.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addSnack(String name, float price, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-42","BurgerShop","addDrink","SwitchComplexity","YES","**Answer: YES**: The switch statement in the `addDrink` method exhibits complex logic with a complexity score of 22.0 and a content pattern indicating state changes. Given that it has mixed logic and is not a simple mapping, this suggests that the switch is handling multiple responsibilities, which can lead to maintenance challenges and reduced readability. Refactoring with polymorphism could simplify the code by encapsulating behavior in separate classes, making it easier to manage and extend in the future.","{
+  ""overallPattern"": ""MIXED_LOGIC"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""addDrink"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""MIXED_LOGIC"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    }
+  ],
+  ""avgComplexityScore"": ""22.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addDrink(String name, float price, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-42","BurgerShop","addCombo","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `addCombo` method of the `BurgerShop` class exhibits complex logic and has a complexity score of 17.0, which indicates that it is not a simple mapping and involves more intricate decision-making. Given that the switch has 3 cases and is categorized as having complex logic, it suggests that the current implementation may be difficult to maintain and extend. Refactoring with polymorphism could simplify the code by encapsulating the behavior associated with each case","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""addCombo"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 17.0
+    }
+  ],
+  ""avgComplexityScore"": ""17.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addCombo(String nameBurger, float priceBurger, String nameSnack, float priceSnack, String nameDrink, float priceDrink, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-40","BurgerShop","confirmOrder","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `confirmOrder` method of the `BurgerShop` class exhibits complex logic with a high complexity score of 62. Given that it has 4 cases and is identified as a state machine pattern, this suggests that the logic is not straightforward and may be difficult to maintain or extend. Refactoring this switch statement using polymorphism, such as implementing the State pattern, would enhance code readability, reduce complexity, and improve maintainability by encapsulating state-specific","{
+  ""overallPattern"": ""STATE_MACHINE"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""State machine pattern detected - consider State pattern"",
+  ""methodName"": ""confirmOrder"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""COMPLEX_LOGIC"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""STATE_MACHINE"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 4.0,
+      ""complexityScore"": 62.0
+    }
+  ],
+  ""avgComplexityScore"": ""62.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""COMPLEX_LOGIC"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void confirmOrder()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""4.0"",
+  ""totalCases"": ""4""
+}"
+"assignment-2-313","BurgerShop","confirmOrder","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `confirmOrder` method of the `BurgerShop` class exhibits complex logic and a high complexity score of 18.0, which indicates that the switch is not straightforward and may involve intricate decision-making processes. Given that there are 4 total cases across 2 switches, and the average complexity score is also high, this suggests that the switch is not only handling multiple cases but doing so in a way that could lead to maintenance challenges and reduced readability","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""confirmOrder"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 18.0
+    },
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 18.0
+    }
+  ],
+  ""avgComplexityScore"": ""18.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void confirmOrder()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""2"",
+  ""avgCasesPerSwitch"": ""2.0"",
+  ""totalCases"": ""4""
+}"
+"assignment-2-37","BurgerShop","countItems","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `countItems` method of the `BurgerShop` class exhibits high complexity, as indicated by the complexity score of 18.0 and the presence of complex logic. With a total of 4 cases across 2 switches, the average complexity per switch is also significant. Given that the guidelines suggest that switches with complex logic are likely candidates for refactoring, and considering the suggestion to review for potential polymorphism replacement, it would be prudent to ref","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""countItems"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 18.0
+    },
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 18.0
+    }
+  ],
+  ""avgComplexityScore"": ""18.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void countItems()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""2"",
+  ""avgCasesPerSwitch"": ""2.0"",
+  ""totalCases"": ""4""
+}"
+"assignment-2-36","BurgerShop","GetNameModifier","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `GetNameModifier` method exhibits complex logic and has a complexity score of 22.0, which indicates that it is not a simple mapping and likely involves intricate decision-making. Given that it has 3 cases and is categorized as a ""SIMPLE_DISPATCH"" with a ""STATE_CHANGE"" content pattern, it suggests that the logic could be better managed through polymorphism. Refactoring to use polymorphism could enhance maintainability, readability, and","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""GetNameModifier"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    }
+  ],
+  ""avgComplexityScore"": ""22.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public static String GetNameModifier(SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-36","BurgerShop","GetPriceModifier","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `GetPriceModifier` method of the `BurgerShop` class exhibits complex logic and has a complexity score of 22.0, which indicates that it is not a simple mapping and involves more intricate decision-making. Given that the switch has 3 cases but is classified as having complex logic, it suggests that the current implementation may be difficult to maintain and extend. 
+
+Refactoring this switch statement to use polymorphism could improve code readability, reduce complexity","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""GetPriceModifier"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    }
+  ],
+  ""avgComplexityScore"": ""22.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public static float GetPriceModifier(SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-36","BurgerShop","confirmOrder","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `confirmOrder` method of the `BurgerShop` class exhibits complex logic with a complexity score of 27.0 and contains 3 cases, which indicates that it is not a simple mapping. Given that the switch is identified as a state machine pattern, it suggests that the logic could be better managed using the State pattern. Refactoring to use polymorphism would enhance maintainability, readability, and scalability of the code, especially as the number of","{
+  ""overallPattern"": ""STATE_MACHINE"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""State machine pattern detected - consider State pattern"",
+  ""methodName"": ""confirmOrder"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""STATE_MACHINE"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 27.0
+    }
+  ],
+  ""avgComplexityScore"": ""27.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void confirmOrder()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-35","Cart","checkHasComboItems","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `checkHasComboItems` method exhibits complex logic with a complexity score of 42. Given that it contains 3 cases and is classified as having mixed logic, this indicates that the logic is not straightforward and may lead to maintenance challenges. The suggestion to review for potential polymorphism replacement aligns with best practices, as using polymorphism can simplify the code structure, enhance readability, and make it easier to extend in the future. Therefore, the complexity is","{
+  ""overallPattern"": ""MIXED_LOGIC"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""checkHasComboItems"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Cart"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""COMPLEX_LOGIC"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""MIXED_LOGIC"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 42.0
+    }
+  ],
+  ""avgComplexityScore"": ""42.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""COMPLEX_LOGIC"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public boolean checkHasComboItems()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-305","Snacks","calculatePrice","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `calculatePrice` method exhibits complex logic and has a complexity score of 17.0, which indicates that it is not a simple mapping and involves more intricate decision-making. Given that it has 3 cases and is categorized as a ""SIMPLE_DISPATCH"" with a ""STATE_CHANGE"" content pattern, it suggests that the logic could be better handled through polymorphism. Refactoring to use polymorphism could enhance code maintainability, readability, and","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""calculatePrice"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Snacks"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 17.0
+    }
+  ],
+  ""avgComplexityScore"": ""17.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void calculatePrice(float price, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-305","Drinks","calculatePrice","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `calculatePrice` method exhibits complex logic with a complexity score of 17.0, which indicates that it is not a simple mapping and involves more intricate decision-making. Given that there are 3 cases and the overall pattern is classified as ""SIMPLE_DISPATCH,"" the complexity suggests that the switch statement may be handling multiple states or behaviors that could be better managed through polymorphism. Refactoring to use polymorphism could enhance code maintainability, readability","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""calculatePrice"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""Drinks"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 17.0
+    }
+  ],
+  ""avgComplexityScore"": ""17.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void calculatePrice(float price, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-306","BurgerShop","missedComboExists","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `missedComboExists` method exhibits complex logic, as indicated by the ""complexityScore"" of 36.0 and the classification of the overall pattern as ""MIXED_LOGIC."" With three cases that involve object creation and complex logic, this switch is not a simple mapping and suggests that the logic could be better managed through polymorphism. Refactoring to use polymorphism could enhance code maintainability, readability, and extensibility, reducing","{
+  ""overallPattern"": ""MIXED_LOGIC"",
+  ""hasObjectCreation"": ""true"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""missedComboExists"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""COMPLEX_LOGIC"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": true,
+      ""patternType"": ""MIXED_LOGIC"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 36.0
+    }
+  ],
+  ""avgComplexityScore"": ""36.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""COMPLEX_LOGIC"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""private boolean missedComboExists() throws InvalidObjectException"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-306","BurgerShop","calculateWaitTime","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `calculateWaitTime` method exhibits a high complexity score of 27.0, indicating that it contains complex logic and is not a simple mapping. With 4 cases and a mixed logic pattern, the switch is likely difficult to maintain and understand. Given the guidelines, switches with complex logic are prime candidates for refactoring, especially when polymorphism can simplify the design and enhance code readability and maintainability. Therefore, refactoring this switch statement with polym","{
+  ""overallPattern"": ""MIXED_LOGIC"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""calculateWaitTime"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""MIXED_LOGIC"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 4.0,
+      ""complexityScore"": 27.0
+    }
+  ],
+  ""avgComplexityScore"": ""27.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""private int calculateWaitTime()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""4.0"",
+  ""totalCases"": ""4""
+}"
+"assignment-2-307","BurgerShop","addSnack","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `addSnack` method of the `BurgerShop` class exhibits complex logic with a complexity score of 17.0, which indicates that it is not a simple dispatch. Given that it has 3 cases and is categorized as having complex logic, it suggests that the switch statement may be handling multiple responsibilities or state changes that could be better managed through polymorphism. Refactoring to use polymorphism could enhance maintainability, readability, and scalability of the","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""addSnack"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 17.0
+    }
+  ],
+  ""avgComplexityScore"": ""17.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addSnack(String name, float price, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-307","BurgerShop","addDrink","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `addDrink` method of the `BurgerShop` class exhibits complex logic and has a complexity score of 17.0, which indicates that it is not a simple mapping and involves more intricate decision-making. Given that the switch has 3 cases and is categorized as having complex logic, it suggests that the current implementation may be difficult to maintain and extend. Refactoring with polymorphism could simplify the code by replacing the switch statement with a more flexible","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""addDrink"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 17.0
+    }
+  ],
+  ""avgComplexityScore"": ""17.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addDrink(String name, float price, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-307","BurgerShop","addCombo","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `addCombo` method of the `BurgerShop` class exhibits complex logic and a mixed pattern type, which indicates that it may not be straightforward to maintain or extend. With a complexity score of 20.0 and a total of 3 cases, the switch is not simple and could lead to difficulties in understanding and modifying the code. Given the suggestion to review for potential polymorphism replacement, it would be beneficial to refactor this switch statement into","{
+  ""overallPattern"": ""MIXED_LOGIC"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""addCombo"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""MIXED_LOGIC"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 20.0
+    }
+  ],
+  ""avgComplexityScore"": ""20.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addCombo(String nameBurger, float priceBurger, String nameSnack, float priceSnack, String nameDrink, float priceDrink, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-307","BurgerShop","confirmOrder","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `confirmOrder` method of the `BurgerShop` class exhibits high complexity, as indicated by the complexity score of 22.0 and the presence of complex logic within the cases. With a total of 6 cases across 2 switches, the average complexity per switch is also significant. Given that the guidelines suggest that switches with complex logic are likely candidates for refactoring, and considering the suggestion to review for potential polymorphism replacement, it would be","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""confirmOrder"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    },
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 22.0
+    }
+  ],
+  ""avgComplexityScore"": ""22.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void confirmOrder()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""2"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""6""
+}"
+"assignment-2-300","BurgerShop","confirmOrder","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `confirmOrder` method of the `BurgerShop` class exhibits complex logic with a complexity score of 31.0 and contains 4 cases, which indicates that it is not a simple mapping. Given that the switch is identified as a state machine pattern, it suggests that the logic could be better managed using the State pattern. Refactoring to use polymorphism would enhance maintainability, readability, and scalability of the code, especially as the number of","{
+  ""overallPattern"": ""STATE_MACHINE"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""State machine pattern detected - consider State pattern"",
+  ""methodName"": ""confirmOrder"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""MIXED"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""STATE_MACHINE"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 4.0,
+      ""complexityScore"": 31.0
+    }
+  ],
+  ""avgComplexityScore"": ""31.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""HIGH"",
+  ""contentPattern"": ""MIXED"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void confirmOrder()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""4.0"",
+  ""totalCases"": ""4""
+}"
+"assignment-2-28","BurgerShop","setPrice","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `setPrice` method of the `BurgerShop` class exhibits complex logic and has a complexity score of 17.0, which indicates that it is not a simple dispatch. Given that it has 3 cases and is categorized as having complex logic, it suggests that the switch statement may be handling multiple states or behaviors that could be better managed through polymorphism. Refactoring to use polymorphism could enhance code readability, maintainability, and extensibility","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""setPrice"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 17.0
+    }
+  ],
+  ""avgComplexityScore"": ""17.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": true,
+  ""methodSignature"": ""private float setPrice(float price, Menu.SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-21","BurgerShop","calculateBurgerTime","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `calculateBurgerTime` method exhibits complex logic with a complexity score of 14.0, which indicates that it is not a simple mapping and likely involves intricate decision-making. Given that the switch has only one case but contains complex logic, it suggests that the current implementation may not be optimal. Refactoring with polymorphism could simplify the code, enhance maintainability, and improve readability by encapsulating the behavior associated with different cases into separate classes or methods","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""calculateBurgerTime"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 1.0,
+      ""complexityScore"": 14.0
+    }
+  ],
+  ""avgComplexityScore"": ""14.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public int calculateBurgerTime(int numBurgers)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""1.0"",
+  ""totalCases"": ""1""
+}"
+"assignment-2-21","BurgerShop","calculateSnackTime","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `calculateSnackTime` method exhibits complex logic, as indicated by the complexity score of 14.0 and the presence of a `STATE_CHANGE` content pattern. Given that the switch has only one case but involves complex logic, it suggests that the current implementation may not be straightforward and could benefit from refactoring. 
+
+Polymorphism could simplify the code by encapsulating the behavior associated with different cases into separate classes, making it easier to manage and","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""calculateSnackTime"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 1.0,
+      ""complexityScore"": 14.0
+    }
+  ],
+  ""avgComplexityScore"": ""14.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public int calculateSnackTime(int numSnacks)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""1.0"",
+  ""totalCases"": ""1""
+}"
+"assignment-2-21","BurgerShop","calculateDrinkTime","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `calculateDrinkTime` method exhibits complex logic, as indicated by the complexity score of 14.0 and the presence of a `STATE_CHANGE` content pattern. Given that the switch has only one case but involves complex logic, it suggests that the current implementation may not be straightforward and could benefit from a more maintainable design. Refactoring to use polymorphism could simplify the code, enhance readability, and make it easier to extend in the future,","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""calculateDrinkTime"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 1.0,
+      ""complexityScore"": 14.0
+    }
+  ],
+  ""avgComplexityScore"": ""14.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public int calculateDrinkTime(int numDrinks)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""1.0"",
+  ""totalCases"": ""1""
+}"
+"assignment-2-24","BurgerShop","addSnack","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `addSnack` method of the `BurgerShop` class exhibits complex logic and is identified as a state machine pattern. With a complexity score of 38.0 and the presence of object creation within the switch cases, it indicates that the logic is not straightforward and could lead to maintenance challenges. Refactoring this switch statement using polymorphism, such as implementing the State pattern, would enhance code readability, reduce complexity, and improve the overall design by encaps","{
+  ""overallPattern"": ""STATE_MACHINE"",
+  ""hasObjectCreation"": ""true"",
+  ""suggestion"": ""State machine pattern detected - consider State pattern"",
+  ""methodName"": ""addSnack"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""METHOD_DISPATCH"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": true,
+      ""patternType"": ""STATE_MACHINE"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 38.0
+    }
+  ],
+  ""avgComplexityScore"": ""38.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""LOW"",
+  ""contentPattern"": ""METHOD_DISPATCH"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addSnack(String name, float price, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-24","BurgerShop","addDrink","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `addDrink` method of the `BurgerShop` class exhibits complex logic and is identified as a state machine pattern. With a complexity score of 38.0 and the presence of object creation, it indicates that the switch is not a simple mapping and involves more intricate decision-making. Given that the switch has 3 cases and is not a straightforward configuration switch, it suggests that the logic could be better managed through polymorphism, such as implementing the","{
+  ""overallPattern"": ""STATE_MACHINE"",
+  ""hasObjectCreation"": ""true"",
+  ""suggestion"": ""State machine pattern detected - consider State pattern"",
+  ""methodName"": ""addDrink"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""METHOD_DISPATCH"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": true,
+      ""patternType"": ""STATE_MACHINE"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 38.0
+    }
+  ],
+  ""avgComplexityScore"": ""38.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""LOW"",
+  ""contentPattern"": ""METHOD_DISPATCH"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addDrink(String name, float price, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-24","BurgerShop","addCombo","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `addCombo` method of the `BurgerShop` class exhibits complex logic and is identified as a state machine pattern. With a complexity score of 48.0 and the presence of object creation within the switch cases, it indicates that the logic is not straightforward and could lead to maintenance challenges. Refactoring this switch statement using the State pattern would enhance code readability, reduce complexity, and improve the overall design by leveraging polymorphism, making it easier to","{
+  ""overallPattern"": ""STATE_MACHINE"",
+  ""hasObjectCreation"": ""true"",
+  ""suggestion"": ""State machine pattern detected - consider State pattern"",
+  ""methodName"": ""addCombo"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""METHOD_DISPATCH"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": true,
+      ""patternType"": ""STATE_MACHINE"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 3.0,
+      ""complexityScore"": 48.0
+    }
+  ],
+  ""avgComplexityScore"": ""48.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""LOW"",
+  ""contentPattern"": ""METHOD_DISPATCH"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void addCombo(String nameBurger, float priceBurger, String nameSnack, float priceSnack, String nameDrink, float priceDrink, SIZE size)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""3.0"",
+  ""totalCases"": ""3""
+}"
+"assignment-2-19","BurgerShop","checkSize","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `checkSize` method of the `BurgerShop` class exhibits complex logic and has a complexity score of 18.0, which indicates that it is not a simple mapping and involves more intricate decision-making. Given that the switch has only 2 cases but contains complex logic, it suggests that the current implementation may be difficult to maintain and extend. Refactoring with polymorphism could simplify the code by encapsulating the behavior associated with each case into separate","{
+  ""overallPattern"": ""SIMPLE_DISPATCH"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""checkSize"",
+  ""hasComplexLogic"": ""true"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""SIMPLE_DISPATCH"",
+      ""hasComplexLogic"": true,
+      ""caseCount"": 2.0,
+      ""complexityScore"": 18.0
+    }
+  ],
+  ""avgComplexityScore"": ""18.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public float checkSize(SIZE size, float price)"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""2.0"",
+  ""totalCases"": ""2""
+}"
+"assignment-2-19","BurgerShop","showCart","SwitchComplexity","YES","**Answer: YES**
+
+The switch statement in the `showCart` method of the `BurgerShop` class exhibits a complexity score of 12.0 with 4 cases, indicating that it is not a simple mapping and involves mixed logic. Given that the average complexity score is relatively high and the switch is categorized as having a ""STATE_CHANGE"" content pattern, it suggests that the logic could be better managed through polymorphism. Refactoring to use polymorphism could enhance maintainability, readability, and","{
+  ""overallPattern"": ""MIXED_LOGIC"",
+  ""hasObjectCreation"": ""false"",
+  ""suggestion"": ""Review for potential polymorphism replacement"",
+  ""methodName"": ""showCart"",
+  ""hasComplexLogic"": ""false"",
+  ""className"": ""BurgerShop"",
+  ""switchBreakdown"": [
+    {
+      ""contentPattern"": ""STATE_CHANGE"",
+      ""isSimpleMapping"": false,
+      ""isStringMapping"": false,
+      ""hasObjectCreation"": false,
+      ""patternType"": ""MIXED_LOGIC"",
+      ""hasComplexLogic"": false,
+      ""caseCount"": 4.0,
+      ""complexityScore"": 12.0
+    }
+  ],
+  ""avgComplexityScore"": ""12.0"",
+  ""isConfigurationSwitch"": false,
+  ""highestSeverity"": ""MEDIUM"",
+  ""contentPattern"": ""STATE_CHANGE"",
+  ""isGetterSetter"": false,
+  ""methodSignature"": ""public void showCart()"",
+  ""isEventHandler"": false,
+  ""totalSwitches"": ""1"",
+  ""avgCasesPerSwitch"": ""4.0"",
+  ""totalCases"": ""4""
+}"

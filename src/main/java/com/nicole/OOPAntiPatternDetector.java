@@ -29,6 +29,13 @@ public class OOPAntiPatternDetector {
         .setPrettyPrinting()  // Makes JSON readable
         .create();
 
+    // Add these static counters at the top of your class
+private static int totalStudentsAnalyzed = 0;
+private static int totalJavaFilesProcessed = 0;
+private static int totalClassesAnalyzed = 0;
+private static int totalMethodsScanned = 0;
+private static int totalStatementsAnalyzed = 0;
+
     private static List<String[]> csvRows = new ArrayList<>();
     private static final Set<String> FRAMEWORK_METHOD_NAMES = Set.of("setUp", "tearDown");
     private static final Set<String> OBJECT_METHOD_NAMES = Set.of("equals", "hashCode", "toString");
@@ -72,6 +79,8 @@ public class OOPAntiPatternDetector {
         details
     });
 }
+
+
 
 private static int getSeverityLevel(String severity) {
     switch (severity) {
@@ -211,112 +220,124 @@ private static void detectLSPViolations(ClassOrInterfaceDeclaration childClass,
 
 
     public static void main(String[] args) throws Exception {
-        // Hardcoded submissions directory
-        File submissionsDir = new File("C:\\Users\\GGPC\\Downloads\\assignment-1\\assignment-2023-1\\assignment-1-repos");
-        
-        if (!submissionsDir.exists()) {
-            System.err.println("Submissions folder not found: " + submissionsDir.getAbsolutePath());
-            return;
-        }
-
-        System.out.println("Analyzing folder: " + submissionsDir.getAbsolutePath());
-
-        // CSV header
-        csvRows.add(new String[]{"Student", "Class", "Method", "IssueType", "Severity", "Details"});
-
-        // Iterate all java files inside student folders (include nested)
-        List<File> javaFiles = new ArrayList<>();
-        Map<String, String> fileToStudent = new HashMap<>();
-
-        File[] studentDirs = submissionsDir.listFiles();
-        if (studentDirs != null) {
-            for (File studentDir : studentDirs) {
-                if (!studentDir.isDirectory()) continue;
-                String studentName = studentDir.getName();
-                Path studentPath;
-                try {
-                    studentPath = studentDir.toPath().toRealPath();
-                } catch (IOException e) {
-                    System.err.println("Could not canonicalise student dir " + studentDir + ": " + e.getMessage());
-                    continue;
-                }
-
-                try (Stream<Path> walk = Files.walk(studentPath)) {
-                    walk.filter(Files::isRegularFile)
-                        .filter(p -> p.getFileName().toString().endsWith(".java"))
-                        .forEach(p -> {
-                            File f = p.toFile();
-                            javaFiles.add(f);
-                            fileToStudent.put(f.getAbsolutePath(), studentName);
-                        });
-                } catch (IOException e) {
-                    System.err.println("Failed walking " + studentDir + ": " + e.getMessage());
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        System.out.println("Found " + javaFiles.size() + " Java files across " + 
-                          (studentDirs != null ? studentDirs.length : 0) + " students");
-
-        // Parse all files
-        List<CompilationUnit> units = new ArrayList<>();
-        JavaParser parser = new JavaParser();
-        for (File f : javaFiles) {
-            ParseResult<CompilationUnit> result = parser.parse(f);
-            if (result.isSuccessful() && result.getResult().isPresent()) {
-                CompilationUnit cu = result.getResult().get();
-                cu.setStorage(f.toPath());
-                units.add(cu);
-            } else {
-                System.err.println("Could not parse: " + f.getAbsolutePath());
-                result.getProblems().forEach(System.err::println);
-            }
-        }
-
-        // Group classes by student
-        Map<String, Map<String, ClassOrInterfaceDeclaration>> groupedClassMaps = new HashMap<>();
-        List<CompilationUnit> validUnits = new ArrayList<>();
-
-        for (CompilationUnit cu : units) {
-    if (!cu.getStorage().isPresent()) continue;
-    String keyPath = cu.getStorage().get().getPath().toAbsolutePath().toString();
-    String studentName = fileToStudent.get(keyPath);
-    if (studentName == null) continue;
-
-    groupedClassMaps.computeIfAbsent(studentName, k -> new HashMap<>());
-
-    for (ClassOrInterfaceDeclaration clazz : cu.findAll(ClassOrInterfaceDeclaration.class)) {
-        // FILTER HERE - BEFORE adding to map!
-        String className = clazz.getNameAsString();
-        
-        // Skip Main and other framework classes
-        if (className.equals("Main") || 
-            className.equals("MessageCli") || 
-            className.equals("Types") ||
-            className.endsWith("Test") ||
-            className.contains("Test")) {
-            System.out.println("Skipping framework class: " + className + " for " + studentName);
-            continue;
-        }
-        
-        groupedClassMaps.get(studentName).put(className, clazz);
-
-        System.out.println("\n=== DEBUG: Checking for Main classes ===");
-int mainClassCount = 0;
-for (Map.Entry<String, Map<String, ClassOrInterfaceDeclaration>> entry : groupedClassMaps.entrySet()) {
-    String student = entry.getKey();
-    Map<String, ClassOrInterfaceDeclaration> classes = entry.getValue();
+    // Hardcoded submissions directory
+    File submissionsDir = new File("C:\\Users\\GGPC\\Downloads\\assignment-2022-3\\assignment-3_output");
     
-    if (classes.containsKey("Main")) {
-        mainClassCount++;
-        System.out.println("FOUND: Student " + student + " has Main class!");
+    if (!submissionsDir.exists()) {
+        System.err.println("Submissions folder not found: " + submissionsDir.getAbsolutePath());
+        return;
     }
-}
-System.out.println("Total Main classes found: " + mainClassCount);
+
+    System.out.println("Analyzing folder: " + submissionsDir.getAbsolutePath());
+
+    // CSV header
+    csvRows.add(new String[]{"Student", "Class", "Method", "IssueType", "Severity", "Details"});
+
+    // Iterate all java files inside student folders (include nested)
+    List<File> javaFiles = new ArrayList<>();
+    Map<String, String> fileToStudent = new HashMap<>();
+
+    File[] studentDirs = submissionsDir.listFiles();
+    if (studentDirs != null) {
+        for (File studentDir : studentDirs) {
+            if (!studentDir.isDirectory()) continue;
+            totalStudentsAnalyzed++;  // Count student
+            
+            String studentName = studentDir.getName();
+            Path studentPath;
+            try {
+                studentPath = studentDir.toPath().toRealPath();
+            } catch (IOException e) {
+                System.err.println("Could not canonicalise student dir " + studentDir + ": " + e.getMessage());
+                continue;
+            }
+
+            try (Stream<Path> walk = Files.walk(studentPath)) {
+                walk.filter(Files::isRegularFile)
+                    .filter(p -> p.getFileName().toString().endsWith(".java"))
+                    .forEach(p -> {
+                        File f = p.toFile();
+                        javaFiles.add(f);
+                        totalJavaFilesProcessed++;  // Count Java file
+                        fileToStudent.put(f.getAbsolutePath(), studentName);
+                    });
+            } catch (IOException e) {
+                System.err.println("Failed walking " + studentDir + ": " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
     }
-    validUnits.add(cu);
-}
+
+    System.out.println("\n=== STATISTICS COLLECTED ===");
+    System.out.println("Total students analyzed: " + totalStudentsAnalyzed);
+    System.out.println("Total Java files processed: " + totalJavaFilesProcessed);
+
+    // Parse all files
+    List<CompilationUnit> units = new ArrayList<>();
+    JavaParser parser = new JavaParser();
+    for (File f : javaFiles) {
+        ParseResult<CompilationUnit> result = parser.parse(f);
+        if (result.isSuccessful() && result.getResult().isPresent()) {
+            CompilationUnit cu = result.getResult().get();
+            cu.setStorage(f.toPath());
+            units.add(cu);
+        } else {
+            System.err.println("Could not parse: " + f.getAbsolutePath());
+            result.getProblems().forEach(System.err::println);
+        }
+    }
+
+    // Group classes by student
+    Map<String, Map<String, ClassOrInterfaceDeclaration>> groupedClassMaps = new HashMap<>();
+    List<CompilationUnit> validUnits = new ArrayList<>();
+
+    for (CompilationUnit cu : units) {
+        if (!cu.getStorage().isPresent()) continue;
+        String keyPath = cu.getStorage().get().getPath().toAbsolutePath().toString();
+        String studentName = fileToStudent.get(keyPath);
+        if (studentName == null) continue;
+
+        groupedClassMaps.computeIfAbsent(studentName, k -> new HashMap<>());
+
+        for (ClassOrInterfaceDeclaration clazz : cu.findAll(ClassOrInterfaceDeclaration.class)) {
+            // FILTER HERE - BEFORE adding to map!
+            String className = clazz.getNameAsString();
+            
+            // Skip Main and other framework classes
+            if (className.equals("Main") || 
+                className.equals("MessageCli") || 
+                className.equals("Types") ||
+                className.endsWith("Test") ||
+                className.contains("Test")) {
+                System.out.println("Skipping framework class: " + className + " for " + studentName);
+                continue;
+            }
+            
+            groupedClassMaps.get(studentName).put(className, clazz);
+            totalClassesAnalyzed++;  // Count class
+            
+            // Count methods in this class
+            int methodCount = clazz.getMethods().size();
+            totalMethodsScanned += methodCount;
+            
+            // Count statements in all methods
+            for (MethodDeclaration method : clazz.getMethods()) {
+                if (method.getBody().isPresent()) {
+                    totalStatementsAnalyzed += method.getBody().get().getStatements().size();
+                }
+            }
+        }
+        validUnits.add(cu);
+    }
+
+    System.out.println("Total classes analyzed (excluding framework): " + totalClassesAnalyzed);
+    System.out.println("Total methods scanned: " + totalMethodsScanned);
+    System.out.println("Total statements analyzed: " + totalStatementsAnalyzed);
+    System.out.println("Average methods per class: " + 
+        (totalClassesAnalyzed > 0 ? String.format("%.2f", (double)totalMethodsScanned / totalClassesAnalyzed) : "0"));
+    System.out.println("Average statements per method: " + 
+        (totalMethodsScanned > 0 ? String.format("%.2f", (double)totalStatementsAnalyzed / totalMethodsScanned) : "0"));
+    System.out.println("================================\n");
 
         Set<String> allEnumNames = collectAllEnumNames(validUnits);
 
@@ -375,9 +396,17 @@ for (Map.Entry<String, Map<String, ClassOrInterfaceDeclaration>> entry : grouped
         String outputFile = "oop_antipattern_all.csv";
         writeCsv(outputFile);
 
-        writeDetectorCandidates("llm_candidates_detector.json");
+        writeDetectorCandidates("llm_candidates.json");
         writeLLMCandidates("llm_candidates.json");
-        
+        writeStatisticsToFile();
+        // Also print to console
+System.out.println("\n=== FINAL STATISTICS ===");
+System.out.println("Total students analyzed: " + totalStudentsAnalyzed);
+System.out.println("Total Java files processed: " + totalJavaFilesProcessed);
+System.out.println("Total classes analyzed (excluding framework): " + totalClassesAnalyzed);
+System.out.println("Total methods scanned: " + totalMethodsScanned);
+System.out.println("Total heuristic issues detected: " + (csvRows.size() - 1)); // -1 for header
+System.out.println("Total LLM candidates generated: " + llmCandidates.size());
         
         System.out.println("\nAnalysis complete! Results saved to: " + outputFile);
         System.out.println("LLM candidates saved to: llm_candidates.json");
@@ -403,6 +432,68 @@ for (Map.Entry<String, Map<String, ClassOrInterfaceDeclaration>> entry : grouped
     
     return studentName;
 }
+
+private static void writeStatisticsToFile() {
+    try (PrintWriter pw = new PrintWriter(new File("detection_statistics.txt"))) {
+        pw.println("=== OOP ANTIPATTERN DETECTION STATISTICS ===");
+        pw.println("Timestamp: " + new java.util.Date());
+        pw.println();
+        pw.println("Input Data:");
+        pw.println("  Total students analyzed: " + totalStudentsAnalyzed);
+        pw.println("  Total Java files processed: " + totalJavaFilesProcessed);
+        pw.println("  Total classes analyzed (excluding framework): " + totalClassesAnalyzed);
+        pw.println("  Total methods scanned: " + totalMethodsScanned);
+        pw.println("  Total statements analyzed: " + totalStatementsAnalyzed);
+        pw.println();
+        pw.println("Averages:");
+        pw.println("  Average methods per class: " + 
+            (totalClassesAnalyzed > 0 ? String.format("%.2f", (double)totalMethodsScanned / totalClassesAnalyzed) : "0"));
+        pw.println("  Average statements per method: " + 
+            (totalMethodsScanned > 0 ? String.format("%.2f", (double)totalStatementsAnalyzed / totalMethodsScanned) : "0"));
+        pw.println();
+        pw.println("Detection Results:");
+        pw.println("  Total AST-obvious issues: " + 54); // You'll update this
+        pw.println("  Total heuristic issues detected: " + csvRows.size());
+        pw.println("  Total LLM candidates generated: " + llmCandidates.size());
+        
+        // Count by issue type
+        // In writeStatisticsToFile() method:
+Map<String, Integer> issueTypeCounts = new HashMap<>();
+for (int i = 1; i < csvRows.size(); i++) {  // Skip header
+    String[] row = csvRows.get(i);
+    if (row.length > 3) {
+        String issueType = row[3];
+        
+        // COMBINE "Redundant Inheritance Group" with "Redundant Inheritance"
+        if (issueType.equals("Redundant Inheritance Group")) {
+            issueType = "Redundant Inheritance";
+        }
+        
+        // COMBINE "RedundantOverrideGroup" with "Redundant Override" 
+        if (issueType.equals("RedundantOverrideGroup")) {
+            issueType = "Redundant Override";
+        }
+        
+        // COMBINE "PotentialMissingInheritanceGroup" with "Missing Inheritance"
+        if (issueType.equals("PotentialMissingInheritanceGroup")) {
+            issueType = "Missing Inheritance";
+        }
+        
+        issueTypeCounts.put(issueType, issueTypeCounts.getOrDefault(issueType, 0) + 1);
+    }
+}
+        
+        pw.println();
+        pw.println("Issue Type Breakdown:");
+        for (Map.Entry<String, Integer> entry : issueTypeCounts.entrySet()) {
+            pw.println("  " + entry.getKey() + ": " + entry.getValue());
+        }
+        
+    } catch (Exception e) {
+        System.err.println("Failed to write statistics: " + e.getMessage());
+    }
+}
+
 
 private static boolean shouldSkipClass(ClassOrInterfaceDeclaration clazz) {
     String className = clazz.getNameAsString();
@@ -804,7 +895,6 @@ private static String assessComplexity(BlockStmt body) {
                                         method.getNameAsString().startsWith("set") ||
                                         method.getNameAsString().startsWith("is"));
 
-        // Now call addLLMCandidate - ONLY ONCE
         addLLMCandidate(studentName, clazz.getNameAsString(),
             method.getNameAsString(), "SwitchComplexity", evidence);
     }
@@ -911,17 +1001,24 @@ private static String getSuggestionForSwitches(int totalSwitches, double avgCase
         return "MEDIUM";
     }
 }
-    private static void detectRedundantOverrides(ClassOrInterfaceDeclaration child, 
-                                            ClassOrInterfaceDeclaration parent, 
-                                            String studentName,
-                                            Map<String, ClassOrInterfaceDeclaration> classMap) {
+private static void detectRedundantOverrides(ClassOrInterfaceDeclaration child, 
+                                        ClassOrInterfaceDeclaration parent, 
+                                        String studentName,
+                                        Map<String, ClassOrInterfaceDeclaration> classMap) {
     
+    // List to collect redundant methods in this class
+    List<String> redundantMethods = new ArrayList<>();
     Map<String, MethodDeclaration> parentMethods = new HashMap<>();
+    Map<String, MethodDeclaration> childMethodMap = new HashMap<>();
+    Map<String, Map<String, Object>> llmEvidenceMap = new HashMap<>();
+    
     for (MethodDeclaration pm : parent.getMethods()) {
         parentMethods.put(pm.getSignature().asString(), pm);
     }
 
     for (MethodDeclaration childMethod : child.getMethods()) {
+        childMethodMap.put(childMethod.getSignature().asString(), childMethod);
+        
         String sig = childMethod.getSignature().asString();
         if (!parentMethods.containsKey(sig)) continue;
 
@@ -939,28 +1036,74 @@ private static String getSuggestionForSwitches(int totalSwitches, double avgCase
 
             if (parentBodyStr.equals(childBodyStr)) {
                 if (!isJustifiedIdenticalOverride(childMethod, child, parent, classMap)) {
-                    // Output to CSV (simple format)
-                    String details = "Identical to parent method";
-                    addCsvRow(studentName, child.getNameAsString(),
-                        childMethod.getNameAsString(), "Redundant Override",
-                        "MEDIUM", details);
+                    redundantMethods.add(childMethod.getNameAsString());
                     
-                    // Output to LLM candidates with richer context
-                    addLLMCandidate(studentName, child.getNameAsString(),
-                        childMethod.getNameAsString(), "RedundantOverride",
-                        Map.of(
-                            "parentSignature", parentMethod.getDeclarationAsString(),
-                            "childSignature", childMethod.getDeclarationAsString(),
-                            "bodySimilarity", "100", // 100% identical
-                            "parentIsAbstract", String.valueOf(parentMethod.isAbstract()),
-                            "methodComplexity", assessMethodComplexity(parentMethod),
-                            "isGetterSetter", String.valueOf(isGetterOrSetter(childMethod)),
-                            "isConstructor", String.valueOf(checkIfConstructor(childMethod))
-                        ));
+                    // Store LLM evidence for this method
+                    llmEvidenceMap.put(childMethod.getNameAsString(), Map.of(
+                        "parentSignature", parentMethod.getDeclarationAsString(),
+                        "childSignature", childMethod.getDeclarationAsString(),
+                        "bodySimilarity", "100",
+                        "parentIsAbstract", String.valueOf(parentMethod.isAbstract()),
+                        "methodComplexity", assessMethodComplexity(parentMethod),
+                        "isGetterSetter", String.valueOf(isGetterOrSetter(childMethod)),
+                        "isConstructor", String.valueOf(checkIfConstructor(childMethod))
+                    ));
                 }
             }
         }
     }
+    
+    // Group all redundant methods in this class together
+    if (!redundantMethods.isEmpty()) {
+        if (redundantMethods.size() == 1) {
+            // Single method - handle normally
+            String methodName = redundantMethods.get(0);
+            String details = "Identical to parent method";
+            addCsvRow(studentName, child.getNameAsString(),
+                methodName, "Redundant Override",
+                "MEDIUM", details);
+            
+            addLLMCandidate(studentName, child.getNameAsString(),
+                methodName, "RedundantOverride",
+                llmEvidenceMap.get(methodName));
+        } else {
+            // Multiple methods - group them
+            String methodsStr = String.join("; ", redundantMethods);
+            String details = redundantMethods.size() + " methods identical to parent: " + methodsStr;
+            
+            // Add grouped CSV row
+            addCsvRow(studentName, child.getNameAsString(),
+                methodsStr, "Redundant Override",
+                "MEDIUM", details);
+            
+            // Add a single LLM candidate for the group with combined evidence
+            Map<String, Object> groupEvidence = new HashMap<>();
+            groupEvidence.put("redundantMethodsCount", String.valueOf(redundantMethods.size()));
+            groupEvidence.put("redundantMethods", String.join(", ", redundantMethods));
+            groupEvidence.put("details", "Multiple methods with identical implementations to parent");
+            groupEvidence.put("methodExamples", getMethodExamples(redundantMethods, childMethodMap));
+            
+            addLLMCandidate(studentName, child.getNameAsString(),
+                methodsStr, "RedundantOverrideGroup",
+                groupEvidence);
+        }
+    }
+}
+
+// Helper method to get method examples for the group
+private static String getMethodExamples(List<String> methodNames, Map<String, MethodDeclaration> childMethodMap) {
+    List<String> examples = new ArrayList<>();
+    for (String methodName : methodNames) {
+        // Find the method by name (simplified - in reality you'd need to match signatures)
+        for (Map.Entry<String, MethodDeclaration> entry : childMethodMap.entrySet()) {
+            if (entry.getValue().getNameAsString().equals(methodName)) {
+                examples.add(entry.getValue().getDeclarationAsString());
+                break;
+            }
+        }
+        if (examples.size() >= 3) break; // Limit to 3 examples
+    }
+    return String.join("; ", examples);
 }
 
 
@@ -1317,14 +1460,13 @@ private static SwitchAnalysis analyzeSwitchComplexity(SwitchStmt switchStmt) {
     SwitchAnalysis analysis = new SwitchAnalysis();
     List<SwitchEntry> entries = switchStmt.getEntries();
     
-    // ========== ORIGINAL LOGIC FIRST ==========
     int totalCases = 0;
     int totalLines = 0;
     int casesWithLogic = 0;
     int casesWithObjects = 0;
     
     for (SwitchEntry entry : entries) {
-        if (entry.getLabels().isEmpty()) continue; // Default case
+        if (entry.getLabels().isEmpty()) continue;
         
         totalCases++;
         int caseLines = 0;
@@ -1636,23 +1778,13 @@ private static String analyzeSwitchContent(SwitchStmt switchStmt) {
         node.getAllContainedComments().forEach(Comment::remove);
     }
 
-    private static String getMethodSignature(MethodDeclaration m) {
-        StringBuilder sig = new StringBuilder();
-        sig.append(m.getNameAsString()).append("(");
-        
-        for (int i = 0; i < m.getParameters().size(); i++) {
-            if (i > 0) sig.append(",");
-            sig.append(m.getParameter(i).getType().asString());
-        }
-        
-        sig.append(")");
-        return sig.toString();
-    }
+
 
     private static void detectMissingInheritance(Map<String, ClassOrInterfaceDeclaration> classMap,
-                                            String studentName) {
+                                        String studentName) {
 
     Map<String, Set<String>> methodToClasses = new HashMap<>();
+    Map<String, Map<String, MethodDeclaration>> methodExamplesMap = new HashMap<>();
 
     for (ClassOrInterfaceDeclaration clazz : classMap.values()) {
         if (isTestClass(clazz)) continue;
@@ -1677,9 +1809,18 @@ private static String analyzeSwitchContent(SwitchStmt switchStmt) {
             methodToClasses
                 .computeIfAbsent(sig, k -> new HashSet<>())
                 .add(clazz.getNameAsString());
+            
+            // Store example method for this signature
+            if (!methodExamplesMap.containsKey(sig)) {
+                methodExamplesMap.put(sig, new HashMap<>());
+            }
+            methodExamplesMap.get(sig).put(clazz.getNameAsString(), method);
         }
     }
 
+    // Group by sets of classes that share the same methods
+    Map<Set<String>, List<String>> classGroupToMethods = new HashMap<>();
+    
     for (Map.Entry<String, Set<String>> entry : methodToClasses.entrySet()) {
         Set<String> classes = entry.getValue();
         if (classes.size() < 2) continue;
@@ -1711,44 +1852,103 @@ private static String analyzeSwitchContent(SwitchStmt switchStmt) {
 
         if (!weaklyRelated(classDecls)) continue;
 
-        // Output to CSV (simple format)
-        String details = "Classes define same method but do not share superclass or interface";
-        addCsvRow(studentName, String.join(";", classes),
-            entry.getKey(), "Missing Inheritance",
-            "HIGH", details);
-        
-        // Output to LLM candidates with richer context
-        addLLMCandidate(studentName, String.join(";", classes),
-            entry.getKey(), "PotentialMissingInheritance",
-            Map.of(
-                "classes", String.join(";", classes),
-                "sharedMethods", String.valueOf(sharedCount),
-                "methodExamples", getExampleMethods(entry.getKey(), classes, classMap),
-                "similarityScore", String.valueOf(calculateClassSimilarity(classes, classMap)),
-                "weaklyRelated", "true",
-                "hasCommonAncestor", "false"
-            ));
+        // Add method to the class group
+        classGroupToMethods
+            .computeIfAbsent(classes, k -> new ArrayList<>())
+            .add(entry.getKey());
     }
-}
-
-
-    private static String getExampleMethods(String methodSig, Set<String> classes, 
-                                       Map<String, ClassOrInterfaceDeclaration> classMap) {
-    List<String> examples = new ArrayList<>();
-    for (String className : classes) {
-        ClassOrInterfaceDeclaration clazz = classMap.get(className);
-        if (clazz != null) {
-            // Find the method and get a preview
-            for (MethodDeclaration method : clazz.getMethods()) {
-                if (methodSignatureWithoutVisibility(method).equals(methodSig)) {
-                    examples.add(method.getDeclarationAsString());
-                    break;
+    
+    // Process each class group
+    for (Map.Entry<Set<String>, List<String>> entry : classGroupToMethods.entrySet()) {
+        Set<String> classes = entry.getKey();
+        List<String> sharedMethods = entry.getValue();
+        
+        if (sharedMethods.size() == 1) {
+            // Single shared method
+            String methodSig = sharedMethods.get(0);
+            String details = "Classes define same method but do not share superclass or interface";
+            addCsvRow(studentName, String.join("; ", classes),
+                extractMethodName(methodSig), "Missing Inheritance",
+                "HIGH", details);
+            
+            Map<String, MethodDeclaration> examples = methodExamplesMap.get(methodSig);
+            addLLMCandidate(studentName, String.join("; ", classes),
+                extractMethodName(methodSig), "PotentialMissingInheritance",
+                Map.of(
+                    "classes", String.join("; ", classes),
+                    "sharedMethods", "1",
+                    "methodSignature", methodSig,
+                    "methodExample", getMethodExampleString(examples),
+                    "similarityScore", String.valueOf(calculateClassSimilarity(classes, classMap)),
+                    "weaklyRelated", "true",
+                    "hasCommonAncestor", "false"
+                ));
+        } else {
+            // Multiple shared methods
+            String classList = String.join("; ", classes);
+            String methodNames = extractMethodNames(sharedMethods);
+            
+            String details = sharedMethods.size() + " methods shared by classes without common superclass";
+            addCsvRow(studentName, classList,
+                methodNames, "Missing Inheritance",
+                "HIGH", details);
+            
+            // Collect all method examples
+            Map<String, String> allMethodExamples = new HashMap<>();
+            for (String methodSig : sharedMethods) {
+                Map<String, MethodDeclaration> examples = methodExamplesMap.get(methodSig);
+                if (examples != null && !examples.isEmpty()) {
+                    allMethodExamples.put(methodSig, getMethodExampleString(examples));
                 }
             }
+            
+            addLLMCandidate(studentName, classList,
+                methodNames, "PotentialMissingInheritanceGroup",
+                Map.of(
+                    "classes", classList,
+                    "sharedMethodsCount", String.valueOf(sharedMethods.size()),
+                    "sharedMethodNames", methodNames,
+                    "methodSignatures", String.join("; ", sharedMethods),
+                    "methodExamples", String.join(" | ", allMethodExamples.values()),
+                    "similarityScore", String.valueOf(calculateClassSimilarity(classes, classMap)),
+                    "weaklyRelated", "true",
+                    "hasCommonAncestor", "false",
+                    "details", "Multiple methods suggest missing inheritance hierarchy"
+                ));
         }
     }
-    return String.join(", ", examples.subList(0, Math.min(3, examples.size())));
 }
+
+// Helper methods
+private static String extractMethodName(String methodSig) {
+    // Extract method name from signature (e.g., "int calculate(int)" -> "calculate")
+    int parenIndex = methodSig.indexOf('(');
+    if (parenIndex == -1) return methodSig;
+    
+    String beforeParen = methodSig.substring(0, parenIndex).trim();
+    int lastSpace = beforeParen.lastIndexOf(' ');
+    if (lastSpace == -1) return beforeParen;
+    
+    return beforeParen.substring(lastSpace + 1);
+}
+
+private static String extractMethodNames(List<String> methodSigs) {
+    return methodSigs.stream()
+        .map(methodSig -> extractMethodName(methodSig))
+        .collect(Collectors.joining("; "));
+}
+
+private static String getMethodExampleString(Map<String, MethodDeclaration> examples) {
+    if (examples == null || examples.isEmpty()) return "";
+    
+    // Get first example
+    MethodDeclaration example = examples.values().iterator().next();
+    String declaration = example.getDeclarationAsString();
+    // Truncate if too long
+    return declaration.length() > 100 ? declaration.substring(0, 100) + "..." : declaration;
+}
+
+
 
 private static int calculateClassSimilarity(Set<String> classes, 
                                           Map<String, ClassOrInterfaceDeclaration> classMap) {
@@ -1978,47 +2178,118 @@ private static int calculateClassSimilarity(Set<String> classes,
     }
 
     private static void detectRedundantSuperclass(Map<String, ClassOrInterfaceDeclaration> classMap, 
-                                                 String studentName) {
+                                             String studentName) {
+    
+    Map<String, List<String>> redundantInheritanceGroups = new HashMap<>();
+    Map<String, String> parentMap = new HashMap<>();
+    
+    for (ClassOrInterfaceDeclaration clazz : classMap.values()) {
+        if (clazz.getExtendedTypes().isEmpty()) continue;
+
+        String parentName = clazz.getExtendedTypes().get(0).getNameAsString();
         
-        for (ClassOrInterfaceDeclaration clazz : classMap.values()) {
-            if (clazz.getExtendedTypes().isEmpty()) continue;
+        if (parentName.equals("Object")) {
+            continue;
+        }
 
-            String parentName = clazz.getExtendedTypes().get(0).getNameAsString();
-            
-            if (parentName.equals("Object")) {
-                continue;
-            }
+        ClassOrInterfaceDeclaration parentClass = classMap.get(parentName);
+        if (parentClass == null) continue;
 
-            ClassOrInterfaceDeclaration parentClass = classMap.get(parentName);
-            if (parentClass == null) continue;
-
-            Set<String> overridableMethods = new HashSet<>();
-            for (MethodDeclaration pm : parentClass.getMethods()) {
-                if (!pm.isPrivate() && !pm.isFinal()) {
-                    overridableMethods.add(getMethodSignature(pm));
-                }
-            }
-            
-            if (overridableMethods.isEmpty()) {
-                if (!hasValidExtensionReason(clazz, parentClass)) {
-                    flagRedundantInheritance(studentName, clazz.getNameAsString(), parentName);
-                }
-                continue;
-            }
-            
-            boolean overridesAny = false;
-            for (MethodDeclaration cm : clazz.getMethods()) {
-                if (overridableMethods.contains(getMethodSignature(cm))) {
-                    overridesAny = true;
-                    break;
-                }
-            }
-            
-            if (!overridesAny && !hasValidExtensionReason(clazz, parentClass)) {
-                flagRedundantInheritance(studentName, clazz.getNameAsString(), parentName);
+        Set<String> overridableMethods = new HashSet<>();
+        for (MethodDeclaration pm : parentClass.getMethods()) {
+            if (!pm.isPrivate() && !pm.isFinal()) {
+                overridableMethods.add(getMethodSignature(pm));
             }
         }
+        
+        if (overridableMethods.isEmpty()) {
+            if (!hasValidExtensionReason(clazz, parentClass)) {
+                // Store for grouping
+                String groupKey = studentName + "|" + parentName;
+                redundantInheritanceGroups
+                    .computeIfAbsent(groupKey, k -> new ArrayList<>())
+                    .add(clazz.getNameAsString());
+                parentMap.put(groupKey, parentName);
+            }
+            continue;
+        }
+        
+        boolean overridesAny = false;
+        for (MethodDeclaration cm : clazz.getMethods()) {
+            if (overridableMethods.contains(getMethodSignature(cm))) {
+                overridesAny = true;
+                break;
+            }
+        }
+        
+        if (!overridesAny && !hasValidExtensionReason(clazz, parentClass)) {
+            // Store for grouping
+            String groupKey = studentName + "|" + parentName;
+            redundantInheritanceGroups
+                .computeIfAbsent(groupKey, k -> new ArrayList<>())
+                .add(clazz.getNameAsString());
+            parentMap.put(groupKey, parentName);
+        }
     }
+    
+    // Process grouped redundant inheritance cases
+    for (Map.Entry<String, List<String>> entry : redundantInheritanceGroups.entrySet()) {
+        String groupKey = entry.getKey();
+        List<String> childClasses = entry.getValue();
+        String parentName = parentMap.get(groupKey);
+        
+        if (childClasses.size() == 1) {
+            // Single class
+            String childName = childClasses.get(0);
+            String details = "Class inherits but does not override/reuse superclass methods";
+            addCsvRow(studentName, childName,
+                "", "Redundant Inheritance",
+                "HIGH", details);
+            
+            addLLMCandidate(studentName, childName,
+                "", "RedundantInheritance",
+                Map.of(
+                    "details", details,
+                    "parentClass", parentName,
+                    "childClass", childName,
+                    "severity", "HIGH"
+                ));
+        } else {
+            // Multiple classes with same redundant inheritance pattern
+            String classList = String.join("; ", childClasses);
+            String details = childClasses.size() + " classes redundantly inherit from " + parentName;
+            
+            addCsvRow(studentName, classList,
+                "", "Redundant Inheritance Group",
+                "HIGH", details);
+            
+            addLLMCandidate(studentName, classList,
+                "", "RedundantInheritanceGroup",
+                Map.of(
+                    "details", details,
+                    "parentClass", parentName,
+                    "childClasses", classList,
+                    "childCount", String.valueOf(childClasses.size()),
+                    "severity", "HIGH",
+                    "pattern", "Multiple classes with same redundant inheritance"
+                ));
+        }
+    }
+}
+
+// Helper method to get method signature
+private static String getMethodSignature(MethodDeclaration m) {
+    StringBuilder sig = new StringBuilder();
+    sig.append(m.getNameAsString()).append("(");
+    
+    for (int i = 0; i < m.getParameters().size(); i++) {
+        if (i > 0) sig.append(",");
+        sig.append(m.getParameter(i).getType().asString());
+    }
+    
+    sig.append(")");
+    return sig.toString();
+}
 
     private static boolean hasValidExtensionReason(ClassOrInterfaceDeclaration child, 
                                                   ClassOrInterfaceDeclaration parent) {
@@ -2082,6 +2353,7 @@ private static int calculateClassSimilarity(Set<String> classes,
                                                 String childName, String parentName) {
         System.out.printf("Redundant inheritance: Class %s inherits from %s but does not override or reuse any superclass method.%n",
                 childName, parentName);
+                
 
         csvRows.add(new String[]{
                 studentName,
@@ -2091,5 +2363,13 @@ private static int calculateClassSimilarity(Set<String> classes,
                 "HIGH",
                 "Class inherits but does not override/reuse superclass methods"
         });
+
+        addLLMCandidate(studentName, childName, "", "RedundantInheritance",
+        Map.of(
+            "details", "Class inherits but does not override/reuse superclass methods",
+            "parentClass", parentName,
+            "childClass", childName,
+            "severity", "HIGH"
+        ));
     }
 }
