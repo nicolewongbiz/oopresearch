@@ -23,7 +23,7 @@ public class ConfirmedViaAST {
     private static final Set<String> OBJECT_METHOD_NAMES = Set.of("equals", "hashCode", "toString");
 
     public static void main(String[] args) throws Exception {
-        File submissionsDir = new File("C:\\Users\\GGPC\\Downloads\\assignment-2022-3\\assignment-3_output");
+        File submissionsDir = new File("C:\\Users\\GGPC\\Downloads\\assignment-2062021-3\\assignment-3-and-project-_output");
         if (!submissionsDir.exists()) {
             System.err.println("Submissions folder not found: " + submissionsDir.getAbsolutePath());
             return;

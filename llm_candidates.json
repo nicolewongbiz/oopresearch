@@ -1,746 +1,14 @@
 [
   {
     "antipattern": "SwitchComplexity",
-    "method": "setSizePrice",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "setSizePrice",
-      "hasComplexLogic": "true",
-      "className": "Side",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
-          "complexityScore": 18.0
-        }
-      ],
-      "avgComplexityScore": "18.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": true,
-      "methodSignature": "public void setSizePrice()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "2.0",
-      "totalCases": "2"
-    },
-    "assignment": "assignment-2-191",
-    "class": "Side",
-    "timestamp": 1.766804077734E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addSnack",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "addSnack",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        }
-      ],
-      "avgComplexityScore": "22.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "MIXED",
-      "isGetterSetter": false,
-      "methodSignature": "public void addSnack(String name, float price, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-75",
-    "class": "BurgerShop",
-    "timestamp": 1.766804077777E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addDrink",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "addDrink",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        }
-      ],
-      "avgComplexityScore": "22.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "MIXED",
-      "isGetterSetter": false,
-      "methodSignature": "public void addDrink(String name, float price, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-75",
-    "class": "BurgerShop",
-    "timestamp": 1.766804077778E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addSnack",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "addSnack",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
-          "complexityScore": 13.0
-        }
-      ],
-      "avgComplexityScore": "13.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void addSnack(String name, float price, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "2.0",
-      "totalCases": "2"
-    },
-    "assignment": "assignment-2-180",
-    "class": "BurgerShop",
-    "timestamp": 1.76680407778E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addDrink",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "addDrink",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
-          "complexityScore": 13.0
-        }
-      ],
-      "avgComplexityScore": "13.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void addDrink(String name, float price, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "2.0",
-      "totalCases": "2"
-    },
-    "assignment": "assignment-2-180",
-    "class": "BurgerShop",
-    "timestamp": 1.76680407778E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addCombo",
-    "evidence": {
-      "overallPattern": "STATE_MACHINE",
-      "hasObjectCreation": "false",
-      "suggestion": "State machine pattern detected - consider State pattern",
-      "methodName": "addCombo",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "STATE_MACHINE",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
-          "complexityScore": 28.0
-        }
-      ],
-      "avgComplexityScore": "28.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "MIXED",
-      "isGetterSetter": false,
-      "methodSignature": "public void addCombo(String nameBurger, float priceBurger, String nameSnack, float priceSnack, String nameDrink, float priceDrink, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "2.0",
-      "totalCases": "2"
-    },
-    "assignment": "assignment-2-180",
-    "class": "BurgerShop",
-    "timestamp": 1.76680407778E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "confirmOrder",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "confirmOrder",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 17.0
-        },
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 17.0
-        }
-      ],
-      "avgComplexityScore": "17.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "MIXED",
-      "isGetterSetter": false,
-      "methodSignature": "public void confirmOrder()",
-      "isEventHandler": false,
-      "totalSwitches": "2",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "6"
-    },
-    "assignment": "assignment-2-180",
-    "class": "BurgerShop",
-    "timestamp": 1.76680407778E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "confirmOrder",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "confirmOrder",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        }
-      ],
-      "avgComplexityScore": "22.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "MIXED",
-      "isGetterSetter": false,
-      "methodSignature": "public void confirmOrder()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-182",
-    "class": "BurgerShop",
-    "timestamp": 1.766804077806E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addSnack",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "addSnack",
-      "hasComplexLogic": "true",
-      "className": "ItemCart",
-      "switchBreakdown": [
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        }
-      ],
-      "avgComplexityScore": "22.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "MIXED",
-      "isGetterSetter": false,
-      "methodSignature": "public void addSnack(String snackName, float snackPrice, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-184",
-    "class": "ItemCart",
-    "timestamp": 1.76680407781E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addDrink",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "addDrink",
-      "hasComplexLogic": "true",
-      "className": "ItemCart",
-      "switchBreakdown": [
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        }
-      ],
-      "avgComplexityScore": "22.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "MIXED",
-      "isGetterSetter": false,
-      "methodSignature": "public void addDrink(String drinkName, float drinkPrice, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-184",
-    "class": "ItemCart",
-    "timestamp": 1.76680407781E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "remove",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "remove",
-      "hasComplexLogic": "true",
-      "className": "ItemCart",
-      "switchBreakdown": [
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "STATE_MACHINE",
-          "hasComplexLogic": true,
-          "caseCount": 4.0,
-          "complexityScore": 48.0
-        },
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        },
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        }
-      ],
-      "avgComplexityScore": "30.7",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "MIXED",
-      "isGetterSetter": false,
-      "methodSignature": "public void remove(int id)",
-      "isEventHandler": false,
-      "totalSwitches": "3",
-      "avgCasesPerSwitch": "3.3",
-      "totalCases": "10"
-    },
-    "assignment": "assignment-2-184",
-    "class": "ItemCart",
-    "timestamp": 1.766804077811E12
-  },
-  {
-    "antipattern": "PotentialMissingInheritance",
-    "method": "clearCart",
-    "evidence": {
-      "methodExample": "public void clearCart()",
-      "sharedMethods": "1",
-      "hasCommonAncestor": "false",
-      "weaklyRelated": "true",
-      "methodSignature": "void clearCart()",
-      "classes": "ItemCart; BurgerShop",
-      "similarityScore": "0"
-    },
-    "assignment": "assignment-2-184",
-    "class": "ItemCart; BurgerShop",
-    "timestamp": 1.766804077826E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "confirmOrder",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "confirmOrder",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
-          "complexityScore": 18.0
-        },
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
-          "complexityScore": 18.0
-        }
-      ],
-      "avgComplexityScore": "18.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "MIXED",
-      "isGetterSetter": false,
-      "methodSignature": "public void confirmOrder()",
-      "isEventHandler": false,
-      "totalSwitches": "2",
-      "avgCasesPerSwitch": "2.0",
-      "totalCases": "4"
-    },
-    "assignment": "assignment-2-69",
-    "class": "BurgerShop",
-    "timestamp": 1.766804077836E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addCombo",
-    "evidence": {
-      "overallPattern": "STATE_MACHINE",
-      "hasObjectCreation": "false",
-      "suggestion": "State machine pattern detected - consider State pattern",
-      "methodName": "addCombo",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "STATE_MACHINE",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
-          "complexityScore": 23.0
-        }
-      ],
-      "avgComplexityScore": "23.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void addCombo(String nameBurger, float priceBurger, String nameSnack, float priceSnack, String nameDrink, float priceDrink, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "2.0",
-      "totalCases": "2"
-    },
-    "assignment": "assignment-2-62",
-    "class": "BurgerShop",
-    "timestamp": 1.76680407784E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "calculateEstSec",
-    "evidence": {
-      "overallPattern": "STATE_MACHINE",
-      "hasObjectCreation": "false",
-      "suggestion": "State machine pattern detected - consider State pattern",
-      "methodName": "calculateEstSec",
-      "hasComplexLogic": "true",
-      "className": "Cart",
-      "switchBreakdown": [
-        {
-          "contentPattern": "COMPLEX_LOGIC",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "STATE_MACHINE",
-          "hasComplexLogic": true,
-          "caseCount": 4.0,
-          "complexityScore": 78.0
-        },
-        {
-          "contentPattern": "COMPLEX_LOGIC",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "STATE_MACHINE",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 47.0
-        }
-      ],
-      "avgComplexityScore": "62.5",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "COMPLEX_LOGIC",
-      "isGetterSetter": false,
-      "methodSignature": "private int calculateEstSec()",
-      "isEventHandler": false,
-      "totalSwitches": "2",
-      "avgCasesPerSwitch": "3.5",
-      "totalCases": "7"
-    },
-    "assignment": "assignment-2-61",
-    "class": "Cart",
-    "timestamp": 1.766804077843E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "SizeCost",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "SizeCost",
-      "hasComplexLogic": "true",
-      "className": "Item",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
-          "complexityScore": 18.0
-        }
-      ],
-      "avgComplexityScore": "18.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "protected float SizeCost(float price, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "2.0",
-      "totalCases": "2"
-    },
-    "assignment": "assignment-2-175",
-    "class": "Item",
-    "timestamp": 1.766804077849E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "SizeCost",
-    "evidence": {
-      "overallPattern": "STATE_MACHINE",
-      "hasObjectCreation": "false",
-      "suggestion": "State machine pattern detected - consider State pattern",
-      "methodName": "SizeCost",
-      "hasComplexLogic": "true",
-      "className": "Combo",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "STATE_MACHINE",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 27.0
-        }
-      ],
-      "avgComplexityScore": "27.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "private float SizeCost(float priceBurger, float priceSnack, float priceDrink, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-175",
-    "class": "Combo",
-    "timestamp": 1.766804077849E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "setPrice",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "setPrice",
-      "hasComplexLogic": "true",
-      "className": "Drink",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 17.0
-        }
-      ],
-      "avgComplexityScore": "17.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": true,
-      "methodSignature": "public void setPrice()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-54",
-    "class": "Drink",
-    "timestamp": 1.766804077868E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "setPrice",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "setPrice",
-      "hasComplexLogic": "true",
-      "className": "Snack",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 17.0
-        }
-      ],
-      "avgComplexityScore": "17.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": true,
-      "methodSignature": "public void setPrice()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-54",
-    "class": "Snack",
-    "timestamp": 1.766804077869E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "setCount",
+    "method": "getWords",
     "evidence": {
       "overallPattern": "MIXED_LOGIC",
       "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "setCount",
-      "hasComplexLogic": "true",
-      "className": "Order",
+      "suggestion": "Switch has many cases - consider polymorphism",
+      "methodName": "getWords",
+      "hasComplexLogic": "false",
+      "className": "MainMenuController",
       "switchBreakdown": [
         {
           "contentPattern": "STATE_CHANGE",
@@ -748,672 +16,128 @@
           "isStringMapping": false,
           "hasObjectCreation": false,
           "patternType": "MIXED_LOGIC",
-          "hasComplexLogic": true,
-          "caseCount": 4.0,
-          "complexityScore": 28.0
+          "hasComplexLogic": false,
+          "caseCount": 14.0,
+          "complexityScore": 24.0
         }
       ],
-      "avgComplexityScore": "28.0",
+      "avgComplexityScore": "24.0",
       "isConfigurationSwitch": false,
       "highestSeverity": "MEDIUM",
       "contentPattern": "STATE_CHANGE",
       "isGetterSetter": true,
-      "methodSignature": "public void setCount(char type, String size)",
+      "methodSignature": "public ArrayList\u003cString\u003e getWords(ActionEvent event)",
       "isEventHandler": false,
       "totalSwitches": "1",
-      "avgCasesPerSwitch": "4.0",
-      "totalCases": "4"
+      "avgCasesPerSwitch": "14.0",
+      "totalCases": "14"
     },
-    "assignment": "assignment-2-53",
-    "class": "Order",
-    "timestamp": 1.76680407787E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "chooseSize",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "chooseSize",
-      "hasComplexLogic": "true",
-      "className": "Food",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 17.0
-        }
-      ],
-      "avgComplexityScore": "17.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "protected void chooseSize(SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-53",
-    "class": "Food",
-    "timestamp": 1.76680407787E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "setPrice",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "setPrice",
-      "hasComplexLogic": "true",
-      "className": "CartItems",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
-          "complexityScore": 18.0
-        }
-      ],
-      "avgComplexityScore": "18.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": true,
-      "methodSignature": "public void setPrice()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "2.0",
-      "totalCases": "2"
-    },
-    "assignment": "assignment-2-280",
-    "class": "CartItems",
-    "timestamp": 1.766804077873E12
+    "assignment": "project-repo-09",
+    "class": "MainMenuController",
+    "timestamp": 1.766809984475E12
   },
   {
     "antipattern": "PotentialMissingInheritanceGroup",
-    "method": "clearCart; removeItem",
+    "method": "setName; setScore",
     "evidence": {
-      "details": "Multiple methods suggest missing inheritance hierarchy",
-      "methodExamples": "public void clearCart() | public void removeItem(int posCart)",
-      "similarityScore": "0",
-      "sharedMethodNames": "clearCart; removeItem",
-      "weaklyRelated": "true",
-      "hasCommonAncestor": "false",
-      "classes": "BurgerShop; Cart",
+      "classes": "Quiz; LeaderboardData",
       "sharedMethodsCount": "2",
-      "methodSignatures": "void clearCart(); void removeItem(int)"
-    },
-    "assignment": "assignment-2-49",
-    "class": "BurgerShop; Cart",
-    "timestamp": 1.766804077895E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "missedCombo",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "missedCombo",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        },
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        }
-      ],
-      "avgComplexityScore": "22.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "MIXED",
-      "isGetterSetter": false,
-      "methodSignature": "public boolean missedCombo()",
-      "isEventHandler": false,
-      "totalSwitches": "2",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "6"
-    },
-    "assignment": "assignment-2-281",
-    "class": "BurgerShop",
-    "timestamp": 1.766804077898E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "confirmOrder",
-    "evidence": {
-      "overallPattern": "STATE_MACHINE",
-      "hasObjectCreation": "false",
-      "suggestion": "State machine pattern detected - consider State pattern",
-      "methodName": "confirmOrder",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "STATE_MACHINE",
-          "hasComplexLogic": true,
-          "caseCount": 4.0,
-          "complexityScore": 31.0
-        }
-      ],
-      "avgComplexityScore": "31.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "MIXED",
-      "isGetterSetter": false,
-      "methodSignature": "public void confirmOrder()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "4.0",
-      "totalCases": "4"
-    },
-    "assignment": "assignment-2-161",
-    "class": "BurgerShop",
-    "timestamp": 1.766804077903E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "findNewPrice",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "findNewPrice",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
-          "complexityScore": 18.0
-        }
-      ],
-      "avgComplexityScore": "18.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public float findNewPrice(float originalPrice, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "2.0",
-      "totalCases": "2"
-    },
-    "assignment": "assignment-2-278",
-    "class": "BurgerShop",
-    "timestamp": 1.766804077909E12
-  },
-  {
-    "antipattern": "RedundantInheritance",
-    "method": "",
-    "evidence": {
-      "severity": "HIGH",
-      "parentClass": "Item",
-      "details": "Class inherits but does not override/reuse superclass methods",
-      "childClass": "Burger"
-    },
-    "assignment": "assignment-2-274",
-    "class": "Burger",
-    "timestamp": 1.766804077914E12
-  },
-  {
-    "antipattern": "RedundantInheritance",
-    "method": "",
-    "evidence": {
-      "severity": "HIGH",
-      "parentClass": "BurgerShop",
-      "details": "Class inherits but does not override/reuse superclass methods",
-      "childClass": "Food"
-    },
-    "assignment": "assignment-2-153",
-    "class": "Food",
-    "timestamp": 1.766804077915E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "priceWithSize",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "priceWithSize",
-      "hasComplexLogic": "true",
-      "className": "MenuItems",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
-          "complexityScore": 18.0
-        }
-      ],
-      "avgComplexityScore": "18.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public float priceWithSize(float price, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "2.0",
-      "totalCases": "2"
-    },
-    "assignment": "assignment-2-154",
-    "class": "MenuItems",
-    "timestamp": 1.766804077917E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "getTrueCost",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "getTrueCost",
-      "hasComplexLogic": "true",
-      "className": "Drink",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 17.0
-        }
-      ],
-      "avgComplexityScore": "17.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": true,
-      "methodSignature": "private void getTrueCost()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-155",
-    "class": "Drink",
-    "timestamp": 1.766804077919E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "getTrueCost",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "getTrueCost",
-      "hasComplexLogic": "true",
-      "className": "Snack",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 17.0
-        }
-      ],
-      "avgComplexityScore": "17.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": true,
-      "methodSignature": "private void getTrueCost()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-155",
-    "class": "Snack",
-    "timestamp": 1.766804077919E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "confirmOrder",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "confirmOrder",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        },
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        }
-      ],
-      "avgComplexityScore": "22.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void confirmOrder()",
-      "isEventHandler": false,
-      "totalSwitches": "2",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "6"
-    },
-    "assignment": "assignment-2-155",
-    "class": "BurgerShop",
-    "timestamp": 1.766804077919E12
-  },
-  {
-    "antipattern": "PotentialMissingInheritanceGroup",
-    "method": "printCart; getTotalPrice",
-    "evidence": {
+      "methodSignatures": "void setName(String); void setScore(int)",
       "details": "Multiple methods suggest missing inheritance hierarchy",
-      "methodExamples": "public void printCart(Float total) | public float getTotalPrice()",
-      "similarityScore": "8",
-      "sharedMethodNames": "printCart; getTotalPrice",
+      "methodExamples": "public void setName(String name) | public void setScore(int time)",
+      "similarityScore": "22",
+      "sharedMethodNames": "setName; setScore",
       "weaklyRelated": "true",
-      "hasCommonAncestor": "false",
-      "classes": "OrderCheck; ItemsInCart",
-      "sharedMethodsCount": "2",
-      "methodSignatures": "void printCart(Float); float getTotalPrice()"
+      "hasCommonAncestor": "false"
     },
-    "assignment": "assignment-2-271",
-    "class": "OrderCheck; ItemsInCart",
-    "timestamp": 1.766804077925E12
+    "assignment": "project-repo-21",
+    "class": "Quiz; LeaderboardData",
+    "timestamp": 1.766809984506E12
   },
   {
     "antipattern": "SwitchComplexity",
-    "method": "confirmOrder",
-    "evidence": {
-      "overallPattern": "STATE_MACHINE",
-      "hasObjectCreation": "false",
-      "suggestion": "State machine pattern detected - consider State pattern",
-      "methodName": "confirmOrder",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "COMPLEX_LOGIC",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "STATE_MACHINE",
-          "hasComplexLogic": true,
-          "caseCount": 4.0,
-          "complexityScore": 88.0
-        }
-      ],
-      "avgComplexityScore": "88.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "COMPLEX_LOGIC",
-      "isGetterSetter": false,
-      "methodSignature": "public void confirmOrder()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "4.0",
-      "totalCases": "4"
-    },
-    "assignment": "assignment-2-150",
-    "class": "BurgerShop",
-    "timestamp": 1.766804077927E12
-  },
-  {
-    "antipattern": "PotentialMissingInheritance",
-    "method": "removeItem",
-    "evidence": {
-      "methodExample": "public void removeItem(int posCart)",
-      "sharedMethods": "1",
-      "hasCommonAncestor": "false",
-      "weaklyRelated": "true",
-      "methodSignature": "void removeItem(int)",
-      "classes": "BurgerShop; Cart",
-      "similarityScore": "0"
-    },
-    "assignment": "assignment-2-267",
-    "class": "BurgerShop; Cart",
-    "timestamp": 1.766804077933E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "removeItem",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "removeItem",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        },
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        }
-      ],
-      "avgComplexityScore": "22.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "MIXED",
-      "isGetterSetter": false,
-      "methodSignature": "public void removeItem(int posCart)",
-      "isEventHandler": false,
-      "totalSwitches": "2",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "6"
-    },
-    "assignment": "assignment-2-268",
-    "class": "BurgerShop",
-    "timestamp": 1.766804077935E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "confirmOrder",
-    "evidence": {
-      "overallPattern": "STATE_MACHINE",
-      "hasObjectCreation": "false",
-      "suggestion": "State machine pattern detected - consider State pattern",
-      "methodName": "confirmOrder",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "COMPLEX_LOGIC",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "STATE_MACHINE",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 53.0
-        }
-      ],
-      "avgComplexityScore": "53.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "COMPLEX_LOGIC",
-      "isGetterSetter": false,
-      "methodSignature": "public void confirmOrder()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-269",
-    "class": "BurgerShop",
-    "timestamp": 1.766804077937E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "confirmOrder",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "confirmOrder",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        },
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        }
-      ],
-      "avgComplexityScore": "22.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "MIXED",
-      "isGetterSetter": false,
-      "methodSignature": "public void confirmOrder()",
-      "isEventHandler": false,
-      "totalSwitches": "2",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "6"
-    },
-    "assignment": "assignment-2-149",
-    "class": "BurgerShop",
-    "timestamp": 1.766804077941E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "calculateWaitTime",
-    "evidence": {
-      "overallPattern": "STATE_MACHINE",
-      "hasObjectCreation": "false",
-      "suggestion": "State machine pattern detected - consider State pattern",
-      "methodName": "calculateWaitTime",
-      "hasComplexLogic": "true",
-      "className": "Cart",
-      "switchBreakdown": [
-        {
-          "contentPattern": "COMPLEX_LOGIC",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "STATE_MACHINE",
-          "hasComplexLogic": true,
-          "caseCount": 4.0,
-          "complexityScore": 46.0
-        }
-      ],
-      "avgComplexityScore": "46.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "COMPLEX_LOGIC",
-      "isGetterSetter": false,
-      "methodSignature": "public int[] calculateWaitTime()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "4.0",
-      "totalCases": "4"
-    },
-    "assignment": "assignment-2-142",
-    "class": "Cart",
-    "timestamp": 1.766804077945E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addBurger",
+    "method": "displayMessage",
     "evidence": {
       "overallPattern": "MIXED_LOGIC",
       "hasObjectCreation": "false",
       "suggestion": "Switch has many cases - consider polymorphism",
-      "methodName": "addBurger",
+      "methodName": "displayMessage",
       "hasComplexLogic": "false",
-      "className": "BurgerShop",
+      "className": "NewQuizController",
+      "switchBreakdown": [
+        {
+          "contentPattern": "METHOD_DISPATCH",
+          "isSimpleMapping": false,
+          "isStringMapping": false,
+          "hasObjectCreation": false,
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 9.0,
+          "complexityScore": 19.0
+        }
+      ],
+      "avgComplexityScore": "19.0",
+      "isConfigurationSwitch": false,
+      "highestSeverity": "LOW",
+      "contentPattern": "METHOD_DISPATCH",
+      "isGetterSetter": false,
+      "methodSignature": "public void displayMessage()",
+      "isEventHandler": false,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "9.0",
+      "totalCases": "9"
+    },
+    "assignment": "project-repo-41",
+    "class": "NewQuizController",
+    "timestamp": 1.766809984514E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "displayMessage",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "false",
+      "suggestion": "Switch has many cases - consider polymorphism",
+      "methodName": "displayMessage",
+      "hasComplexLogic": "false",
+      "className": "PracticeModuleController",
+      "switchBreakdown": [
+        {
+          "contentPattern": "METHOD_DISPATCH",
+          "isSimpleMapping": false,
+          "isStringMapping": false,
+          "hasObjectCreation": false,
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 9.0,
+          "complexityScore": 19.0
+        }
+      ],
+      "avgComplexityScore": "19.0",
+      "isConfigurationSwitch": false,
+      "highestSeverity": "LOW",
+      "contentPattern": "METHOD_DISPATCH",
+      "isGetterSetter": false,
+      "methodSignature": "public void displayMessage()",
+      "isEventHandler": false,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "9.0",
+      "totalCases": "9"
+    },
+    "assignment": "project-repo-41",
+    "class": "PracticeModuleController",
+    "timestamp": 1.766809984516E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "displayThemeLabel",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "false",
+      "suggestion": "Switch has many cases - consider polymorphism",
+      "methodName": "displayThemeLabel",
+      "hasComplexLogic": "false",
+      "className": "LeaderboardController",
       "switchBreakdown": [
         {
           "contentPattern": "MIXED",
@@ -1422,662 +146,35 @@
           "hasObjectCreation": false,
           "patternType": "MIXED_LOGIC",
           "hasComplexLogic": false,
-          "caseCount": 7.0,
-          "complexityScore": 9.0
+          "caseCount": 6.0,
+          "complexityScore": 26.0
         }
       ],
-      "avgComplexityScore": "9.0",
+      "avgComplexityScore": "26.0",
       "isConfigurationSwitch": false,
       "highestSeverity": "MEDIUM",
       "contentPattern": "MIXED",
       "isGetterSetter": false,
-      "methodSignature": "public void addBurger(String name, float price)",
+      "methodSignature": "public void displayThemeLabel()",
       "isEventHandler": false,
       "totalSwitches": "1",
-      "avgCasesPerSwitch": "7.0",
-      "totalCases": "7"
+      "avgCasesPerSwitch": "6.0",
+      "totalCases": "6"
     },
-    "assignment": "assignment-2-264",
-    "class": "BurgerShop",
-    "timestamp": 1.766804077946E12
+    "assignment": "project-repo-41",
+    "class": "LeaderboardController",
+    "timestamp": 1.766809984516E12
   },
   {
     "antipattern": "SwitchComplexity",
-    "method": "addSnack",
-    "evidence": {
-      "overallPattern": "MIXED_LOGIC",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "addSnack",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "COMPLEX_LOGIC",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "MIXED_LOGIC",
-          "hasComplexLogic": true,
-          "caseCount": 5.0,
-          "complexityScore": 21.0
-        }
-      ],
-      "avgComplexityScore": "21.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "COMPLEX_LOGIC",
-      "isGetterSetter": false,
-      "methodSignature": "public void addSnack(String name, float price, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "5.0",
-      "totalCases": "5"
-    },
-    "assignment": "assignment-2-264",
-    "class": "BurgerShop",
-    "timestamp": 1.766804077946E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addDrink",
-    "evidence": {
-      "overallPattern": "MIXED_LOGIC",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "addDrink",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "COMPLEX_LOGIC",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "MIXED_LOGIC",
-          "hasComplexLogic": true,
-          "caseCount": 4.0,
-          "complexityScore": 23.0
-        }
-      ],
-      "avgComplexityScore": "23.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "COMPLEX_LOGIC",
-      "isGetterSetter": false,
-      "methodSignature": "public void addDrink(String name, float price, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "4.0",
-      "totalCases": "4"
-    },
-    "assignment": "assignment-2-264",
-    "class": "BurgerShop",
-    "timestamp": 1.766804077946E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addCombo",
+    "method": "determineItem",
     "evidence": {
       "overallPattern": "MIXED_LOGIC",
       "hasObjectCreation": "false",
       "suggestion": "Switch has many cases - consider polymorphism",
-      "methodName": "addCombo",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "MIXED_LOGIC",
-          "hasComplexLogic": false,
-          "caseCount": 7.0,
-          "complexityScore": 9.0
-        },
-        {
-          "contentPattern": "COMPLEX_LOGIC",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "MIXED_LOGIC",
-          "hasComplexLogic": true,
-          "caseCount": 5.0,
-          "complexityScore": 21.0
-        },
-        {
-          "contentPattern": "COMPLEX_LOGIC",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "MIXED_LOGIC",
-          "hasComplexLogic": true,
-          "caseCount": 4.0,
-          "complexityScore": 23.0
-        }
-      ],
-      "avgComplexityScore": "17.7",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "COMPLEX_LOGIC",
-      "isGetterSetter": false,
-      "methodSignature": "public void addCombo(String nameBurger, float priceBurger, String nameSnack, float priceSnack, String nameDrink, float priceDrink, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "3",
-      "avgCasesPerSwitch": "5.3",
-      "totalCases": "16"
-    },
-    "assignment": "assignment-2-264",
-    "class": "BurgerShop",
-    "timestamp": 1.766804077947E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "confirmOrder",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "confirmOrder",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        },
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        }
-      ],
-      "avgComplexityScore": "22.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "MIXED",
-      "isGetterSetter": false,
-      "methodSignature": "public void confirmOrder()",
-      "isEventHandler": false,
-      "totalSwitches": "2",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "6"
-    },
-    "assignment": "assignment-2-262",
-    "class": "BurgerShop",
-    "timestamp": 1.76680407796E12
-  },
-  {
-    "antipattern": "RedundantInheritance",
-    "method": "",
-    "evidence": {
-      "severity": "HIGH",
-      "parentClass": "Menu",
-      "details": "Class inherits but does not override/reuse superclass methods",
-      "childClass": "MenuItem"
-    },
-    "assignment": "assignment-2-139",
-    "class": "MenuItem",
-    "timestamp": 1.766804077963E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addSnack",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "addSnack",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 17.0
-        }
-      ],
-      "avgComplexityScore": "17.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void addSnack(String name, float price, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-135",
-    "class": "BurgerShop",
-    "timestamp": 1.766804077965E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addDrink",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "addDrink",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 17.0
-        }
-      ],
-      "avgComplexityScore": "17.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void addDrink(String name, float price, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-135",
-    "class": "BurgerShop",
-    "timestamp": 1.766804077965E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addCombo",
-    "evidence": {
-      "overallPattern": "MIXED_LOGIC",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "addCombo",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "MIXED_LOGIC",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        }
-      ],
-      "avgComplexityScore": "22.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void addCombo(String nameBurger, float priceBurger, String nameSnack, float priceSnack, String nameDrink, float priceDrink, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-135",
-    "class": "BurgerShop",
-    "timestamp": 1.766804077966E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "incrementCost",
-    "evidence": {
-      "overallPattern": "STATE_MACHINE",
-      "hasObjectCreation": "false",
-      "suggestion": "State machine pattern detected - consider State pattern",
-      "methodName": "incrementCost",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "COMPLEX_LOGIC",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "STATE_MACHINE",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 37.0
-        }
-      ],
-      "avgComplexityScore": "37.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "COMPLEX_LOGIC",
-      "isGetterSetter": false,
-      "methodSignature": "public int incrementCost(boolean first, int foodType)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-131",
-    "class": "BurgerShop",
-    "timestamp": 1.766804077975E12
-  },
-  {
-    "antipattern": "RedundantInheritance",
-    "method": "",
-    "evidence": {
-      "severity": "HIGH",
-      "parentClass": "Snack",
-      "details": "Class inherits but does not override/reuse superclass methods",
-      "childClass": "Drink"
-    },
-    "assignment": "assignment-2-96",
-    "class": "Drink",
-    "timestamp": 1.766804077991E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "adjustPrice",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "adjustPrice",
-      "hasComplexLogic": "true",
-      "className": "Side",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 17.0
-        }
-      ],
-      "avgComplexityScore": "17.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "private void adjustPrice()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-126",
-    "class": "Side",
-    "timestamp": 1.766804078008E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "confirmOrder",
-    "evidence": {
-      "overallPattern": "MIXED_LOGIC",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "confirmOrder",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "MIXED_LOGIC",
-          "hasComplexLogic": true,
-          "caseCount": 4.0,
-          "complexityScore": 22.0
-        }
-      ],
-      "avgComplexityScore": "22.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void confirmOrder()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "4.0",
-      "totalCases": "4"
-    },
-    "assignment": "assignment-2-126",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078009E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "confirmOrder",
-    "evidence": {
-      "overallPattern": "STATE_MACHINE",
-      "hasObjectCreation": "false",
-      "suggestion": "State machine pattern detected - consider State pattern",
-      "methodName": "confirmOrder",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "COMPLEX_LOGIC",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "STATE_MACHINE",
-          "hasComplexLogic": true,
-          "caseCount": 4.0,
-          "complexityScore": 43.0
-        }
-      ],
-      "avgComplexityScore": "43.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "COMPLEX_LOGIC",
-      "isGetterSetter": false,
-      "methodSignature": "public void confirmOrder()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "4.0",
-      "totalCases": "4"
-    },
-    "assignment": "assignment-2-243",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078017E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "confirmOrder",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "confirmOrder",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        },
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        }
-      ],
-      "avgComplexityScore": "22.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "MIXED",
-      "isGetterSetter": false,
-      "methodSignature": "public void confirmOrder()",
-      "isEventHandler": false,
-      "totalSwitches": "2",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "6"
-    },
-    "assignment": "assignment-2-122",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078018E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "increasePrice",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "increasePrice",
-      "hasComplexLogic": "true",
-      "className": "Extra",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
-          "complexityScore": 18.0
-        }
-      ],
-      "avgComplexityScore": "18.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "protected void increasePrice(SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "2.0",
-      "totalCases": "2"
-    },
-    "assignment": "assignment-2-6",
-    "class": "Extra",
-    "timestamp": 1.766804078029E12
-  },
-  {
-    "antipattern": "PotentialMissingInheritanceGroup",
-    "method": "getSizes; getCombo; removeNumber; getBurger",
-    "evidence": {
-      "details": "Multiple methods suggest missing inheritance hierarchy",
-      "methodExamples": "public ArrayList\u003cString\u003e getCombo(String nameBurger, String nameSnack, SIZE size, String nameDrink, ... | public ArrayList\u003cString\u003e getSizes(String name, float snackPrice, SIZE size, ArrayList\u003cString\u003e cartAr... | public float removeNumber(ArrayList\u003cString\u003e cartArray, int position) | public ArrayList\u003cString\u003e getBurger(String name, float price, ArrayList\u003cString\u003e cartArray)",
-      "similarityScore": "0",
-      "sharedMethodNames": "getSizes; getCombo; removeNumber; getBurger",
-      "weaklyRelated": "true",
-      "hasCommonAncestor": "false",
-      "classes": "ArrayModify; MenuDisp; ModifyArray",
-      "sharedMethodsCount": "4",
-      "methodSignatures": "ArrayList\u003cString\u003e getSizes(String,float,SIZE,ArrayList\u003cString\u003e); ArrayList\u003cString\u003e getCombo(String,String,SIZE,String,float,ArrayList\u003cString\u003e); float removeNumber(ArrayList\u003cString\u003e,int); ArrayList\u003cString\u003e getBurger(String,float,ArrayList\u003cString\u003e)"
-    },
-    "assignment": "assignment-2-238",
-    "class": "ArrayModify; MenuDisp; ModifyArray",
-    "timestamp": 1.766804078036E12
-  },
-  {
-    "antipattern": "RedundantInheritanceGroup",
-    "method": "",
-    "evidence": {
-      "childClasses": "ArrayModify; ModifyArray",
-      "childCount": "2",
-      "details": "2 classes redundantly inherit from Increment",
-      "severity": "HIGH",
-      "pattern": "Multiple classes with same redundant inheritance",
-      "parentClass": "Increment"
-    },
-    "assignment": "assignment-2-238",
-    "class": "ArrayModify; ModifyArray",
-    "timestamp": 1.766804078037E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "checkMissedCombo",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "checkMissedCombo",
-      "hasComplexLogic": "true",
-      "className": "Cart",
-      "switchBreakdown": [
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        },
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        }
-      ],
-      "avgComplexityScore": "22.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "MIXED",
-      "isGetterSetter": false,
-      "methodSignature": "public boolean checkMissedCombo()",
-      "isEventHandler": false,
-      "totalSwitches": "2",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "6"
-    },
-    "assignment": "assignment-2-239",
-    "class": "Cart",
-    "timestamp": 1.76680407804E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "getType",
-    "evidence": {
-      "overallPattern": "MIXED_LOGIC",
-      "hasObjectCreation": "false",
-      "suggestion": "Switch has many cases - consider polymorphism",
-      "methodName": "getType",
+      "methodName": "determineItem",
       "hasComplexLogic": "false",
-      "className": "SideItem",
+      "className": "MyTreeShopController",
       "switchBreakdown": [
         {
           "contentPattern": "SIMPLE_MAPPING",
@@ -2086,7 +183,7 @@
           "hasObjectCreation": false,
           "patternType": "MIXED_LOGIC",
           "hasComplexLogic": false,
-          "caseCount": 9.0,
+          "caseCount": 6.0,
           "complexityScore": 3.0
         }
       ],
@@ -2094,323 +191,323 @@
       "isConfigurationSwitch": true,
       "highestSeverity": "LOW",
       "contentPattern": "SIMPLE_MAPPING",
-      "isGetterSetter": true,
-      "methodSignature": "public TYPE getType()",
+      "isGetterSetter": false,
+      "methodSignature": "private Item determineItem(String itemName)",
       "isEventHandler": false,
       "totalSwitches": "1",
-      "avgCasesPerSwitch": "9.0",
-      "totalCases": "9"
+      "avgCasesPerSwitch": "6.0",
+      "totalCases": "6"
     },
-    "assignment": "assignment-2-116",
-    "class": "SideItem",
-    "timestamp": 1.76680407805E12
+    "assignment": "project-repo-20",
+    "class": "MyTreeShopController",
+    "timestamp": 1.766809984519E12
   },
   {
     "antipattern": "SwitchComplexity",
-    "method": "adjustPrice",
+    "method": "submitQuestion",
     "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
+      "overallPattern": "MIXED_LOGIC",
       "hasObjectCreation": "false",
       "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "adjustPrice",
-      "hasComplexLogic": "true",
-      "className": "Combo",
+      "methodName": "submitQuestion",
+      "hasComplexLogic": "false",
+      "className": "GamesModuleController",
       "switchBreakdown": [
         {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
+          "contentPattern": "SIMPLE_MAPPING",
+          "isSimpleMapping": true,
           "isStringMapping": false,
           "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
-          "complexityScore": 18.0
-        }
-      ],
-      "avgComplexityScore": "18.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void adjustPrice()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "2.0",
-      "totalCases": "2"
-    },
-    "assignment": "assignment-2-230",
-    "class": "Combo",
-    "timestamp": 1.766804078051E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "adjustPrice",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "adjustPrice",
-      "hasComplexLogic": "true",
-      "className": "Drink",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
-          "complexityScore": 18.0
-        }
-      ],
-      "avgComplexityScore": "18.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void adjustPrice()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "2.0",
-      "totalCases": "2"
-    },
-    "assignment": "assignment-2-230",
-    "class": "Drink",
-    "timestamp": 1.766804078051E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "adjustPrice",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "adjustPrice",
-      "hasComplexLogic": "true",
-      "className": "Snack",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
-          "complexityScore": 18.0
-        }
-      ],
-      "avgComplexityScore": "18.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void adjustPrice()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "2.0",
-      "totalCases": "2"
-    },
-    "assignment": "assignment-2-230",
-    "class": "Snack",
-    "timestamp": 1.766804078052E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addBurger",
-    "evidence": {
-      "overallPattern": "FACTORY_PATTERN",
-      "hasObjectCreation": "true",
-      "suggestion": "Switch has many cases - consider polymorphism",
-      "methodName": "addBurger",
-      "hasComplexLogic": "false",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "METHOD_DISPATCH",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": true,
-          "patternType": "FACTORY_PATTERN",
-          "hasComplexLogic": false,
-          "caseCount": 7.0,
-          "complexityScore": 36.0
-        }
-      ],
-      "avgComplexityScore": "36.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "METHOD_DISPATCH",
-      "isGetterSetter": false,
-      "methodSignature": "public void addBurger(String name, float price)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "7.0",
-      "totalCases": "7"
-    },
-    "assignment": "assignment-2-232",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078055E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addSnack",
-    "evidence": {
-      "overallPattern": "FACTORY_PATTERN",
-      "hasObjectCreation": "true",
-      "suggestion": "Factory pattern - acceptable but could use Factory Method pattern",
-      "methodName": "addSnack",
-      "hasComplexLogic": "false",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "METHOD_DISPATCH",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": true,
-          "patternType": "FACTORY_PATTERN",
-          "hasComplexLogic": false,
-          "caseCount": 5.0,
-          "complexityScore": 30.0
-        }
-      ],
-      "avgComplexityScore": "30.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "METHOD_DISPATCH",
-      "isGetterSetter": false,
-      "methodSignature": "public void addSnack(String name, float price, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "5.0",
-      "totalCases": "5"
-    },
-    "assignment": "assignment-2-232",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078056E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addDrink",
-    "evidence": {
-      "overallPattern": "FACTORY_PATTERN",
-      "hasObjectCreation": "true",
-      "suggestion": "Factory pattern - acceptable but could use Factory Method pattern",
-      "methodName": "addDrink",
-      "hasComplexLogic": "false",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "METHOD_DISPATCH",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": true,
-          "patternType": "FACTORY_PATTERN",
+          "patternType": "MIXED_LOGIC",
           "hasComplexLogic": false,
           "caseCount": 4.0,
-          "complexityScore": 13.0
+          "complexityScore": 4.0
         }
       ],
-      "avgComplexityScore": "13.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "METHOD_DISPATCH",
+      "avgComplexityScore": "4.0",
+      "isConfigurationSwitch": true,
+      "highestSeverity": "LOW",
+      "contentPattern": "SIMPLE_MAPPING",
       "isGetterSetter": false,
-      "methodSignature": "public void addDrink(String name, float price, SIZE size)",
+      "methodSignature": "private boolean submitQuestion()",
       "isEventHandler": false,
       "totalSwitches": "1",
       "avgCasesPerSwitch": "4.0",
       "totalCases": "4"
     },
-    "assignment": "assignment-2-232",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078056E12
+    "assignment": "project-repo-20",
+    "class": "GamesModuleController",
+    "timestamp": 1.76680998452E12
   },
   {
     "antipattern": "SwitchComplexity",
-    "method": "setSizePrice",
+    "method": "determineItem",
     "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
+      "overallPattern": "MIXED_LOGIC",
       "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "setSizePrice",
-      "hasComplexLogic": "true",
-      "className": "Combo",
+      "suggestion": "Switch has many cases - consider polymorphism",
+      "methodName": "determineItem",
+      "hasComplexLogic": "false",
+      "className": "MyTreeController",
+      "switchBreakdown": [
+        {
+          "contentPattern": "SIMPLE_MAPPING",
+          "isSimpleMapping": true,
+          "isStringMapping": false,
+          "hasObjectCreation": false,
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 6.0,
+          "complexityScore": 3.0
+        }
+      ],
+      "avgComplexityScore": "3.0",
+      "isConfigurationSwitch": true,
+      "highestSeverity": "LOW",
+      "contentPattern": "SIMPLE_MAPPING",
+      "isGetterSetter": false,
+      "methodSignature": "private Item determineItem(String itemName)",
+      "isEventHandler": false,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "6.0",
+      "totalCases": "6"
+    },
+    "assignment": "project-repo-20",
+    "class": "MyTreeController",
+    "timestamp": 1.766809984522E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "addRecordToTimelineFeedForWeek",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "false",
+      "suggestion": "Switch has many cases - consider polymorphism",
+      "methodName": "addRecordToTimelineFeedForWeek",
+      "hasComplexLogic": "false",
+      "className": "StatisticsIO",
       "switchBreakdown": [
         {
           "contentPattern": "STATE_CHANGE",
           "isSimpleMapping": false,
           "isStringMapping": false,
           "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 17.0
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 6.0,
+          "complexityScore": 16.0
         }
       ],
-      "avgComplexityScore": "17.0",
+      "avgComplexityScore": "16.0",
       "isConfigurationSwitch": false,
       "highestSeverity": "MEDIUM",
       "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": true,
-      "methodSignature": "public float setSizePrice(float price, SIZE size)",
+      "isGetterSetter": false,
+      "methodSignature": "private void addRecordToTimelineFeedForWeek(String record, OffsetDateTime recordDateTime, TimelineFeed timelineFeed, String answerStatus)",
       "isEventHandler": false,
       "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
+      "avgCasesPerSwitch": "6.0",
+      "totalCases": "6"
     },
-    "assignment": "assignment-2-233",
-    "class": "Combo",
-    "timestamp": 1.766804078059E12
+    "assignment": "project-repo-20",
+    "class": "StatisticsIO",
+    "timestamp": 1.766809984524E12
   },
   {
     "antipattern": "SwitchComplexity",
-    "method": "setSizePrice",
+    "method": "updateTextFieldWithMacrons",
     "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
+      "overallPattern": "MIXED_LOGIC",
       "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "setSizePrice",
-      "hasComplexLogic": "true",
-      "className": "Food",
+      "suggestion": "Switch has many cases - consider polymorphism",
+      "methodName": "updateTextFieldWithMacrons",
+      "hasComplexLogic": "false",
+      "className": "PracticeSceneController",
       "switchBreakdown": [
         {
-          "contentPattern": "STATE_CHANGE",
+          "contentPattern": "METHOD_DISPATCH",
           "isSimpleMapping": false,
           "isStringMapping": false,
           "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 17.0
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 10.0,
+          "complexityScore": 30.0
         }
       ],
-      "avgComplexityScore": "17.0",
+      "avgComplexityScore": "30.0",
       "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": true,
-      "methodSignature": "public float setSizePrice(SIZE size)",
+      "highestSeverity": "LOW",
+      "contentPattern": "METHOD_DISPATCH",
+      "isGetterSetter": false,
+      "methodSignature": "private void updateTextFieldWithMacrons()",
       "isEventHandler": false,
       "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
+      "avgCasesPerSwitch": "10.0",
+      "totalCases": "10"
     },
-    "assignment": "assignment-2-233",
-    "class": "Food",
-    "timestamp": 1.76680407806E12
+    "assignment": "project-repo-40",
+    "class": "PracticeSceneController",
+    "timestamp": 1.766809984534E12
   },
   {
     "antipattern": "SwitchComplexity",
-    "method": "confirmOrder",
+    "method": "updateTextFieldWithMacrons",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "false",
+      "suggestion": "Switch has many cases - consider polymorphism",
+      "methodName": "updateTextFieldWithMacrons",
+      "hasComplexLogic": "false",
+      "className": "GameSceneController",
+      "switchBreakdown": [
+        {
+          "contentPattern": "METHOD_DISPATCH",
+          "isSimpleMapping": false,
+          "isStringMapping": false,
+          "hasObjectCreation": false,
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 10.0,
+          "complexityScore": 30.0
+        }
+      ],
+      "avgComplexityScore": "30.0",
+      "isConfigurationSwitch": false,
+      "highestSeverity": "LOW",
+      "contentPattern": "METHOD_DISPATCH",
+      "isGetterSetter": false,
+      "methodSignature": "private void updateTextFieldWithMacrons()",
+      "isEventHandler": false,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "10.0",
+      "totalCases": "10"
+    },
+    "assignment": "project-repo-40",
+    "class": "GameSceneController",
+    "timestamp": 1.766809984535E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "setWords",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "false",
+      "suggestion": "Review for potential polymorphism replacement",
+      "methodName": "setWords",
+      "hasComplexLogic": "false",
+      "className": "ResultsController",
+      "switchBreakdown": [
+        {
+          "contentPattern": "METHOD_DISPATCH",
+          "isSimpleMapping": false,
+          "isStringMapping": false,
+          "hasObjectCreation": false,
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 5.0,
+          "complexityScore": 15.0
+        }
+      ],
+      "avgComplexityScore": "15.0",
+      "isConfigurationSwitch": false,
+      "highestSeverity": "LOW",
+      "contentPattern": "METHOD_DISPATCH",
+      "isGetterSetter": true,
+      "methodSignature": "public void setWords()",
+      "isEventHandler": false,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "5.0",
+      "totalCases": "5"
+    },
+    "assignment": "project-repo-07",
+    "class": "ResultsController",
+    "timestamp": 1.76680998454E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "inputMacron",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "false",
+      "suggestion": "Review for potential polymorphism replacement",
+      "methodName": "inputMacron",
+      "hasComplexLogic": "false",
+      "className": "QuizController",
+      "switchBreakdown": [
+        {
+          "contentPattern": "METHOD_DISPATCH",
+          "isSimpleMapping": false,
+          "isStringMapping": false,
+          "hasObjectCreation": false,
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 5.0,
+          "complexityScore": 20.0
+        }
+      ],
+      "avgComplexityScore": "20.0",
+      "isConfigurationSwitch": false,
+      "highestSeverity": "LOW",
+      "contentPattern": "METHOD_DISPATCH",
+      "isGetterSetter": false,
+      "methodSignature": "public void inputMacron(ActionEvent event)",
+      "isEventHandler": false,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "5.0",
+      "totalCases": "5"
+    },
+    "assignment": "project-repo-07",
+    "class": "QuizController",
+    "timestamp": 1.766809984541E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "macronise",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "false",
+      "suggestion": "Switch has many cases - consider polymorphism",
+      "methodName": "macronise",
+      "hasComplexLogic": "false",
+      "className": "QuizInput",
+      "switchBreakdown": [
+        {
+          "contentPattern": "SIMPLE_MAPPING",
+          "isSimpleMapping": true,
+          "isStringMapping": false,
+          "hasObjectCreation": false,
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 10.0,
+          "complexityScore": 5.0
+        }
+      ],
+      "avgComplexityScore": "5.0",
+      "isConfigurationSwitch": true,
+      "highestSeverity": "LOW",
+      "contentPattern": "SIMPLE_MAPPING",
+      "isGetterSetter": false,
+      "methodSignature": "private char macronise(char value)",
+      "isEventHandler": false,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "10.0",
+      "totalCases": "10"
+    },
+    "assignment": "project-repo-08",
+    "class": "QuizInput",
+    "timestamp": 1.766809984543E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "macronised",
     "evidence": {
       "overallPattern": "STATE_MACHINE",
       "hasObjectCreation": "false",
       "suggestion": "State machine pattern detected - consider State pattern",
-      "methodName": "confirmOrder",
+      "methodName": "macronised",
       "hasComplexLogic": "true",
-      "className": "BurgerShop",
+      "className": "GameController",
       "switchBreakdown": [
         {
           "contentPattern": "COMPLEX_LOGIC",
@@ -2419,35 +516,183 @@
           "hasObjectCreation": false,
           "patternType": "STATE_MACHINE",
           "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 42.0
+          "caseCount": 5.0,
+          "complexityScore": 45.0
         }
       ],
-      "avgComplexityScore": "42.0",
+      "avgComplexityScore": "45.0",
       "isConfigurationSwitch": false,
       "highestSeverity": "HIGH",
       "contentPattern": "COMPLEX_LOGIC",
       "isGetterSetter": false,
-      "methodSignature": "public void confirmOrder()",
+      "methodSignature": "private Character macronised(Character c)",
       "isEventHandler": false,
       "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
+      "avgCasesPerSwitch": "5.0",
+      "totalCases": "5"
     },
-    "assignment": "assignment-2-227",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078062E12
+    "assignment": "project-repo-27",
+    "class": "GameController",
+    "timestamp": 1.766809984545E12
   },
   {
     "antipattern": "SwitchComplexity",
-    "method": "addSnack",
+    "method": "setButtonAction",
     "evidence": {
       "overallPattern": "MIXED_LOGIC",
       "hasObjectCreation": "false",
       "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "addSnack",
+      "methodName": "setButtonAction",
       "hasComplexLogic": "true",
-      "className": "BurgerShop",
+      "className": "LaunchStageLayout",
+      "switchBreakdown": [
+        {
+          "contentPattern": "METHOD_DISPATCH",
+          "isSimpleMapping": false,
+          "isStringMapping": false,
+          "hasObjectCreation": false,
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": true,
+          "caseCount": 4.0,
+          "complexityScore": 25.0
+        }
+      ],
+      "avgComplexityScore": "25.0",
+      "isConfigurationSwitch": false,
+      "highestSeverity": "LOW",
+      "contentPattern": "METHOD_DISPATCH",
+      "isGetterSetter": true,
+      "methodSignature": "private void setButtonAction(Button button)",
+      "isEventHandler": false,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "4.0",
+      "totalCases": "4"
+    },
+    "assignment": "project-repo-28",
+    "class": "LaunchStageLayout",
+    "timestamp": 1.766809984552E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "tiggerLabels",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "false",
+      "suggestion": "Review for potential polymorphism replacement",
+      "methodName": "tiggerLabels",
+      "hasComplexLogic": "false",
+      "className": "LaunchStageLayout",
+      "switchBreakdown": [
+        {
+          "contentPattern": "METHOD_DISPATCH",
+          "isSimpleMapping": false,
+          "isStringMapping": false,
+          "hasObjectCreation": false,
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 4.0,
+          "complexityScore": 10.0
+        }
+      ],
+      "avgComplexityScore": "10.0",
+      "isConfigurationSwitch": false,
+      "highestSeverity": "LOW",
+      "contentPattern": "METHOD_DISPATCH",
+      "isGetterSetter": false,
+      "methodSignature": "private void tiggerLabels(String mode)",
+      "isEventHandler": false,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "4.0",
+      "totalCases": "4"
+    },
+    "assignment": "project-repo-28",
+    "class": "LaunchStageLayout",
+    "timestamp": 1.766809984553E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "setButtonAction",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "false",
+      "suggestion": "Review for potential polymorphism replacement",
+      "methodName": "setButtonAction",
+      "hasComplexLogic": "false",
+      "className": "LoginLayout",
+      "switchBreakdown": [
+        {
+          "contentPattern": "METHOD_DISPATCH",
+          "isSimpleMapping": false,
+          "isStringMapping": false,
+          "hasObjectCreation": false,
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 5.0,
+          "complexityScore": 17.0
+        }
+      ],
+      "avgComplexityScore": "17.0",
+      "isConfigurationSwitch": false,
+      "highestSeverity": "LOW",
+      "contentPattern": "METHOD_DISPATCH",
+      "isGetterSetter": true,
+      "methodSignature": "private void setButtonAction(Button button)",
+      "isEventHandler": false,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "5.0",
+      "totalCases": "5"
+    },
+    "assignment": "project-repo-28",
+    "class": "LoginLayout",
+    "timestamp": 1.766809984553E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "vowelConvertor",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "false",
+      "suggestion": "Review for potential polymorphism replacement",
+      "methodName": "vowelConvertor",
+      "hasComplexLogic": "false",
+      "className": "MacronConverter",
+      "switchBreakdown": [
+        {
+          "contentPattern": "STRING_MAPPING",
+          "isSimpleMapping": true,
+          "isStringMapping": true,
+          "hasObjectCreation": false,
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 5.0,
+          "complexityScore": 3.0
+        }
+      ],
+      "avgComplexityScore": "3.0",
+      "isConfigurationSwitch": true,
+      "highestSeverity": "LOW",
+      "contentPattern": "STRING_MAPPING",
+      "isGetterSetter": false,
+      "methodSignature": "private String vowelConvertor(String vowel)",
+      "isEventHandler": false,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "5.0",
+      "totalCases": "5"
+    },
+    "assignment": "project-repo-28",
+    "class": "MacronConverter",
+    "timestamp": 1.766809984553E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "initialize",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "false",
+      "suggestion": "Review for potential polymorphism replacement",
+      "methodName": "initialize",
+      "hasComplexLogic": "false",
+      "className": "QuizController",
       "switchBreakdown": [
         {
           "contentPattern": "STATE_CHANGE",
@@ -2455,45 +700,45 @@
           "isStringMapping": false,
           "hasObjectCreation": false,
           "patternType": "MIXED_LOGIC",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
-          "complexityScore": 20.0
+          "hasComplexLogic": false,
+          "caseCount": 4.0,
+          "complexityScore": 19.0
         }
       ],
-      "avgComplexityScore": "20.0",
+      "avgComplexityScore": "19.0",
       "isConfigurationSwitch": false,
       "highestSeverity": "MEDIUM",
       "contentPattern": "STATE_CHANGE",
       "isGetterSetter": false,
-      "methodSignature": "public void addSnack(String name, float price, SIZE size)",
+      "methodSignature": "public void initialize()",
       "isEventHandler": false,
       "totalSwitches": "1",
-      "avgCasesPerSwitch": "2.0",
-      "totalCases": "2"
+      "avgCasesPerSwitch": "4.0",
+      "totalCases": "4"
     },
-    "assignment": "assignment-2-106",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078063E12
+    "assignment": "project-repo-06",
+    "class": "QuizController",
+    "timestamp": 1.766809984562E12
   },
   {
     "antipattern": "SwitchComplexity",
-    "method": "addDrink",
+    "method": "getCategoryFile",
     "evidence": {
-      "overallPattern": "STATE_MACHINE",
+      "overallPattern": "MIXED_LOGIC",
       "hasObjectCreation": "false",
-      "suggestion": "State machine pattern detected - consider State pattern",
-      "methodName": "addDrink",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
+      "suggestion": "Switch has many cases - consider polymorphism",
+      "methodName": "getCategoryFile",
+      "hasComplexLogic": "false",
+      "className": "Quiz",
       "switchBreakdown": [
         {
           "contentPattern": "STATE_CHANGE",
           "isSimpleMapping": false,
           "isStringMapping": false,
           "hasObjectCreation": false,
-          "patternType": "STATE_MACHINE",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 13.0,
           "complexityScore": 23.0
         }
       ],
@@ -2501,662 +746,249 @@
       "isConfigurationSwitch": false,
       "highestSeverity": "MEDIUM",
       "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void addDrink(String name, float price, SIZE size)",
+      "isGetterSetter": true,
+      "methodSignature": "public String getCategoryFile(String list)",
       "isEventHandler": false,
       "totalSwitches": "1",
-      "avgCasesPerSwitch": "2.0",
-      "totalCases": "2"
+      "avgCasesPerSwitch": "13.0",
+      "totalCases": "13"
     },
-    "assignment": "assignment-2-106",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078063E12
+    "assignment": "project-repo-25",
+    "class": "Quiz",
+    "timestamp": 1.766809984564E12
   },
   {
     "antipattern": "SwitchComplexity",
-    "method": "addSide",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "addSide",
-      "hasComplexLogic": "true",
-      "className": "Cart",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 17.0
-        }
-      ],
-      "avgComplexityScore": "17.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void addSide(String name, float price, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-228",
-    "class": "Cart",
-    "timestamp": 1.766804078065E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addCombo",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "addCombo",
-      "hasComplexLogic": "true",
-      "className": "Cart",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        }
-      ],
-      "avgComplexityScore": "22.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void addCombo(String nameBurger, float priceBurger, String nameSnack, float priceSnack, String nameDrink, float priceDrink, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-228",
-    "class": "Cart",
-    "timestamp": 1.766804078065E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "calculateWaitingTime",
-    "evidence": {
-      "overallPattern": "STATE_MACHINE",
-      "hasObjectCreation": "false",
-      "suggestion": "State machine pattern detected - consider State pattern",
-      "methodName": "calculateWaitingTime",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "COMPLEX_LOGIC",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "STATE_MACHINE",
-          "hasComplexLogic": true,
-          "caseCount": 4.0,
-          "complexityScore": 66.0
-        }
-      ],
-      "avgComplexityScore": "66.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "COMPLEX_LOGIC",
-      "isGetterSetter": false,
-      "methodSignature": "public String calculateWaitingTime(List\u003cItem\u003e cart)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "4.0",
-      "totalCases": "4"
-    },
-    "assignment": "assignment-2-221",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078081E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "comboCheck",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "comboCheck",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 20.0
-        }
-      ],
-      "avgComplexityScore": "20.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public boolean comboCheck(ArrayList\u003cItemInCart\u003e snacks, ArrayList\u003cItemInCart\u003e drinks)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-222",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078099E12
-  },
-  {
-    "antipattern": "PotentialMissingInheritanceGroup",
-    "method": "setCart; setPrice",
-    "evidence": {
-      "details": "Multiple methods suggest missing inheritance hierarchy",
-      "methodExamples": "public void setCart(int cart) | public void setPrice(float price)",
-      "similarityScore": "16",
-      "sharedMethodNames": "setCart; setPrice",
-      "weaklyRelated": "true",
-      "hasCommonAncestor": "false",
-      "classes": "ItemMenu; Combos",
-      "sharedMethodsCount": "2",
-      "methodSignatures": "void setCart(int); void setPrice(float)"
-    },
-    "assignment": "assignment-2-216",
-    "class": "ItemMenu; Combos",
-    "timestamp": 1.766804078104E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "confirmOrder",
-    "evidence": {
-      "overallPattern": "STATE_MACHINE",
-      "hasObjectCreation": "false",
-      "suggestion": "State machine pattern detected - consider State pattern",
-      "methodName": "confirmOrder",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "COMPLEX_LOGIC",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "STATE_MACHINE",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 37.0
-        },
-        {
-          "contentPattern": "COMPLEX_LOGIC",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "STATE_MACHINE",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 37.0
-        }
-      ],
-      "avgComplexityScore": "37.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "COMPLEX_LOGIC",
-      "isGetterSetter": false,
-      "methodSignature": "public void confirmOrder()",
-      "isEventHandler": false,
-      "totalSwitches": "2",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "6"
-    },
-    "assignment": "assignment-2-211",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078113E12
-  },
-  {
-    "antipattern": "RedundantInheritance",
-    "method": "",
-    "evidence": {
-      "severity": "HIGH",
-      "parentClass": "BurgerShop",
-      "details": "Class inherits but does not override/reuse superclass methods",
-      "childClass": "Consumable"
-    },
-    "assignment": "assignment-2-206",
-    "class": "Consumable",
-    "timestamp": 1.766804078117E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "sizing",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "sizing",
-      "hasComplexLogic": "true",
-      "className": "SizedItem",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 17.0
-        }
-      ],
-      "avgComplexityScore": "17.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "private void sizing()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-208",
-    "class": "SizedItem",
-    "timestamp": 1.766804078118E12
-  },
-  {
-    "antipattern": "RedundantInheritance",
-    "method": "",
-    "evidence": {
-      "severity": "HIGH",
-      "parentClass": "BurgerShop",
-      "details": "Class inherits but does not override/reuse superclass methods",
-      "childClass": "Hanbao"
-    },
-    "assignment": "assignment-2-322",
-    "class": "Hanbao",
-    "timestamp": 1.76680407812E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addCombo",
-    "evidence": {
-      "overallPattern": "MIXED_LOGIC",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "addCombo",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "MIXED_LOGIC",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
-          "complexityScore": 20.0
-        }
-      ],
-      "avgComplexityScore": "20.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void addCombo(String nameBurger, float priceBurger, String nameSnack, float priceSnack, String nameDrink, float priceDrink, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "2.0",
-      "totalCases": "2"
-    },
-    "assignment": "assignment-2-202",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078121E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "confirmOrder",
+    "method": "convertToMacronised",
     "evidence": {
       "overallPattern": "MIXED_LOGIC",
       "hasObjectCreation": "false",
       "suggestion": "Switch has many cases - consider polymorphism",
-      "methodName": "confirmOrder",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "MIXED_LOGIC",
-          "hasComplexLogic": true,
-          "caseCount": 8.0,
-          "complexityScore": 46.0
-        }
-      ],
-      "avgComplexityScore": "46.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "MIXED",
-      "isGetterSetter": false,
-      "methodSignature": "public void confirmOrder()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "8.0",
-      "totalCases": "8"
-    },
-    "assignment": "assignment-2-203",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078122E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "calculateExtraCost",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "calculateExtraCost",
-      "hasComplexLogic": "true",
-      "className": "SnackItem",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
-          "complexityScore": 18.0
-        }
-      ],
-      "avgComplexityScore": "18.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": " void calculateExtraCost()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "2.0",
-      "totalCases": "2"
-    },
-    "assignment": "assignment-2-204",
-    "class": "SnackItem",
-    "timestamp": 1.766804078123E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "orderTimes",
-    "evidence": {
-      "overallPattern": "MIXED_LOGIC",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "orderTimes",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "MIXED_LOGIC",
-          "hasComplexLogic": true,
-          "caseCount": 4.0,
-          "complexityScore": 28.0
-        }
-      ],
-      "avgComplexityScore": "28.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "MIXED",
-      "isGetterSetter": false,
-      "methodSignature": "private Integer[] orderTimes()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "4.0",
-      "totalCases": "4"
-    },
-    "assignment": "assignment-2-320",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078125E12
-  },
-  {
-    "antipattern": "PotentialMissingInheritance",
-    "method": "remove",
-    "evidence": {
-      "methodExample": "public void remove(int posCart)",
-      "sharedMethods": "1",
-      "hasCommonAncestor": "false",
-      "weaklyRelated": "true",
-      "methodSignature": "void remove(int)",
-      "classes": "Order; Cart",
-      "similarityScore": "0"
-    },
-    "assignment": "assignment-2-200",
-    "class": "Order; Cart",
-    "timestamp": 1.766804078128E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addSnack",
-    "evidence": {
-      "overallPattern": "MIXED_LOGIC",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "addSnack",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "MIXED_LOGIC",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        }
-      ],
-      "avgComplexityScore": "22.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void addSnack(String name, float price, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-42",
-    "class": "BurgerShop",
-    "timestamp": 1.76680407813E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addDrink",
-    "evidence": {
-      "overallPattern": "MIXED_LOGIC",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "addDrink",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "MIXED_LOGIC",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        }
-      ],
-      "avgComplexityScore": "22.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void addDrink(String name, float price, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-42",
-    "class": "BurgerShop",
-    "timestamp": 1.76680407813E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addCombo",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "addCombo",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 17.0
-        }
-      ],
-      "avgComplexityScore": "17.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void addCombo(String nameBurger, float priceBurger, String nameSnack, float priceSnack, String nameDrink, float priceDrink, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-42",
-    "class": "BurgerShop",
-    "timestamp": 1.76680407813E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "confirmOrder",
-    "evidence": {
-      "overallPattern": "STATE_MACHINE",
-      "hasObjectCreation": "false",
-      "suggestion": "State machine pattern detected - consider State pattern",
-      "methodName": "confirmOrder",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "COMPLEX_LOGIC",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "STATE_MACHINE",
-          "hasComplexLogic": true,
-          "caseCount": 4.0,
-          "complexityScore": 62.0
-        }
-      ],
-      "avgComplexityScore": "62.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "COMPLEX_LOGIC",
-      "isGetterSetter": false,
-      "methodSignature": "public void confirmOrder()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "4.0",
-      "totalCases": "4"
-    },
-    "assignment": "assignment-2-40",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078152E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "confirmOrder",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "confirmOrder",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
-          "complexityScore": 18.0
-        },
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
-          "complexityScore": 18.0
-        }
-      ],
-      "avgComplexityScore": "18.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "MIXED",
-      "isGetterSetter": false,
-      "methodSignature": "public void confirmOrder()",
-      "isEventHandler": false,
-      "totalSwitches": "2",
-      "avgCasesPerSwitch": "2.0",
-      "totalCases": "4"
-    },
-    "assignment": "assignment-2-313",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078189E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "sortMenuItems",
-    "evidence": {
-      "overallPattern": "MIXED_LOGIC",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "sortMenuItems",
+      "methodName": "convertToMacronised",
       "hasComplexLogic": "false",
-      "className": "CartDetails",
+      "className": "TextFieldManager",
+      "switchBreakdown": [
+        {
+          "contentPattern": "SIMPLE_MAPPING",
+          "isSimpleMapping": true,
+          "isStringMapping": false,
+          "hasObjectCreation": false,
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 10.0,
+          "complexityScore": 5.0
+        }
+      ],
+      "avgComplexityScore": "5.0",
+      "isConfigurationSwitch": true,
+      "highestSeverity": "LOW",
+      "contentPattern": "SIMPLE_MAPPING",
+      "isGetterSetter": false,
+      "methodSignature": "private char convertToMacronised(char charAt)",
+      "isEventHandler": false,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "10.0",
+      "totalCases": "10"
+    },
+    "assignment": "project-repo-26",
+    "class": "TextFieldManager",
+    "timestamp": 1.766809984569E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "populateViewData",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "false",
+      "suggestion": "Review for potential polymorphism replacement",
+      "methodName": "populateViewData",
+      "hasComplexLogic": "false",
+      "className": "RewardController",
+      "switchBreakdown": [
+        {
+          "contentPattern": "STATE_CHANGE",
+          "isSimpleMapping": false,
+          "isStringMapping": false,
+          "hasObjectCreation": false,
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 4.0,
+          "complexityScore": 11.0
+        }
+      ],
+      "avgComplexityScore": "11.0",
+      "isConfigurationSwitch": false,
+      "highestSeverity": "MEDIUM",
+      "contentPattern": "STATE_CHANGE",
+      "isGetterSetter": false,
+      "methodSignature": "protected void populateViewData()",
+      "isEventHandler": false,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "4.0",
+      "totalCases": "4"
+    },
+    "assignment": "project-repo-24",
+    "class": "RewardController",
+    "timestamp": 1.766809984581E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "getResultDisplay",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "true",
+      "suggestion": "Review for potential polymorphism replacement",
+      "methodName": "getResultDisplay",
+      "hasComplexLogic": "false",
+      "className": "ResultController",
+      "switchBreakdown": [
+        {
+          "contentPattern": "MIXED",
+          "isSimpleMapping": false,
+          "isStringMapping": false,
+          "hasObjectCreation": true,
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 4.0,
+          "complexityScore": 13.0
+        }
+      ],
+      "avgComplexityScore": "13.0",
+      "isConfigurationSwitch": false,
+      "highestSeverity": "LOW",
+      "contentPattern": "MIXED",
+      "isGetterSetter": true,
+      "methodSignature": "private static ResultDisplayDto getResultDisplay(RoundResult result)",
+      "isEventHandler": false,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "4.0",
+      "totalCases": "4"
+    },
+    "assignment": "project-repo-24",
+    "class": "ResultController",
+    "timestamp": 1.766809984582E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "getResultScoreMultiplier",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "false",
+      "suggestion": "Review for potential polymorphism replacement",
+      "methodName": "getResultScoreMultiplier",
+      "hasComplexLogic": "false",
+      "className": "Round",
+      "switchBreakdown": [
+        {
+          "contentPattern": "SIMPLE_MAPPING",
+          "isSimpleMapping": true,
+          "isStringMapping": false,
+          "hasObjectCreation": false,
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 4.0,
+          "complexityScore": 2.0
+        }
+      ],
+      "avgComplexityScore": "2.0",
+      "isConfigurationSwitch": true,
+      "highestSeverity": "LOW",
+      "contentPattern": "SIMPLE_MAPPING",
+      "isGetterSetter": true,
+      "methodSignature": "private float getResultScoreMultiplier()",
+      "isEventHandler": false,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "4.0",
+      "totalCases": "4"
+    },
+    "assignment": "project-repo-24",
+    "class": "Round",
+    "timestamp": 1.766809984583E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "checkMacronShortCut",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "false",
+      "suggestion": "Review for potential polymorphism replacement",
+      "methodName": "checkMacronShortCut",
+      "hasComplexLogic": "false",
+      "className": "ModuleBaseController",
+      "switchBreakdown": [
+        {
+          "contentPattern": "STATE_CHANGE",
+          "isSimpleMapping": false,
+          "isStringMapping": false,
+          "hasObjectCreation": false,
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 5.0,
+          "complexityScore": 15.0
+        }
+      ],
+      "avgComplexityScore": "15.0",
+      "isConfigurationSwitch": false,
+      "highestSeverity": "MEDIUM",
+      "contentPattern": "STATE_CHANGE",
+      "isGetterSetter": false,
+      "methodSignature": "protected void checkMacronShortCut()",
+      "isEventHandler": false,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "5.0",
+      "totalCases": "5"
+    },
+    "assignment": "project-repo-11",
+    "class": "ModuleBaseController",
+    "timestamp": 1.766809984598E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "encourageMessage",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "false",
+      "suggestion": "Review for potential polymorphism replacement",
+      "methodName": "encourageMessage",
+      "hasComplexLogic": "false",
+      "className": "NewGame",
+      "switchBreakdown": [
+        {
+          "contentPattern": "METHOD_DISPATCH",
+          "isSimpleMapping": false,
+          "isStringMapping": false,
+          "hasObjectCreation": false,
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 5.0,
+          "complexityScore": 15.0
+        }
+      ],
+      "avgComplexityScore": "15.0",
+      "isConfigurationSwitch": false,
+      "highestSeverity": "LOW",
+      "contentPattern": "METHOD_DISPATCH",
+      "isGetterSetter": false,
+      "methodSignature": "public void encourageMessage(String gameMode, Label encourageLabel) throws IOException",
+      "isEventHandler": false,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "5.0",
+      "totalCases": "5"
+    },
+    "assignment": "project-repo-30",
+    "class": "NewGame",
+    "timestamp": 1.766809984602E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "playLoadingScreen",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "false",
+      "suggestion": "Review for potential polymorphism replacement",
+      "methodName": "playLoadingScreen",
+      "hasComplexLogic": "false",
+      "className": "Quiz",
       "switchBreakdown": [
         {
           "contentPattern": "METHOD_DISPATCH",
@@ -3174,443 +1006,63 @@
       "highestSeverity": "LOW",
       "contentPattern": "METHOD_DISPATCH",
       "isGetterSetter": false,
-      "methodSignature": "public void sortMenuItems()",
+      "methodSignature": "public void playLoadingScreen()",
       "isEventHandler": false,
       "totalSwitches": "1",
       "avgCasesPerSwitch": "4.0",
       "totalCases": "4"
     },
-    "assignment": "assignment-2-314",
-    "class": "CartDetails",
-    "timestamp": 1.76680407819E12
+    "assignment": "project-repo-31",
+    "class": "Quiz",
+    "timestamp": 1.766809984604E12
   },
   {
     "antipattern": "SwitchComplexity",
-    "method": "countItems",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "countItems",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
-          "complexityScore": 18.0
-        },
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
-          "complexityScore": 18.0
-        }
-      ],
-      "avgComplexityScore": "18.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "MIXED",
-      "isGetterSetter": false,
-      "methodSignature": "public void countItems()",
-      "isEventHandler": false,
-      "totalSwitches": "2",
-      "avgCasesPerSwitch": "2.0",
-      "totalCases": "4"
-    },
-    "assignment": "assignment-2-37",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078208E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "GetNameModifier",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "GetNameModifier",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        }
-      ],
-      "avgComplexityScore": "22.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public static String GetNameModifier(SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-36",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078209E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "GetPriceModifier",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "GetPriceModifier",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        }
-      ],
-      "avgComplexityScore": "22.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public static float GetPriceModifier(SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-36",
-    "class": "BurgerShop",
-    "timestamp": 1.76680407821E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "confirmOrder",
-    "evidence": {
-      "overallPattern": "STATE_MACHINE",
-      "hasObjectCreation": "false",
-      "suggestion": "State machine pattern detected - consider State pattern",
-      "methodName": "confirmOrder",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "STATE_MACHINE",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 27.0
-        }
-      ],
-      "avgComplexityScore": "27.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void confirmOrder()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-36",
-    "class": "BurgerShop",
-    "timestamp": 1.76680407821E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "checkHasComboItems",
+    "method": "continuousTimer",
     "evidence": {
       "overallPattern": "MIXED_LOGIC",
       "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "checkHasComboItems",
-      "hasComplexLogic": "true",
-      "className": "Cart",
+      "suggestion": "Switch has many cases - consider polymorphism",
+      "methodName": "continuousTimer",
+      "hasComplexLogic": "false",
+      "className": "Quiz",
       "switchBreakdown": [
         {
-          "contentPattern": "COMPLEX_LOGIC",
+          "contentPattern": "METHOD_DISPATCH",
           "isSimpleMapping": false,
           "isStringMapping": false,
           "hasObjectCreation": false,
           "patternType": "MIXED_LOGIC",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 42.0
+          "hasComplexLogic": false,
+          "caseCount": 6.0,
+          "complexityScore": 41.0
         }
       ],
-      "avgComplexityScore": "42.0",
+      "avgComplexityScore": "41.0",
       "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "COMPLEX_LOGIC",
+      "highestSeverity": "LOW",
+      "contentPattern": "METHOD_DISPATCH",
       "isGetterSetter": false,
-      "methodSignature": "public boolean checkHasComboItems()",
+      "methodSignature": "public void continuousTimer()",
       "isEventHandler": false,
       "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
+      "avgCasesPerSwitch": "6.0",
+      "totalCases": "6"
     },
-    "assignment": "assignment-2-35",
-    "class": "Cart",
-    "timestamp": 1.766804078212E12
+    "assignment": "project-repo-31",
+    "class": "Quiz",
+    "timestamp": 1.766809984604E12
   },
   {
     "antipattern": "SwitchComplexity",
-    "method": "calculatePrice",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "calculatePrice",
-      "hasComplexLogic": "true",
-      "className": "Snacks",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 17.0
-        }
-      ],
-      "avgComplexityScore": "17.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void calculatePrice(float price, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-305",
-    "class": "Snacks",
-    "timestamp": 1.766804078214E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "calculatePrice",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "calculatePrice",
-      "hasComplexLogic": "true",
-      "className": "Drinks",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 17.0
-        }
-      ],
-      "avgComplexityScore": "17.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void calculatePrice(float price, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-305",
-    "class": "Drinks",
-    "timestamp": 1.766804078214E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "missedComboExists",
-    "evidence": {
-      "overallPattern": "MIXED_LOGIC",
-      "hasObjectCreation": "true",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "missedComboExists",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "COMPLEX_LOGIC",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": true,
-          "patternType": "MIXED_LOGIC",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 36.0
-        }
-      ],
-      "avgComplexityScore": "36.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "COMPLEX_LOGIC",
-      "isGetterSetter": false,
-      "methodSignature": "private boolean missedComboExists() throws InvalidObjectException",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-306",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078215E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "calculateWaitTime",
+    "method": "addMacron",
     "evidence": {
       "overallPattern": "MIXED_LOGIC",
       "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "calculateWaitTime",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "MIXED",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "MIXED_LOGIC",
-          "hasComplexLogic": true,
-          "caseCount": 4.0,
-          "complexityScore": 27.0
-        }
-      ],
-      "avgComplexityScore": "27.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
-      "contentPattern": "MIXED",
-      "isGetterSetter": false,
-      "methodSignature": "private int calculateWaitTime()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "4.0",
-      "totalCases": "4"
-    },
-    "assignment": "assignment-2-306",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078215E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addSnack",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "addSnack",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 17.0
-        }
-      ],
-      "avgComplexityScore": "17.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void addSnack(String name, float price, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-307",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078216E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addDrink",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "addDrink",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 17.0
-        }
-      ],
-      "avgComplexityScore": "17.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void addDrink(String name, float price, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-307",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078216E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addCombo",
-    "evidence": {
-      "overallPattern": "MIXED_LOGIC",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "addCombo",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
+      "suggestion": "Switch has many cases - consider polymorphism",
+      "methodName": "addMacron",
+      "hasComplexLogic": "false",
+      "className": "Controller",
       "switchBreakdown": [
         {
           "contentPattern": "STATE_CHANGE",
@@ -3618,8 +1070,8 @@
           "isStringMapping": false,
           "hasObjectCreation": false,
           "patternType": "MIXED_LOGIC",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
+          "hasComplexLogic": false,
+          "caseCount": 10.0,
           "complexityScore": 20.0
         }
       ],
@@ -3628,43 +1080,199 @@
       "highestSeverity": "MEDIUM",
       "contentPattern": "STATE_CHANGE",
       "isGetterSetter": false,
-      "methodSignature": "public void addCombo(String nameBurger, float priceBurger, String nameSnack, float priceSnack, String nameDrink, float priceDrink, SIZE size)",
+      "methodSignature": "public void addMacron(MouseEvent event)",
       "isEventHandler": false,
       "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
+      "avgCasesPerSwitch": "10.0",
+      "totalCases": "10"
     },
-    "assignment": "assignment-2-307",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078216E12
+    "assignment": "project-repo-18",
+    "class": "Controller",
+    "timestamp": 1.766809984607E12
+  },
+  {
+    "antipattern": "PotentialMissingInheritanceGroup",
+    "method": "getEncourageMessage; readEncourageFile",
+    "evidence": {
+      "classes": "GameLogic; PracticeLogic",
+      "sharedMethodsCount": "2",
+      "methodSignatures": "String getEncourageMessage(); void readEncourageFile()",
+      "details": "Multiple methods suggest missing inheritance hierarchy",
+      "methodExamples": "public String getEncourageMessage() | public void readEncourageFile()",
+      "similarityScore": "30",
+      "sharedMethodNames": "getEncourageMessage; readEncourageFile",
+      "weaklyRelated": "true",
+      "hasCommonAncestor": "false"
+    },
+    "assignment": "project-repo-38",
+    "class": "GameLogic; PracticeLogic",
+    "timestamp": 1.766809984618E12
   },
   {
     "antipattern": "SwitchComplexity",
-    "method": "confirmOrder",
+    "method": "macronConverter",
     "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
+      "overallPattern": "MIXED_LOGIC",
       "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "confirmOrder",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
+      "suggestion": "Switch has many cases - consider polymorphism",
+      "methodName": "macronConverter",
+      "hasComplexLogic": "false",
+      "className": "QuizController",
+      "switchBreakdown": [
+        {
+          "contentPattern": "STATE_CHANGE",
+          "isSimpleMapping": false,
+          "isStringMapping": false,
+          "hasObjectCreation": false,
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 10.0,
+          "complexityScore": 20.0
+        }
+      ],
+      "avgComplexityScore": "20.0",
+      "isConfigurationSwitch": false,
+      "highestSeverity": "MEDIUM",
+      "contentPattern": "STATE_CHANGE",
+      "isGetterSetter": false,
+      "methodSignature": "public void macronConverter(KeyEvent event)",
+      "isEventHandler": false,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "10.0",
+      "totalCases": "10"
+    },
+    "assignment": "project-repo-16",
+    "class": "QuizController",
+    "timestamp": 1.766809984619E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "setMacronWithKeyboard",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "false",
+      "suggestion": "Switch has many cases - consider polymorphism",
+      "methodName": "setMacronWithKeyboard",
+      "hasComplexLogic": "false",
+      "className": "MacronKeypadController",
       "switchBreakdown": [
         {
           "contentPattern": "MIXED",
           "isSimpleMapping": false,
           "isStringMapping": false,
           "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 22.0
-        },
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 10.0,
+          "complexityScore": 15.0
+        }
+      ],
+      "avgComplexityScore": "15.0",
+      "isConfigurationSwitch": false,
+      "highestSeverity": "MEDIUM",
+      "contentPattern": "MIXED",
+      "isGetterSetter": true,
+      "methodSignature": "public void setMacronWithKeyboard(char vowelChar, int charPosition, char[] textFieldToChars)",
+      "isEventHandler": true,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "10.0",
+      "totalCases": "10"
+    },
+    "assignment": "project-repo-17",
+    "class": "MacronKeypadController",
+    "timestamp": 1.766809984623E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "rightButtonPress",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "false",
+      "suggestion": "Review for potential polymorphism replacement",
+      "methodName": "rightButtonPress",
+      "hasComplexLogic": "false",
+      "className": "PopUpController",
+      "switchBreakdown": [
         {
-          "contentPattern": "MIXED",
+          "contentPattern": "METHOD_DISPATCH",
           "isSimpleMapping": false,
           "isStringMapping": false,
           "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 4.0,
+          "complexityScore": 5.0
+        }
+      ],
+      "avgComplexityScore": "5.0",
+      "isConfigurationSwitch": false,
+      "highestSeverity": "LOW",
+      "contentPattern": "METHOD_DISPATCH",
+      "isGetterSetter": false,
+      "methodSignature": "public void rightButtonPress(ActionEvent event) throws IOException",
+      "isEventHandler": false,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "4.0",
+      "totalCases": "4"
+    },
+    "assignment": "project-repo-15",
+    "class": "PopUpController",
+    "timestamp": 1.76680998463E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "addMacron",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "false",
+      "suggestion": "Review for potential polymorphism replacement",
+      "methodName": "addMacron",
+      "hasComplexLogic": "false",
+      "className": "QuizController",
+      "switchBreakdown": [
+        {
+          "contentPattern": "METHOD_DISPATCH",
+          "isSimpleMapping": false,
+          "isStringMapping": false,
+          "hasObjectCreation": false,
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 5.0,
+          "complexityScore": 15.0
+        }
+      ],
+      "avgComplexityScore": "15.0",
+      "isConfigurationSwitch": false,
+      "highestSeverity": "LOW",
+      "contentPattern": "METHOD_DISPATCH",
+      "isGetterSetter": false,
+      "methodSignature": "public String addMacron(String input)",
+      "isEventHandler": false,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "5.0",
+      "totalCases": "5"
+    },
+    "assignment": "project-repo-15",
+    "class": "QuizController",
+    "timestamp": 1.766809984631E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "updateResults",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "false",
+      "suggestion": "Review for potential polymorphism replacement",
+      "methodName": "updateResults",
+      "hasComplexLogic": "true",
+      "className": "QuizController",
+      "switchBreakdown": [
+        {
+          "contentPattern": "COMPLEX_LOGIC",
+          "isSimpleMapping": false,
+          "isStringMapping": false,
+          "hasObjectCreation": false,
+          "patternType": "MIXED_LOGIC",
           "hasComplexLogic": true,
           "caseCount": 3.0,
           "complexityScore": 22.0
@@ -3673,423 +1281,201 @@
       "avgComplexityScore": "22.0",
       "isConfigurationSwitch": false,
       "highestSeverity": "HIGH",
-      "contentPattern": "MIXED",
+      "contentPattern": "COMPLEX_LOGIC",
       "isGetterSetter": false,
-      "methodSignature": "public void confirmOrder()",
+      "methodSignature": "public void updateResults(String result)",
       "isEventHandler": false,
-      "totalSwitches": "2",
+      "totalSwitches": "1",
       "avgCasesPerSwitch": "3.0",
-      "totalCases": "6"
+      "totalCases": "3"
     },
-    "assignment": "assignment-2-307",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078216E12
+    "assignment": "project-repo-15",
+    "class": "QuizController",
+    "timestamp": 1.766809984631E12
   },
   {
     "antipattern": "SwitchComplexity",
-    "method": "confirmOrder",
+    "method": "__configureData",
     "evidence": {
-      "overallPattern": "STATE_MACHINE",
+      "overallPattern": "MIXED_LOGIC",
       "hasObjectCreation": "false",
-      "suggestion": "State machine pattern detected - consider State pattern",
-      "methodName": "confirmOrder",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
+      "suggestion": "Switch has many cases - consider polymorphism",
+      "methodName": "__configureData",
+      "hasComplexLogic": "false",
+      "className": "Achievements",
       "switchBreakdown": [
         {
           "contentPattern": "MIXED",
           "isSimpleMapping": false,
           "isStringMapping": false,
           "hasObjectCreation": false,
-          "patternType": "STATE_MACHINE",
-          "hasComplexLogic": true,
-          "caseCount": 4.0,
-          "complexityScore": 31.0
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 6.0,
+          "complexityScore": 26.0
         }
       ],
-      "avgComplexityScore": "31.0",
+      "avgComplexityScore": "26.0",
       "isConfigurationSwitch": false,
-      "highestSeverity": "HIGH",
+      "highestSeverity": "MEDIUM",
       "contentPattern": "MIXED",
       "isGetterSetter": false,
-      "methodSignature": "public void confirmOrder()",
+      "methodSignature": "private List\u003cAchievementItem\u003e __configureData()",
       "isEventHandler": false,
       "totalSwitches": "1",
-      "avgCasesPerSwitch": "4.0",
-      "totalCases": "4"
+      "avgCasesPerSwitch": "6.0",
+      "totalCases": "6"
     },
-    "assignment": "assignment-2-300",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078217E12
+    "assignment": "project-repo-34",
+    "class": "Achievements",
+    "timestamp": 1.766809984636E12
   },
   {
     "antipattern": "SwitchComplexity",
-    "method": "setPrice",
+    "method": "__addSubText",
     "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "true",
+      "suggestion": "Review for potential polymorphism replacement",
+      "methodName": "__addSubText",
+      "hasComplexLogic": "true",
+      "className": "Quiz",
+      "switchBreakdown": [
+        {
+          "contentPattern": "METHOD_DISPATCH",
+          "isSimpleMapping": false,
+          "isStringMapping": false,
+          "hasObjectCreation": true,
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": true,
+          "caseCount": 3.0,
+          "complexityScore": 39.0
+        }
+      ],
+      "avgComplexityScore": "39.0",
+      "isConfigurationSwitch": false,
+      "highestSeverity": "LOW",
+      "contentPattern": "METHOD_DISPATCH",
+      "isGetterSetter": false,
+      "methodSignature": "private void __addSubText()",
+      "isEventHandler": false,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "3.0",
+      "totalCases": "3"
+    },
+    "assignment": "project-repo-34",
+    "class": "Quiz",
+    "timestamp": 1.766809984637E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "typeMacron",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
       "hasObjectCreation": "false",
       "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "setPrice",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
+      "methodName": "typeMacron",
+      "hasComplexLogic": "false",
+      "className": "QuizController",
       "switchBreakdown": [
         {
           "contentPattern": "STATE_CHANGE",
           "isSimpleMapping": false,
           "isStringMapping": false,
           "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 17.0
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 5.0,
+          "complexityScore": 15.0
         }
       ],
-      "avgComplexityScore": "17.0",
+      "avgComplexityScore": "15.0",
+      "isConfigurationSwitch": false,
+      "highestSeverity": "MEDIUM",
+      "contentPattern": "STATE_CHANGE",
+      "isGetterSetter": false,
+      "methodSignature": "public void typeMacron(KeyEvent event)",
+      "isEventHandler": false,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "5.0",
+      "totalCases": "5"
+    },
+    "assignment": "project-repo-35",
+    "class": "QuizController",
+    "timestamp": 1.766809984644E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "changeProgress",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "false",
+      "suggestion": "Review for potential polymorphism replacement",
+      "methodName": "changeProgress",
+      "hasComplexLogic": "false",
+      "className": "QuizController",
+      "switchBreakdown": [
+        {
+          "contentPattern": "METHOD_DISPATCH",
+          "isSimpleMapping": false,
+          "isStringMapping": false,
+          "hasObjectCreation": false,
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 5.0,
+          "complexityScore": 15.0
+        }
+      ],
+      "avgComplexityScore": "15.0",
+      "isConfigurationSwitch": false,
+      "highestSeverity": "LOW",
+      "contentPattern": "METHOD_DISPATCH",
+      "isGetterSetter": false,
+      "methodSignature": "public void changeProgress(boolean fail)",
+      "isEventHandler": false,
+      "totalSwitches": "1",
+      "avgCasesPerSwitch": "5.0",
+      "totalCases": "5"
+    },
+    "assignment": "project-repo-13",
+    "class": "QuizController",
+    "timestamp": 1.766809984645E12
+  },
+  {
+    "antipattern": "SwitchComplexity",
+    "method": "setImage",
+    "evidence": {
+      "overallPattern": "MIXED_LOGIC",
+      "hasObjectCreation": "false",
+      "suggestion": "Switch has many cases - consider polymorphism",
+      "methodName": "setImage",
+      "hasComplexLogic": "false",
+      "className": "RewardsScreenController",
+      "switchBreakdown": [
+        {
+          "contentPattern": "STATE_CHANGE",
+          "isSimpleMapping": false,
+          "isStringMapping": false,
+          "hasObjectCreation": false,
+          "patternType": "MIXED_LOGIC",
+          "hasComplexLogic": false,
+          "caseCount": 6.0,
+          "complexityScore": 16.0
+        }
+      ],
+      "avgComplexityScore": "16.0",
       "isConfigurationSwitch": false,
       "highestSeverity": "MEDIUM",
       "contentPattern": "STATE_CHANGE",
       "isGetterSetter": true,
-      "methodSignature": "private float setPrice(float price, Menu.SIZE size)",
+      "methodSignature": "public void setImage(int score)",
       "isEventHandler": false,
       "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
+      "avgCasesPerSwitch": "6.0",
+      "totalCases": "6"
     },
-    "assignment": "assignment-2-28",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078221E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "calculateBurgerTime",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "calculateBurgerTime",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 1.0,
-          "complexityScore": 14.0
-        }
-      ],
-      "avgComplexityScore": "14.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public int calculateBurgerTime(int numBurgers)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "1.0",
-      "totalCases": "1"
-    },
-    "assignment": "assignment-2-21",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078224E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "calculateSnackTime",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "calculateSnackTime",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 1.0,
-          "complexityScore": 14.0
-        }
-      ],
-      "avgComplexityScore": "14.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public int calculateSnackTime(int numSnacks)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "1.0",
-      "totalCases": "1"
-    },
-    "assignment": "assignment-2-21",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078224E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "calculateDrinkTime",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "calculateDrinkTime",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 1.0,
-          "complexityScore": 14.0
-        }
-      ],
-      "avgComplexityScore": "14.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public int calculateDrinkTime(int numDrinks)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "1.0",
-      "totalCases": "1"
-    },
-    "assignment": "assignment-2-21",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078224E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addSnack",
-    "evidence": {
-      "overallPattern": "STATE_MACHINE",
-      "hasObjectCreation": "true",
-      "suggestion": "State machine pattern detected - consider State pattern",
-      "methodName": "addSnack",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "METHOD_DISPATCH",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": true,
-          "patternType": "STATE_MACHINE",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 38.0
-        }
-      ],
-      "avgComplexityScore": "38.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "LOW",
-      "contentPattern": "METHOD_DISPATCH",
-      "isGetterSetter": false,
-      "methodSignature": "public void addSnack(String name, float price, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-24",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078227E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addDrink",
-    "evidence": {
-      "overallPattern": "STATE_MACHINE",
-      "hasObjectCreation": "true",
-      "suggestion": "State machine pattern detected - consider State pattern",
-      "methodName": "addDrink",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "METHOD_DISPATCH",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": true,
-          "patternType": "STATE_MACHINE",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 38.0
-        }
-      ],
-      "avgComplexityScore": "38.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "LOW",
-      "contentPattern": "METHOD_DISPATCH",
-      "isGetterSetter": false,
-      "methodSignature": "public void addDrink(String name, float price, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-24",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078228E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "addCombo",
-    "evidence": {
-      "overallPattern": "STATE_MACHINE",
-      "hasObjectCreation": "true",
-      "suggestion": "State machine pattern detected - consider State pattern",
-      "methodName": "addCombo",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "METHOD_DISPATCH",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": true,
-          "patternType": "STATE_MACHINE",
-          "hasComplexLogic": true,
-          "caseCount": 3.0,
-          "complexityScore": 48.0
-        }
-      ],
-      "avgComplexityScore": "48.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "LOW",
-      "contentPattern": "METHOD_DISPATCH",
-      "isGetterSetter": false,
-      "methodSignature": "public void addCombo(String nameBurger, float priceBurger, String nameSnack, float priceSnack, String nameDrink, float priceDrink, SIZE size)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "3.0",
-      "totalCases": "3"
-    },
-    "assignment": "assignment-2-24",
-    "class": "BurgerShop",
-    "timestamp": 1.766804078228E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "calculateTime",
-    "evidence": {
-      "overallPattern": "MIXED_LOGIC",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "calculateTime",
-      "hasComplexLogic": "false",
-      "className": "CartCalculations",
-      "switchBreakdown": [
-        {
-          "contentPattern": "METHOD_DISPATCH",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "MIXED_LOGIC",
-          "hasComplexLogic": false,
-          "caseCount": 4.0,
-          "complexityScore": 8.0
-        }
-      ],
-      "avgComplexityScore": "8.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "LOW",
-      "contentPattern": "METHOD_DISPATCH",
-      "isGetterSetter": false,
-      "methodSignature": "public String calculateTime()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "4.0",
-      "totalCases": "4"
-    },
-    "assignment": "assignment-2-19",
-    "class": "CartCalculations",
-    "timestamp": 1.766804078229E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "checkSize",
-    "evidence": {
-      "overallPattern": "SIMPLE_DISPATCH",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "checkSize",
-      "hasComplexLogic": "true",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "SIMPLE_DISPATCH",
-          "hasComplexLogic": true,
-          "caseCount": 2.0,
-          "complexityScore": 18.0
-        }
-      ],
-      "avgComplexityScore": "18.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public float checkSize(SIZE size, float price)",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "2.0",
-      "totalCases": "2"
-    },
-    "assignment": "assignment-2-19",
-    "class": "BurgerShop",
-    "timestamp": 1.76680407823E12
-  },
-  {
-    "antipattern": "SwitchComplexity",
-    "method": "showCart",
-    "evidence": {
-      "overallPattern": "MIXED_LOGIC",
-      "hasObjectCreation": "false",
-      "suggestion": "Review for potential polymorphism replacement",
-      "methodName": "showCart",
-      "hasComplexLogic": "false",
-      "className": "BurgerShop",
-      "switchBreakdown": [
-        {
-          "contentPattern": "STATE_CHANGE",
-          "isSimpleMapping": false,
-          "isStringMapping": false,
-          "hasObjectCreation": false,
-          "patternType": "MIXED_LOGIC",
-          "hasComplexLogic": false,
-          "caseCount": 4.0,
-          "complexityScore": 12.0
-        }
-      ],
-      "avgComplexityScore": "12.0",
-      "isConfigurationSwitch": false,
-      "highestSeverity": "MEDIUM",
-      "contentPattern": "STATE_CHANGE",
-      "isGetterSetter": false,
-      "methodSignature": "public void showCart()",
-      "isEventHandler": false,
-      "totalSwitches": "1",
-      "avgCasesPerSwitch": "4.0",
-      "totalCases": "4"
-    },
-    "assignment": "assignment-2-19",
-    "class": "BurgerShop",
-    "timestamp": 1.76680407823E12
+    "assignment": "project-repo-13",
+    "class": "RewardsScreenController",
+    "timestamp": 1.766809984646E12
   }
 ]

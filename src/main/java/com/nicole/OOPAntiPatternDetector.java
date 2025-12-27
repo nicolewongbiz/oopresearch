@@ -221,7 +221,7 @@ private static void detectLSPViolations(ClassOrInterfaceDeclaration childClass,
 
     public static void main(String[] args) throws Exception {
     // Hardcoded submissions directory
-    File submissionsDir = new File("C:\\Users\\GGPC\\Downloads\\assignment-2022-3\\assignment-3_output");
+    File submissionsDir = new File("C:\\Users\\GGPC\\Downloads\\assignment-2062021-3\\assignment-3-and-project-_output");
     
     if (!submissionsDir.exists()) {
         System.err.println("Submissions folder not found: " + submissionsDir.getAbsolutePath());

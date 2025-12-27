@@ -19,7 +19,7 @@ ANTIPATTERN_PROMPTS = {
     "SwitchComplexity": """Analyze this switch statement evidence:
 {evidence}
 
-Guidelines for evaluation:
+Guidelines:
 - Switches with 1-3 simple cases → usually NO
 - Switches with complex logic → likely YES
 - State machines or factory patterns may be acceptable
@@ -93,7 +93,6 @@ Question: Is this inheritance redundant/unnecessary?
 
 Answer: YES/NO: [brief explanation]""",
 
-    # Default fallback
     "DEFAULT": """Analyze this potential antipattern:
 {evidence}
 
@@ -106,6 +105,16 @@ Answer: YES/NO: [brief explanation]"""
 }
 
 # ================= FUNCTIONS =================
+
+def normalize_string(s):
+    """Normalize strings for deduplication."""
+    return (s or "").strip().lower()
+
+def normalize_evidence(e):
+    """Normalize evidence JSON for deduplication."""
+    if not e:
+        return {}
+    return e  # Keep full evidence as-is; only order/sorting matters in json.dumps with sort_keys
 
 def analyze_candidate(entry):
     """Call LLM and parse verdict/explanation."""
@@ -132,7 +141,6 @@ def analyze_candidate(entry):
             verdict = "NO"
             explanation = result[3:].strip()
         else:
-            # Fallback parsing
             upper_result = result.upper()
             if "YES" in upper_result:
                 verdict = "YES"
@@ -148,62 +156,88 @@ def analyze_candidate(entry):
         print(f"Error analyzing candidate: {e}")
         return {"verdict": "ERROR", "explanation": f"Analysis failed: {e}", "raw_response": ""}
 
-
 def deduplicate_candidates(candidates):
-    """Remove exact duplicate candidates."""
-    seen = set()
-    unique = []
+    """Deduplicate while keeping all original entries mapped."""
+    seen = {}
+    unique_candidates = []
 
     for entry in candidates:
         key = (
-            entry.get("assignment", "") or entry.get("student", ""),
-            entry.get("class", ""),
-            entry.get("method", ""),
-            entry.get("antipattern", ""),
-            json.dumps(entry.get("evidence", {}), sort_keys=True)
+            normalize_string(entry.get("class")),
+            normalize_string(entry.get("method")),
+            normalize_string(entry.get("antipattern")),
+            json.dumps(normalize_evidence(entry.get("evidence", {})), sort_keys=True)
         )
+
         if key not in seen:
-            seen.add(key)
-            unique.append(entry)
+            seen[key] = [entry]
+            unique_candidates.append(entry)
+        else:
+            seen[key].append(entry)
 
-    return unique
+    return unique_candidates, seen
 
+def write_statistics(stats, confirmed_by_type, total_candidates, unique_candidates, duplicates_map, elapsed_time):
+    """Write stats reflecting totals across all original candidates (pre-deduplication)."""
+    # Initialize totals
+    total_mapped = total_candidates
+    yes_mapped = 0
+    no_mapped = 0
+    error_mapped = 0
 
-def write_statistics(stats, confirmed_by_type, total_candidates, unique_candidates, elapsed_time):
-    """Write stats file per-antipattern without grouping."""
+    # Map unique verdicts back to all original entries
+    for key, original_entries in duplicates_map.items():
+        # Determine verdict from the unique candidate
+        unique_entry = original_entries[0]
+        antipattern = unique_entry.get("antipattern", "")
+        # Get number confirmed in unique analysis
+        confirmed_count = confirmed_by_type.get(antipattern, {}).get('confirmed', 0)
+        verdict = "YES" if confirmed_count > 0 else "NO"  # unique verdict
+        # Assign verdict to all duplicates
+        for _ in original_entries:
+            if verdict == "YES":
+                yes_mapped += 1
+            elif verdict == "NO":
+                no_mapped += 1
+            else:
+                error_mapped += 1
+
     with open(STATS_FILE, "w") as f:
         f.write("="*60 + "\n")
         f.write("LLM ANALYSIS STATISTICS\n")
         f.write("="*60 + "\n")
         f.write(f"Timestamp: {datetime.now()}\n\n")
-        f.write(f"Total candidates loaded: {total_candidates}\n")
-        f.write(f"After deduplication: {unique_candidates}\n")
+        f.write(f"Total candidates loaded (pre-deduplication): {total_candidates}\n")
+        f.write(f"Unique candidates analyzed (post-deduplication): {unique_candidates}\n")
         f.write(f"Duplicates removed: {total_candidates - unique_candidates}\n\n")
 
-        f.write("ANALYSIS RESULTS\n")
+        f.write("ANALYSIS RESULTS (ALL ORIGINAL CANDIDATES)\n")
         f.write("-"*40 + "\n")
-        f.write(f"Total analyzed: {stats['total']}\n")
-        f.write(f"Confirmed (YES): {stats['yes']} ({stats['yes']/stats['total']*100:.1f}%)\n")
-        f.write(f"Rejected (NO): {stats['no']} ({stats['no']/stats['total']*100:.1f}%)\n")
-        f.write(f"Errors/Unknown: {stats['error']} ({stats['error']/stats['total']*100:.1f}%)\n\n")
+        f.write(f"Total analyzed: {total_mapped}\n")
+        f.write(f"Confirmed (YES): {yes_mapped} ({yes_mapped/total_mapped*100:.1f}%)\n")
+        f.write(f"Rejected (NO): {no_mapped} ({no_mapped/total_mapped*100:.1f}%)\n")
+        f.write(f"Errors/Unknown: {error_mapped} ({error_mapped/total_mapped*100:.1f}%)\n\n")
 
         f.write("BREAKDOWN BY ANTIPATTERN\n")
         f.write("-"*40 + "\n")
         for antipattern, data in confirmed_by_type.items():
-            analyzed = data['analyzed']
-            confirmed = data['confirmed']
-            percentage = (confirmed / analyzed * 100) if analyzed > 0 else 0
+            # All original entries for this antipattern
+            total_entries = sum(len(duplicates_map[key]) for key in duplicates_map if key[2] == normalize_string(antipattern))
+            unique_confirmed = data['confirmed']
+            # All duplicates inherit the unique verdict
+            confirmed_entries = unique_confirmed * (total_entries // data['analyzed']) if data['analyzed'] > 0 else 0
+            rejected_entries = total_entries - confirmed_entries
+            percentage = (confirmed_entries / total_entries * 100) if total_entries > 0 else 0
             f.write(f"{antipattern}:\n")
-            f.write(f"  Analyzed: {analyzed}\n")
-            f.write(f"  Confirmed: {confirmed} ({percentage:.1f}%)\n")
-            f.write(f"  Rejected: {analyzed - confirmed}\n\n")
+            f.write(f"  Analyzed: {total_entries}\n")
+            f.write(f"  Confirmed: {confirmed_entries} ({percentage:.1f}%)\n")
+            f.write(f"  Rejected: {rejected_entries}\n\n")
 
         f.write("PERFORMANCE METRICS\n")
         f.write("-"*40 + "\n")
         f.write(f"Total time: {elapsed_time:.1f}s\n")
-        f.write(f"Average per candidate: {elapsed_time/unique_candidates:.2f}s\n")
-        f.write(f"Candidates per minute: {(unique_candidates/elapsed_time)*60:.1f}\n")
-
+        f.write(f"Average per unique candidate: {elapsed_time/unique_candidates:.2f}s\n")
+        f.write(f"Candidates per minute: {(total_candidates/elapsed_time)*60:.1f}\n")
 
 # ================= MAIN =================
 
@@ -216,7 +250,7 @@ def main():
     print(f"Loaded {total_candidates} candidates")
 
     # Deduplicate
-    unique_candidates = deduplicate_candidates(candidates)
+    unique_candidates, duplicates_map = deduplicate_candidates(candidates)
     unique_count = len(unique_candidates)
     print(f"{unique_count} unique candidates after deduplication")
 
@@ -229,20 +263,19 @@ def main():
         confirmed_by_type = {}
         start_time = time.time()
 
-        for i, entry in enumerate(unique_candidates, 1):
-            assignment = entry.get("assignment", "") or entry.get("student", "")
-            clazz = entry.get("class", "")
-            method = entry.get("method", "")
-            antipattern = entry.get("antipattern", "")
+        for i, unique_entry in enumerate(unique_candidates, 1):
+            antipattern = unique_entry.get("antipattern", "")
+            clazz = unique_entry.get("class", "")
+            method = unique_entry.get("method", "")
 
-            print(f"[{i}/{unique_count}] Analyzing: {assignment}.{clazz}.{method} ({antipattern})")
-
+            print(f"[{i}/{unique_count}] Analyzing: {clazz}.{method} ({antipattern})")
             stats["total"] += 1
             if antipattern not in confirmed_by_type:
                 confirmed_by_type[antipattern] = {"analyzed": 0, "confirmed": 0}
             confirmed_by_type[antipattern]["analyzed"] += 1
 
-            result = analyze_candidate(entry)
+            # LLM analysis
+            result = analyze_candidate(unique_entry)
             verdict = result["verdict"]
             explanation = result["explanation"]
 
@@ -257,17 +290,27 @@ def main():
                 stats["error"] += 1
                 print(f"  ? {verdict}")
 
-            # Write confirmed results only
-            if verdict == "YES":
-                evidence_str = json.dumps(entry.get("evidence", {}), indent=2)
-                writer.writerow([assignment, clazz, method, antipattern, "YES", explanation, evidence_str])
+            # Write confirmed results for **all original entries**
+            key = (
+                normalize_string(clazz),
+                normalize_string(method),
+                normalize_string(antipattern),
+                json.dumps(normalize_evidence(unique_entry.get("evidence", {})), sort_keys=True)
+            )
+            original_entries = duplicates_map[key]
 
-            time.sleep(0.2)  # optional rate-limit delay
+            for original_entry in original_entries:
+                assignment = original_entry.get("assignment") or original_entry.get("student")
+                evidence_str = json.dumps(original_entry.get("evidence", {}), indent=2)
+                if verdict == "YES":
+                    writer.writerow([assignment, clazz, method, antipattern, "YES", explanation, evidence_str])
+
+            time.sleep(0.2)
 
     elapsed_time = time.time() - start_time
-    write_statistics(stats, confirmed_by_type, total_candidates, unique_count, elapsed_time)
+    write_statistics(stats, confirmed_by_type, total_candidates, unique_count, duplicates_map, elapsed_time)
 
-    # Print summary
+
     print(f"\nAnalysis complete in {elapsed_time:.1f}s")
     print(f"Total analyzed: {stats['total']}")
     print(f"Confirmed (YES): {stats['yes']} ({stats['yes']/stats['total']*100:.1f}%)")

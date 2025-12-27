@@ -1,24 +1,22 @@
 === OOP ANTIPATTERN DETECTION STATISTICS ===
-Timestamp: Sat Dec 27 15:54:38 NZDT 2025
+Timestamp: Sat Dec 27 17:33:04 NZDT 2025
 
 Input Data:
-  Total students analyzed: 322
-  Total Java files processed: 3487
-  Total classes analyzed (excluding framework): 2572
-  Total methods scanned: 9791
-  Total statements analyzed: 25698
+  Total students analyzed: 43
+  Total Java files processed: 788
+  Total classes analyzed (excluding framework): 712
+  Total methods scanned: 4891
+  Total statements analyzed: 15054
 
 Averages:
-  Average methods per class: 3.81
-  Average statements per method: 2.62
+  Average methods per class: 6.87
+  Average statements per method: 3.08
 
 Detection Results:
   Total AST-obvious issues: 54
-  Total heuristic issues detected: 128
-  Total LLM candidates generated: 127
+  Total heuristic issues detected: 42
+  Total LLM candidates generated: 41
 
 Issue Type Breakdown:
-  Switch Complexity: 100
-  Redundant Override: 13
-  Redundant Inheritance: 7
-  Missing Inheritance: 7
+  Switch Complexity: 39
+  Missing Inheritance: 2
